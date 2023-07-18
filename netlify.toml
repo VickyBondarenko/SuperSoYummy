@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/*.js"
+  to = "/:splat"
+  status = 200
+  content_type = "text/javascript"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
