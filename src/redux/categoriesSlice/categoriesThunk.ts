@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios from "axios";
 
 import {
   ICategoryRequest,
