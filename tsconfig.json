@@ -5,13 +5,16 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    // "moduleResolution": "bundler",
+    "noEmit": true,
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+
     "jsx": "react-jsx",
 
     /* Linting */
@@ -20,6 +23,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "./tailwind.config.js"],
+  "include": [
+    "src",
+    "./tailwind.config.js",
+    "./postcss.config.js",
+    "./vite.config.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
