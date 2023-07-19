@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { RecipeCard } from "../RecipeCard/RecipeCard";
 import { IRecipeInfo } from "../RecipeCard/RecipeCard";
-import {
-  fetchCurrentCategory,
-} from "../../redux/categoriesSlice/categoriesThunk";
+import { fetchCurrentCategory } from "../../redux/categoriesSlice/categoriesThunk";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 
 import {
@@ -11,13 +9,15 @@ import {
   // selectIsLoading,
 } from "../../redux/categoriesSlice/categoriesSelector";
 
-export const CategoriesGallery: React.FC = () => {
+export const CategoriesGallery: React.FC<{ activeCategory: string }> = ({
+  activeCategory,
+}) => {
   const dispatch = useAppDispatch();
   const categoryRecipes = useAppSelector(selectCategoryRecipes);
 
   useEffect(() => {
-    dispatch(fetchCurrentCategory("Beef"));
-  }, []);
+    dispatch(fetchCurrentCategory(activeCategory));
+  }, [dispatch, activeCategory]);
 
   return (
     <ul className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">

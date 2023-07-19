@@ -8,7 +8,15 @@ import {
   // selectIsLoading,
 } from "../../redux/categoriesSlice/categoriesSelector";
 
-export const CategoriesNav: React.FC = () => {
+interface ICategoriesNavProps {
+  handleCategoryChange: (category: string) => void;
+  activeCategory: string;
+}
+
+export const CategoriesNav: React.FC<ICategoriesNavProps> = ({
+  handleCategoryChange,
+  activeCategory,
+}) => {
   const dispatch = useAppDispatch();
   const categoryList = useAppSelector(selectMemoCategoryList);
 
@@ -17,12 +25,17 @@ export const CategoriesNav: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-[55px] overflow-hidden hover:overflow-auto border-b-4 hover:border-b-0 scrollbar-track-listUnderline border-listUnderline scrollbar scrollbar-thumb-accentMain scrollbar-medium mb-8">
+    <div className="w-full h-[55px] overflow-hidden hover:overflow-auto border-b-4 hover:border-b-0 scrollbar-track-listUnderline border-listUnderline scrollbar scrollbar-thumb-accentMain scrollbar-medium mb-8 ">
       <ul className="flex flex-row gap-[28px] md:gap-[55px] p-2">
         {categoryList.map((item: string, index: number) => (
           <li
             key={index}
-            className="font-main text-listUnderline text-customXxs md:text-[18px]"
+            onClick={() => handleCategoryChange(item)}
+            className={`font-main text-customXxs md:text-[18px] cursor-pointer ${
+              item !== activeCategory
+                ? "text-listUnderline"
+                : "text-accentMain scale-125"
+            } transition duration-300 ease-in-out hover:text-accentMain`}
           >
             {item}
           </li>
