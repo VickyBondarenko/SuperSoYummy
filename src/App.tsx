@@ -4,9 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { Main } from "./components/Main/Main";
 import { WelcomePage } from "./pages/WelcomePage";
-import { AuthPage } from "./pages/AuthPage";
-import { LoginForm } from "./components/Auth/LoginForm";
-import { RegisterForm } from "./components/Auth/RegisterForm";
+// import { AuthPage } from "./pages/AuthPage";
+import { Auth } from "./components/Auth/Auth";
+// import { RegisterForm } from "./components/Auth/RegisterForm";
 import { AddRecipePage } from "./pages/AddRecipePage";
 import { FavoritePage } from "./pages/FavoritePage";
 import { ShoppingListPage } from "./pages/ShoppingListPage";
@@ -20,10 +20,10 @@ const App: React.FC = () => {
     <>
       <Routes>
         <Route path="/welcome" element={<WelcomePage />} />
-        <Route path="/auth" element={<AuthPage />}>
-          <Route path="login" element={<LoginForm />} />
-          <Route path="register" element={<RegisterForm />} />
-        </Route>
+        {/* <Route path="/auth" element={<AuthPage />}> */}
+        <Route path="/login" element={<Auth />} />
+        {/* <Route path="register" element={<RegisterForm />} />
+        </Route> */}
 
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
