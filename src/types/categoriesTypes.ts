@@ -1,3 +1,5 @@
+import { Draft } from "immer";
+
 export interface ICategoryNameItem {
   _id: string;
   category: string;
@@ -13,15 +15,16 @@ export interface ICategoryRecipe {
 }
 
 export interface ICategoryRequest {
-  _id: string;
+  _id?: string;
   points?: number;
   category: string;
-  recipe: ICategoryRecipe[];
+  recipes: ICategoryRecipe[];
 }
 
 export interface ICategoryState {
+  categoryList: ICategoryNameItem[];
   category: string;
-  categoryRecipes: ICategoryRecipe[];
+  categoryRecipes: Draft<ICategoryRecipe>[];
   isLoading: boolean;
   error: string | null;
 }
