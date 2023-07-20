@@ -1,0 +1,13 @@
+.loader_wrapper {
+  @apply my-[100px] mx-auto flex flex-row justify-center items-center border-8 border-accentMain rounded-3xl w-[200px] h-[200px];
+}
+
+.loader_img {
+  @apply h-[80%] origin-[50%_100%];
+}
+.loader_img:nth-child(1) {
+  @apply animate-crossing1 mr-1;
+}
+.loader_img:nth-child(2) {
+  @apply animate-crossing2;
+}
