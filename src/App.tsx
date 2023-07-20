@@ -4,9 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { Main } from "./components/Main/Main";
 import { WelcomePage } from "./pages/WelcomePage";
-// import { AuthPage } from "./pages/AuthPage";
-import { Auth } from "./components/Auth/Auth";
-// import { RegisterForm } from "./components/Auth/RegisterForm";
 import { AddRecipePage } from "./pages/AddRecipePage";
 import { FavoritePage } from "./pages/FavoritePage";
 import { ShoppingListPage } from "./pages/ShoppingListPage";
@@ -14,6 +11,8 @@ import { MyRecipesPage } from "./pages/MyRecipesPage";
 import { SearchPage } from "./pages/SearchPage";
 import { RecipePage } from "./pages/RecipePage";
 import { CategoriesPage } from "./pages/CategoriesPage";
+import LogInPage from "./pages/LogInPage";
+import RegisterPage from "./pages/RegisterPage";
 
 const App: React.FC = () => {
   return (
@@ -21,7 +20,8 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/welcome" element={<WelcomePage />} />
         {/* <Route path="/auth" element={<AuthPage />}> */}
-        <Route path="/login" element={<Auth />} />
+        <Route path="/login" element={<LogInPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         {/* <Route path="register" element={<RegisterForm />} />
         </Route> */}
 
