@@ -9,3 +9,7 @@
 .recipe_overlay_time {
   @apply absolute flex items-center gap-2 top-3 right-3;
 }
+
+.recipe_overlay_description {
+  @apply whitespace-normal overflow-hidden text-ellipsis max-w-full;
+}
