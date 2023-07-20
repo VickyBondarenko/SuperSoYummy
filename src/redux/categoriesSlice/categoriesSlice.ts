@@ -6,7 +6,7 @@ const CATEGORIES_REDUCER = "CATEGORIES_REDUCER";
 
 const catInitialState: ICategoryState = {
   categoryList: [],
-  category: "",
+  category: "Beef",
   categoryRecipes: [],
   isLoading: true,
   error: null,
@@ -15,7 +15,9 @@ const catInitialState: ICategoryState = {
 const categorySlice = createSlice({
   name: CATEGORIES_REDUCER,
   initialState: catInitialState,
-  reducers: {},
+  reducers: {
+    changeCategory: (state, action) => void (state.category = action.payload),
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCategories.fulfilled, (state, action) => {
@@ -53,3 +55,5 @@ const categorySlice = createSlice({
 });
 
 export default categorySlice.reducer;
+
+export const { changeCategory } = categorySlice.actions;

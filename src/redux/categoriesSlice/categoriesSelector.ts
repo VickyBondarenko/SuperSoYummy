@@ -9,7 +9,6 @@ export const selectCategoryRecipes = (state: RootState) =>
 export const selectIsLoading = (state: RootState) => state.categories.isLoading;
 
 const selectCategoryList = (state: RootState) => state.categories.categoryList;
-
 export const selectMemoCategoryList = createSelector(
   [selectCategoryList],
   (categoryList) => categoryList.map(({ category }) => category)
