@@ -45,20 +45,5 @@ export const Auth: React.FC<FormProps> = ({ page }) => {
         </NavLink>
       </div>
     </section>
-
-    // <div>
-    //   <div className={styles.bgr_img}></div>
-    //   {/* <SvgOrderWhite className={styles.bgr_img_big} /> */}
-    //   <div className={styles.wrapper}>
-    //     {/* <SvgOrderBlack className={styles.bgr_img_svg} /> */}
-
-    //     <div className={styles.wrp_test}>
-    //       <div className={styles.form_wrapper}>
-
-    //       </div>
-
-    //     </div>
-    //   </div>
-    // </div>
   );
 };

@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        xl: "1024px",
+        xl: "1440px",
       },
       backgroundImage: {
         authPage_mob: "url/src/assets/AuthPage/auth_back_mob.png",
