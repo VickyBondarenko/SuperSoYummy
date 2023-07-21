@@ -25,7 +25,7 @@ interface FormProps {
 //   // Add other props specific to your SVG components here
 // }
 
-const MyForm: React.FC<FormProps> = ({ page }) => {
+const AuthForm: React.FC<FormProps> = ({ page }) => {
   const [passwordType, setPasswordType] = useState("password");
 
   const schema = page === "register" ? SignupSchema : LoginSchema;
@@ -218,4 +218,4 @@ const MyForm: React.FC<FormProps> = ({ page }) => {
   );
 };
 
-export default MyForm;
+export default AuthForm;

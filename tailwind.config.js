@@ -4,9 +4,12 @@ export default {
   theme: {
     extend: {
       screens: {
-        xl: "1440px",
+        xl: "1024px",
       },
       backgroundImage: {
+        authPage_mob: "url/src/assets/AuthPage/auth_back_mob.png",
+        authPage_tab: "url/src/assets/AuthPage/auth_back_tablet.png",
+        authPage_desc: "url/src/assets/AuthPage/auth_back_desktop.png",
         recipePage: "url('/src/images/recipePage.webp')",
         hero: "url('/src/images/salat.webp')",
         main_d: "url('/src/images/bg_main-desc.webp')",
