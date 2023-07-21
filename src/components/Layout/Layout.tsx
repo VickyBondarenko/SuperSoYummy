@@ -5,7 +5,7 @@ import { Footer } from "../Footer/Footer";
 
 export const Layout = () => {
   return (
-    <div className="container flex flex-col justify-between border min-h-screen w-screen max-w-screen-xl mx-auto overflow-auto h">
+    <div className=" container flex flex-col justify-between border min-h-screen w-screen max-w-screen-xl mx-auto overflow-auto h">
       <Header />
       <Outlet />
       <Footer />

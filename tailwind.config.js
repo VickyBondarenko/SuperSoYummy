@@ -18,6 +18,7 @@ export default {
         main_container_tab_leaf: "url('/src/images/bgMainContainerTab.webp')",
         main_container_desc_leaf:
           "url('/src/images/bgMainContainerDesctop.webp')",
+        main_container_bottom_leaf: "url('./src/images/leafs.webp')",
       },
 
       colors: {
