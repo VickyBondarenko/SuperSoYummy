@@ -58,7 +58,26 @@ export default {
       },
       border: { grey1: "#F0F0F0" },
       transitionTimingFunction: {
-        custom: "cubic-bezier(0.1, 0.7, 1.0, 0.1)",
+        customCubic: "cubic-bezier(0.1, 0.7, 1.0, 0.1)",
+        altCubic: "cubic-bezier(0.4, 0.0, 0.2, 1)",
+      },
+      transitionDuration: {
+        400: "400ms",
+        2000: "2000ms",
+      },
+      keyframes: {
+        crossing1: {
+          "0%, 100%": { transform: "rotateZ(0deg)" },
+          "50%": { transform: "rotate(35deg)" },
+        },
+        crossing2: {
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "50%": { transform: "rotate(-35deg)" },
+        },
+      },
+      animation: {
+        crossing1: "crossing1 1.5s infinite",
+        crossing2: "crossing2 1.5s infinite",
       },
     },
   },
