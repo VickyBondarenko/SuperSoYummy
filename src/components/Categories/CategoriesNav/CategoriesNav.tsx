@@ -1,6 +1,7 @@
-import styles from "./Categories.module.css";
 import React, { useEffect, useRef } from "react";
+import styles from "./Categories.module.css";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
+import { changeCategory } from "../../../redux/categoriesSlice/categoriesSlice";
 import { fetchCategories } from "../../../redux/categoriesSlice/categoriesThunk";
 import {
   selectMemoCategoryList,
@@ -8,7 +9,6 @@ import {
 } from "../../../redux/categoriesSlice/categoriesSelector";
 
 import { Draggable } from "../../Draggable/Draggable";
-import { changeCategory } from "../../../redux/categoriesSlice/categoriesSlice";
 
 export const CategoriesNav: React.FC = () => {
   const listRef = useRef(null);
