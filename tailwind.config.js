@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+
+const plugin = require("tailwindcss/plugin");
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -18,8 +20,16 @@ export default {
         main_container_tab_leaf: "url('/src/images/bgMainContainerTab.webp')",
         main_container_desc_leaf:
           "url('/src/images/bgMainContainerDesctop.webp')",
+        main_container_bottom_leaf: "url('/src/images/leafs.png')",
+        test_leaf: "url('./src/images/test-leaf.png')",
       },
-
+      backgroundSize: {
+        auto: "auto",
+        cover: "cover",
+        contain: "contain",
+        "50%": "50%",
+        16: "4rem",
+      },
       colors: {
         accentMain: "#8BAA36",
         accentLighter: "#EBF3D4",
@@ -76,12 +86,28 @@ export default {
         },
       },
       animation: {
-        crossing1: "crossing1 1.5s infinite",
-        crossing2: "crossing2 1.5s infinite",
+        crossing1: "crossing1  1.5s infinite",
+        crossing2: "crossing2  1.5s infinite",
       },
     },
   },
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  plugins: [require("tailwind-scrollbar")],
+  plugins: [
+    require("tailwind-scrollbar"),
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          "animation-delay": (value) => {
+            return {
+              "animation-delay": value,
+            };
+          },
+        },
+        {
+          values: theme("transitionDelay"),
+        }
+      );
+    }),
+  ],
 };
