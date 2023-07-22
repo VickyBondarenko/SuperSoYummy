@@ -1,9 +1,16 @@
-// import React from 'react'
+import React from "react";
+import styles from "./Footer.module.css";
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   return (
-    <div className="bg-main_container_mob_leaf h-[500px] bg-whiteText dark:bg-accentHalfDark">
-      <div className="h-[435px] bg-accentDark dark:bg-accentMain"></div>
-    </div>
+    <footer
+      className={`${styles.footer_container} ${styles.footer_container_before}`}
+    >
+      <div className={styles.footer_content_wrapper}></div>
+      <div className={`${styles.copywrite_wrapper} ${styles.copywrite_after}`}>
+        <span className="mr-4 opacity-50">© 2023 All Rights Reserved. </span>
+        <span className="opacity-50">Terms of Service</span>
+      </div>
+    </footer>
   );
 };

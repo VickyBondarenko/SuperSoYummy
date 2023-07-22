@@ -18,9 +18,16 @@ export default {
         main_container_tab_leaf: "url('/src/images/bgMainContainerTab.webp')",
         main_container_desc_leaf:
           "url('/src/images/bgMainContainerDesctop.webp')",
-        main_container_bottom_leaf: "url('./src/images/leafs.webp')",
+        main_container_bottom_leaf: "url('/src/images/leafs.png')",
+        test_leaf: "url('./src/images/test-leaf.png')",
       },
-
+      backgroundSize: {
+        auto: "auto",
+        cover: "cover",
+        contain: "contain",
+        "50%": "50%",
+        16: "4rem",
+      },
       colors: {
         accentMain: "#8BAA36",
         accentLighter: "#EBF3D4",

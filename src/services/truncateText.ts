@@ -1,15 +1,18 @@
 const getMaxCharacters = (): number => {
   if (window.innerWidth <= 767) {
-    return 100;
+    return 12;
   } else {
-    return 199;
+    return 22;
   }
 };
 
 export const truncateText = (text: string): string => {
   const reqLength = getMaxCharacters();
-  if (text.length > reqLength) {
-    return text.substring(0, reqLength - 3) + " ...";
+  const array = text.split(" ");
+
+  if (array.length > reqLength) {
+    const modifiedText = array.slice(0, reqLength).join(" ") + " ...";
+    return modifiedText;
   }
   return text;
 };

@@ -1,0 +1,18 @@
+.footer_container {
+  @apply relative h-[500px] xl:h-[530px] w-full bg-whiteText dark:bg-accentDarker;
+}
+
+.footer_content_wrapper {
+  @apply relative h-[434px] md:h-[422px] xl:h-[415px] w-full bg-accentDarker dark:bg-accentMain z-[0];
+}
+
+.copywrite_wrapper {
+  @apply container mx-auto font-medium text-customRecipesText md:text-customXxs py-7 md:py-8 xl:py-[50px] text-center overflow-hidden text-accentDark relative;
+}
+
+.copywrite_after {
+  @apply after:bg-main_container_bottom_leaf after:content-[''] after:bg-no-repeat after:block after:m-0 
+    after:h-[172px] after:w-[190px] after:md:h-[290px] after:md:w-[313px] after:md:xl:h-[438px] after:xl:w-[474px] after:-rotate-12
+    after:bg-contain after:blur-[2px] after:-right-12 after:-bottom-10 
+    after:md:-right-16 after:md:-bottom-20 after:xl:-right-24 after:xl:-bottom-36 after:overflow-hidden after:absolute;
+}

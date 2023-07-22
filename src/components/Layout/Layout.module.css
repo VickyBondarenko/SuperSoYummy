@@ -1,0 +1,9 @@
+.container_layout {
+  @apply container flex flex-col justify-between min-h-screen w-screen max-w-screen-xl mx-auto overflow-auto;
+}
+
+.main_before {
+  @apply before:bg-main_container_mob_leaf before:md:bg-main_container_tab_leaf before:xl:bg-main_container_desc_leaf before:content-[''] before:bg-no-repeat before:block before:m-0 before:h-[256px] before:w-[392px] before:md:h-[423px] before:md:w-[646px] before:md:xl:h-[558px] before:xl:w-[852px] 
+  before:bg-[length:256px_392px] before:md:bg-[length:423px_646px] before:xl:bg-[length:600px_852px] before:left-0 before:-bottom-11
+  before:md:left-0 before:md:-bottom-16 before:xl:right-0 before:xl:-bottom-32 before:overflow-hidden before:absolute;
+}
