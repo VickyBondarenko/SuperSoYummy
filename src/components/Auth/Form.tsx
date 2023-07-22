@@ -8,6 +8,7 @@ import SuccessSvg from "../../images/svg/authForm/success.svg";
 // import PassSvg from "/src/images/svg/authForm/password.svg";
 // import UserSvg from "/src/images/svg/authForm/name.svg";
 import { ReactComponent as UserSvg } from "/src/images/svg/authForm/name.svg";
+import styles from "./Auth.module.css";
 
 // Определение интерфейса для значений формы
 interface FormValues {
@@ -18,14 +19,10 @@ interface FormValues {
 
 interface FormProps {
   page: "signin" | "register";
+  title: string;
 }
 
-// interface SvgProps {
-//   fill: string;
-//   // Add other props specific to your SVG components here
-// }
-
-const AuthForm: React.FC<FormProps> = ({ page }) => {
+const AuthForm: React.FC<FormProps> = ({ page, title }) => {
   const [passwordType, setPasswordType] = useState("password");
 
   const schema = page === "register" ? SignupSchema : LoginSchema;
@@ -64,7 +61,8 @@ const AuthForm: React.FC<FormProps> = ({ page }) => {
         isValid,
         dirty,
       }) => (
-        <Form>
+        <Form className="border-4 border-indigo-500 rounded-[30px] px-[50px] py-[44px] mb-[18px]">
+          <h1 className={styles.form_title}>{title}</h1>
           {page === "register" && (
             <>
               <label htmlFor="name">

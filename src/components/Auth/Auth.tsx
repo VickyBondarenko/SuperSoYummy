@@ -34,12 +34,11 @@ export const Auth: React.FC<FormProps> = ({ page }) => {
       ) : (
         <AuthBlackSvg className="w-[285px] h-[250px] md:w-[409px] md:h-[359px]" />
       )}
-      <div>
-        <h2 className={styles.form_title}>{title}</h2>
-        <AuthForm page={page} />
+      <div className="flex-row justify-items-center">
+        <AuthForm page={page} title={title} />
         <NavLink
-          to={page === "signin" ? "/register" : "/signin"}
-          className={styles.auth_link}
+          to={page === "signin" ? "/register" : "/login"}
+          className=" block text-center decoration-inherit underline text-whiteText font-main text-customXs md:text-customSm xl:text-"
         >
           {redirect}
         </NavLink>

@@ -19,11 +19,8 @@ const App: React.FC = () => {
     <>
       <Routes>
         <Route path="/welcome" element={<WelcomePage />} />
-        {/* <Route path="/auth" element={<AuthPage />}> */}
         <Route path="/login" element={<LogInPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        {/* <Route path="register" element={<RegisterForm />} />
-        </Route> */}
 
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
