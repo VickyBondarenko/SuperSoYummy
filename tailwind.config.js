@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+
+const plugin = require("tailwindcss/plugin");
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -84,12 +86,28 @@ export default {
         },
       },
       animation: {
-        crossing1: "crossing1 1.5s infinite",
-        crossing2: "crossing2 1.5s infinite",
+        crossing1: "crossing1  1.5s infinite",
+        crossing2: "crossing2  1.5s infinite",
       },
     },
   },
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  plugins: [require("tailwind-scrollbar")],
+  plugins: [
+    require("tailwind-scrollbar"),
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          "animation-delay": (value) => {
+            return {
+              "animation-delay": value,
+            };
+          },
+        },
+        {
+          values: theme("transitionDelay"),
+        }
+      );
+    }),
+  ],
 };

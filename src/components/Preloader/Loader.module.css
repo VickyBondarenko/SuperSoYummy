@@ -6,8 +6,8 @@
   @apply h-[80%] origin-[50%_100%];
 }
 .loader_img:nth-child(1) {
-  @apply animate-crossing1 mr-1;
+  @apply animate-crossing1 animation-delay-[1500ms]  mr-1;
 }
 .loader_img:nth-child(2) {
-  @apply animate-crossing2;
+  @apply animate-crossing2 animation-delay-[1500ms];
 }

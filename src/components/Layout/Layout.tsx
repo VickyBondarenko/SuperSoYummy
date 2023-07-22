@@ -8,7 +8,9 @@ export const Layout = () => {
   return (
     <div>
       <Header />
-      <main className={`${styles.main_before} relative container mx-auto`}>
+      <main
+        className={`${styles.main_before} relative container mx-auto min-h-screen`}
+      >
         <Outlet />
       </main>
       <Footer />
