@@ -30,12 +30,5 @@
 }
 
 .form_btn {
-  @apply block text-center h-[45px] md:h-[59px] align-middle  bg-accentMain text-whiteText font-main rounded-[6px] text-customSm leading-[18px];
+  @apply block text-center align-middle h-[45px] md:h-[59px]   bg-accentMain text-whiteText font-main rounded-[6px] text-customSm leading-[18px] disabled:bg-gray-400 disabled:text-accentDark;
 }
-
-/* 
-className={`${styles.categories_nav_item} ${
-                item !== activeCategory
-                  ? "text-listUnderline"
-                  : "text-accentMain scale-125"
-              } ${styles.categories_nav_item}`} */

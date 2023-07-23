@@ -5,21 +5,10 @@ import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { ReactComponent as SuccessSvg } from "../../images/svg/authForm/success.svg";
 import { ReactComponent as EmailSvg } from "/src/images/svg/authForm/email.svg";
 import { ReactComponent as PassSvg } from "/src/images/svg/authForm/password.svg";
-// import UserSvg from "/src/images/svg/authForm/name.svg";
 import { ReactComponent as UserSvg } from "/src/images/svg/authForm/name.svg";
 import styles from "./Auth.module.css";
-
-// Определение интерфейса для значений формы
-interface FormValues {
-  name: string;
-  email: string;
-  password: string;
-}
-
-interface FormProps {
-  page: "signin" | "register";
-  title: string;
-}
+import { FormProps } from "../../types/authTypes";
+import { FormValues } from "../../types/authTypes";
 
 const AuthForm: React.FC<FormProps> = ({ page, title }) => {
   const [passwordType, setPasswordType] = useState("password");
@@ -40,7 +29,6 @@ const AuthForm: React.FC<FormProps> = ({ page, title }) => {
     password: "",
   };
 
-  // Функция для обработки отправки формы
   const handleOnSubmit = (values: FormValues) => {
     console.log(values);
   };
@@ -65,7 +53,11 @@ const AuthForm: React.FC<FormProps> = ({ page, title }) => {
           {page === "register" && (
             <>
               <label htmlFor="name" className="relative mb-3 md:mb-6">
-                <UserSvg className={styles.form_svg} />
+                <UserSvg
+                  className={`${styles.form_svg} ${
+                    touched.name && errors.name && "fill-red-600"
+                  } ${!errors.name && touched.name && "fill-[#3CBC81]"} `}
+                />
                 <Field
                   autoComplete="off"
                   type="text"
@@ -74,9 +66,16 @@ const AuthForm: React.FC<FormProps> = ({ page, title }) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.name}
-                  className={styles.form_input}
+                  className={`${styles.form_input} ${
+                    touched.name &&
+                    errors.name &&
+                    " border-red-600 outline-red-600"
+                  } ${
+                    !errors.name &&
+                    touched.name &&
+                    "border-[#3CBC81] outline-[#3CBC81]"
+                  }`}
                 />
-
                 {touched.name && errors.name && (
                   <p className={styles.form_errorMsg}>{errors.name}</p>
                 )}
@@ -89,10 +88,8 @@ const AuthForm: React.FC<FormProps> = ({ page, title }) => {
           <label htmlFor="email" className="relative  mb-3 md:mb-6">
             <EmailSvg
               className={`${styles.form_svg} ${
-                touched.email && errors.email
-                  ? "fill-red-600"
-                  : "fill-[#3CBC81]"
-              } `}
+                touched.email && errors.email && "fill-red-600"
+              } ${!errors.email && touched.email && "fill-[#3CBC81]"} `}
             />
 
             <Field
@@ -104,14 +101,16 @@ const AuthForm: React.FC<FormProps> = ({ page, title }) => {
               onBlur={handleBlur}
               value={values.email}
               className={`${styles.form_input} ${
-                errors.email ? " border-red-600" : "border-whiteText"
+                touched.email &&
+                errors.email &&
+                " border-red-600 outline-red-600"
               } ${
-                touched.email && !errors.email
-                  ? " border-[#3CBC81]"
-                  : "border-whiteText"
+                !errors.email &&
+                touched.email &&
+                "border-[#3CBC81] outline-[#3CBC81]"
               }`}
             />
-            {errors.email && (
+            {touched.email && errors.email && (
               <p className={styles.form_errorMsg}>{errors.email}</p>
             )}
             {touched.email && !errors.email && (
@@ -119,7 +118,11 @@ const AuthForm: React.FC<FormProps> = ({ page, title }) => {
             )}
           </label>
           <label htmlFor="password" className="relative  mb-7 md:mb-[50px]">
-            <PassSvg className={styles.form_svg} />
+            <PassSvg
+              className={`${styles.form_svg} ${
+                touched.password && errors.password && "fill-red-600"
+              } ${!errors.password && touched.password && "fill-[#3CBC81]"} `}
+            />
             <Field
               autoComplete="off"
               name="password"
@@ -128,7 +131,15 @@ const AuthForm: React.FC<FormProps> = ({ page, title }) => {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
-              className={`${styles.form_input} `}
+              className={`${styles.form_input} ${
+                touched.password &&
+                errors.password &&
+                " border-red-600 outline-red-600"
+              } ${
+                !errors.password &&
+                touched.password &&
+                "border-[#3CBC81] outline-[#3CBC81]"
+              }`}
             />
             <div onClick={togglePassword}>
               {passwordType === "password" ? (
@@ -142,13 +153,15 @@ const AuthForm: React.FC<FormProps> = ({ page, title }) => {
             )}
             {touched.password && !errors.password && (
               <>
-                <p className={`${styles.form_errorMsg}`}>Password is secure</p>
+                <p className={`${styles.form_errorMsg} ${"text-[#3CBC81]"}`}>
+                  Password is secure
+                </p>
                 <SuccessSvg className={styles.form_svg_success} />
               </>
             )}
           </label>
           <button
-            disabled={!isValid && !dirty}
+            disabled={!isValid || !dirty}
             type="submit"
             className={`${styles.form_btn}  bg-accentMain`}
           >
