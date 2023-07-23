@@ -55,7 +55,9 @@ export default {
         customXs: ["14px", "21px"],
         customSm: ["16px", "20px"],
         customBase: ["24px", "24px"],
+        customBaseH1: ["24px", "28px"],
         customLg: ["28px", "28px"],
+        customLgH1: ["28px", "30px"],
         customXl: ["32px", "32px"],
         customXxl: ["44px", "44px"],
       },
@@ -65,7 +67,11 @@ export default {
       },
     },
   },
-
+  variants: {
+    extend: {
+      backgroundColor: ["active"],
+    },
+  },
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   plugins: [require("tailwind-scrollbar")],
 };
