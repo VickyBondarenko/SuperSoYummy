@@ -1,0 +1,15 @@
+.title {
+  @apply font-main font-semibold text-mainText dark:text-whiteText text-customLg  md:text-customXl xl:text-customXxl mb-[50px] xl:mb-[100px];
+}
+
+.first_dot {
+  @apply absolute h-2 w-2 md:h-4 md:w-4 rounded-[3px] bg-accentMain rotate-[-25deg] -top-6 left-[110px] md:left-48 md:-top-10 xl:left-[223px] xl:-top-[29px];
+}
+
+.second_dot {
+  @apply absolute h-2 w-2 md:h-4 md:w-4 rounded-[3px] -bottom-1 right-[120px] bg-accentDark dark:bg-whiteText rotate-[-25deg] md:right-[315px] md:-bottom-2 xl:right-[630px] xl:-bottom-2;
+}
+
+.third_dot {
+  @apply absolute h-2 w-2 md:h-4 md:w-4 rounded-[3px] -top-1 right-4  bg-accentMain rotate-[-25deg] md:right-0 md:-top-5 xl:right-[175px] xl:-top-4;
+}

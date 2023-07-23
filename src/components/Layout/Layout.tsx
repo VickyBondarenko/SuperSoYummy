@@ -2,12 +2,17 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
+import styles from "./Layout.module.css";
 
 export const Layout = () => {
   return (
-    <div className="container flex flex-col justify-between border min-h-screen w-screen max-w-screen-xl mx-auto overflow-auto">
+    <div>
       <Header />
-      <Outlet />
+      <main
+        className={`${styles.main_before} relative container mx-auto min-h-screen`}
+      >
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

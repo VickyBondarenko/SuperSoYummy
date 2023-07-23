@@ -1,6 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const VITE_BACKEND_BASE_URL: string = import.meta.env.VITE_BACKEND_BASE_URL;
+
+axios.defaults.baseURL = VITE_BACKEND_BASE_URL;
+
 import {
   ICategoryRequest,
   ICategoryNameItem,
@@ -15,26 +19,27 @@ export const fetchCategories = createAsyncThunk<
     const response = await axios.get<ICategoryNameItem[]>(
       "/api/recipes/category-list"
     );
-    const data = response.data;
-    return data;
+    return response.data;
   } catch (error) {
     return rejectWithValue("Error");
   }
 });
 
-export const fetchCurrentCategory = createAsyncThunk(
-  "categories/fetchCurrentCategory",
-  async (category: string) => {
-    try {
-      const { data } = await axios.get<ICategoryRequest[]>(
-        `/api/recipes/category/${category}?recipeLimit=8`
-      );
-      return data;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log(error);
-        console.log(error.response?.data);
-      } else if (error instanceof Error) console.log(error.message);
-    }
+export const fetchCurrentCategory = createAsyncThunk<
+  ICategoryRequest,
+  string,
+  { rejectValue: string }
+>("categories/fetchCurrentCategory", async (category, { rejectWithValue }) => {
+  try {
+    const response = await axios.get<ICategoryRequest>(
+      `/api/recipes/category/${category}?recipeLimit=8`
+    );
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log(error);
+      console.log(error.response?.data);
+    } else if (error instanceof Error) console.log(error.message);
+    return rejectWithValue("Error");
   }
-);
+});
