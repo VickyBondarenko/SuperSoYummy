@@ -2,11 +2,19 @@ import React, { useState } from "react";
 import { FaRegEnvelope } from "react-icons/fa";
 import styles from "./SubscribeForm.module.css";
 import { useMediaQuery } from "react-responsive";
+import { useAppDispatch } from "../../../hooks/reduxHooks";
+import { fetchSubscribe } from "../../../redux/subscribeSlice/subscribeThunk";
 
 export const SubscribeForm: React.FC = () => {
   const [formValue, setFormValue] = useState<string>("");
+  const dispatch = useAppDispatch();
+
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const { value } = form.elements[0] as HTMLInputElement;
+    dispatch(fetchSubscribe(value));
+    setFormValue("");
   };
 
   const isDesktop = useMediaQuery({
@@ -33,6 +41,7 @@ export const SubscribeForm: React.FC = () => {
             className={styles.subscribe_svg}
           />
           <input
+            name="email"
             type="text"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setFormValue(e.target.value)

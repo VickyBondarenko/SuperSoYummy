@@ -1,0 +1,17 @@
+.unsub_title {
+  @apply text-[36px] text-accentDark;
+}
+
+.unsub_text {
+  @apply text-[20px] text-whiteText;
+}
+
+.unsub_button {
+  @apply block mx-auto mt-5 text-customSm text-whiteText font-main py-3 px-[100px] h-[45px] bg-accentMain rounded-[6px] cursor-pointer
+ border-0 hover:text-accentHalfDark
+  md:h-[59px];
+}
+
+.wrapper {
+  @apply py-10 text-center;
+}
