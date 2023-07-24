@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { SignupSchema, LoginSchema } from "../../schemas/yupSchemas";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { registerUser, loginUser } from "../../redux/authSlice/authThunk";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { ReactComponent as SuccessSvg } from "../../images/svg/authForm/success.svg";
 import { ReactComponent as EmailSvg } from "/src/images/svg/authForm/email.svg";
 import { ReactComponent as PassSvg } from "/src/images/svg/authForm/password.svg";
 import { ReactComponent as UserSvg } from "/src/images/svg/authForm/name.svg";
 import styles from "./Auth.module.css";
-import { FormProps } from "../../types/authTypes";
-import { FormValues } from "../../types/authTypes";
+import { IFormProps } from "../../types/authTypes";
+import { IFormValues } from "../../types/authTypes";
 
-const AuthForm: React.FC<FormProps> = ({ page, title }) => {
+const AuthForm: React.FC<IFormProps> = ({ page, title }) => {
   const [passwordType, setPasswordType] = useState("password");
+  const dispatch = useAppDispatch();
 
   const schema = page === "register" ? SignupSchema : LoginSchema;
 
@@ -23,14 +26,21 @@ const AuthForm: React.FC<FormProps> = ({ page, title }) => {
     setPasswordType("password");
   };
 
-  const initialValues: FormValues = {
-    name: "",
-    email: "",
-    password: "",
-  };
+  const userValues =
+    page === "signin"
+      ? {
+          email: "",
+          password: "",
+        }
+      : { name: "", email: "", password: "" };
 
-  const handleOnSubmit = (values: FormValues) => {
+  const initialValues: IFormValues = { ...userValues };
+
+  const handleOnSubmit = (values: IFormValues) => {
     console.log(values);
+    page === "signin"
+      ? dispatch(loginUser(values))
+      : dispatch(registerUser(values));
   };
 
   return (

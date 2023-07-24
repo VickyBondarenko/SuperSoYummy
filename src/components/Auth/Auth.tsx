@@ -3,10 +3,10 @@ import { useMediaQuery } from "react-responsive";
 import AuthForm from "./Form";
 import { ReactComponent as AuthBlackSvg } from "../../images/svg/authForm/Order-food-pana-black.svg";
 import { ReactComponent as AuthWhiteSvg } from "../../images/svg/authForm/Order-food-pana-white.svg";
-import { FormProps } from "../../types/authTypes";
+import { IFormProps } from "../../types/authTypes";
 import styles from "./Auth.module.css";
 
-export const Auth: React.FC<FormProps> = ({ page }) => {
+export const Auth: React.FC<IFormProps> = ({ page }) => {
   let redirect;
   let title;
 

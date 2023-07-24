@@ -13,14 +13,30 @@ import { RecipePage } from "./pages/RecipePage";
 import { CategoriesPage } from "./pages/CategoriesPage";
 import LogInPage from "./pages/LogInPage";
 import RegisterPage from "./pages/RegisterPage";
+// import { PrivateRoute } from "./hooks/PrivateRoute";
+import { PublicRoute } from "./hooks/PublicRoute";
 
 const App: React.FC = () => {
   return (
     <>
       <Routes>
         <Route path="/welcome" element={<WelcomePage />} />
-        <Route path="/login" element={<LogInPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LogInPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        />
 
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
