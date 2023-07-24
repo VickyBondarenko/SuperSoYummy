@@ -1,5 +1,5 @@
-.container_layout {
-  @apply container flex flex-col justify-between min-h-screen w-screen max-w-screen-xl mx-auto overflow-auto;
+.main_outlet {
+  @apply relative container mx-auto min-h-screen bg-whiteText dark:bg-accentDark;
 }
 
 .main_before {
