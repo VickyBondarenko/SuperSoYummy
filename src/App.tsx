@@ -13,14 +13,21 @@ import { RecipePage } from "./pages/RecipePage";
 import { CategoriesPage } from "./pages/CategoriesPage";
 import LogInPage from "./pages/LogInPage";
 import RegisterPage from "./pages/RegisterPage";
-// import { PrivateRoute } from "./hooks/PrivateRoute";
+import { PrivateRoute } from "./hooks/PrivateRoute";
 import { PublicRoute } from "./hooks/PublicRoute";
 
 const App: React.FC = () => {
   return (
     <>
       <Routes>
-        <Route path="/welcome" element={<WelcomePage />} />
+        <Route
+          path="/welcome"
+          element={
+            <PublicRoute>
+              <WelcomePage />
+            </PublicRoute>
+          }
+        />
         <Route
           path="/login"
           element={
@@ -38,7 +45,14 @@ const App: React.FC = () => {
           }
         />
 
-        <Route path="/" element={<Layout />}>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Layout />
+            </PrivateRoute>
+          }
+        >
           <Route index element={<Main />} />
           <Route path="/add" element={<AddRecipePage />} />
           <Route path="/favorite" element={<FavoritePage />} />
