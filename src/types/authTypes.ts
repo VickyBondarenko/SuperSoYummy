@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface IFormValues {
   name?: string;
   email: string;
@@ -33,4 +35,8 @@ export interface IAuthState {
   isRefreshing: boolean;
   isEditModalOpen: boolean;
   error: string | null;
+}
+
+export interface IRouteProps {
+  children: ReactNode | any;
 }
