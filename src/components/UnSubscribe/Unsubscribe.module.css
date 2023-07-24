@@ -3,7 +3,7 @@
 }
 
 .unsub_text {
-  @apply text-[20px] text-whiteText;
+  @apply text-[20px] text-accentDark;
 }
 
 .unsub_button {

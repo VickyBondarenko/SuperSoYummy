@@ -5,13 +5,20 @@ import { ReactComponent as Logo } from "../../images/svg/logosvg.svg";
 import { SubscribeForm } from "./SubscribeForm/SubscribeForm";
 import { SocialLinks } from "../SocialLinks/SocialLinks";
 import { AdvantageList } from "./AdvantageList/AdvantageList";
+import { Link } from "react-router-dom";
 
-const navList = [
-  "Ingredients",
-  "Add Recipes",
-  "My recipes",
-  "Favorite",
-  "Shopping list",
+interface INavList {
+  name: string;
+  route: string;
+}
+
+const navList: INavList[] = [
+  { name: "Ingredients", route: "/search" },
+  { name: "Add Recipes", route: "/add" },
+  { name: "My recipes", route: "/myRecipes" },
+  { name: "Favorite", route: "/favorite" },
+  { name: "Categories", route: "/categories" },
+  { name: "Shopping list", route: "/shopping" },
 ];
 
 export const Footer: React.FC = () => {
@@ -25,15 +32,19 @@ export const Footer: React.FC = () => {
         <div className={styles.footer_content_container}>
           <div className={styles.footer_title_wrapper}>
             <div className={styles.footer_logo_wrapper}>
-              <Logo className={styles.footer_logo} />
+              <Link to="/">
+                <Logo className={styles.footer_logo} />
+              </Link>
             </div>
             <h2 className={styles.footer_title}>So Yummy</h2>
             {isTablet && <AdvantageList />}
           </div>
           <nav>
             <ul className={styles.nav_list}>
-              {navList.map((item: string, index: number) => (
-                <li key={index}>{item}</li>
+              {navList.map((item, index: number) => (
+                <li key={index}>
+                  <Link to={`${item.route}`}>{item.name}</Link>
+                </li>
               ))}
             </ul>
           </nav>
