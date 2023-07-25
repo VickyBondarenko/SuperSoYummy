@@ -1,0 +1,50 @@
+/* .hero_angle {
+  @apply relative w-0 h-0 border-0 border-transparent border-t-[216px] border-b-[129px] border-r-[173px] border-r-[#EBF3D4] rounded-t-2xl;
+}
+
+.hero_angle_before {
+  @apply before:absolute before:content-[''] before:bottom-0 before:right-0 before:w-0 before:h-0 before:border-none before:border-b-[86px] before:border-r-[86px] before:border-r-[#EBF3D4] before:rounded-3xl;
+} */
+
+.hero_angle {
+  position: relative;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  border-top-width: 216px;
+  border-bottom-width: 129px;
+  border-right: 173px solid #ebf3d4;
+  border-radius: 40px 0 0 0;
+}
+
+.hero_angle_before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  border-bottom-width: 86px;
+  border-right: 86px solid #ebf3d4;
+  border-radius: 0 0 20px 0;
+}
+
+/* .triangle::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border: 0 solid transparent;
+      border-bottom-width: 86px;
+      border-right: 86px solid black;
+      border-radius: 20px; */
+
+/* width: 0;
+height: 0;
+border: 0 solid transparent;
+border-top-width: 216px;
+border-bottom-width: 129px;
+border-right: 173px solid black; */

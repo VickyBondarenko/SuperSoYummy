@@ -1,3 +1,7 @@
 .main_section {
-  @apply container mx-auto;
+  @apply container  overflow-hidden  mx-auto;
 }
+
+/* .main_section_before {
+  @apply before:absolute before:content-[""] before:bg-m_angle before:bg-auto before:top-[125px] before:left-0 before:w-screen before:h-full before:bg-no-repeat;
+} */

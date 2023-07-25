@@ -6,7 +6,7 @@ import styles from "./Main.module.css";
 
 export const Main: React.FC = () => {
   return (
-    <section className={styles.main_section}>
+    <section className={`${styles.main_section} ${styles.main_section_before}`}>
       <Hero />
       <MainGallery />
       <AsimetricRoundedBtn text={"Other categories"} />

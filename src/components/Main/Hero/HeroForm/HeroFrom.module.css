@@ -1,11 +1,11 @@
 .hero_form {
-  @apply relative h-[52px] w-[295px] mx-auto;
+  @apply relative h-[52px] w-[295px] mx-auto outline-none;
 }
 
 .hero_form_input {
-  @apply bg-white w-full h-full px-6  py-[12px] border-2 rounded-tl-[24px] rounded-br-[24px] rounded-bl-[44px] rounded-tr-[44px] text-customShoppingList text-secondaryText;
+  @apply bg-white dark:bg-accentHalfDark  font-main w-full h-full px-6 pl-8 pr-[115px] border-0 rounded-tl-[24px] rounded-br-[24px] rounded-bl-[44px] rounded-tr-[44px]  text-secondaryText dark:text-whiteText outline-none outline-2 outline-offset-0 outline-accentDark;
 }
 
 .hero_form_btn {
-  @apply absolute right-0 h-full bg-accentDark border-0;
+  @apply absolute right-0 top-0 h-full flex justify-center items-center  border-[1px];
 }

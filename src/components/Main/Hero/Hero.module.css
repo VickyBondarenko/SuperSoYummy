@@ -1,5 +1,15 @@
 .hero_wrapper {
-  @apply relative bg-main_m bg-cover bg-no-repeat px-7 pb-[83px];
+  @apply container relative overflow-hidden flex flex-col justify-center items-center px-7 pb-[83px] z-10;
+}
+
+.hero_wrapper_after {
+  @apply after:absolute after:content-[""] after:bg-m_angle  after:top-[125px] after:right-0 after:w-[300px] after:h-full after:bg-[length:300px_700px] after:bg-no-repeat after:-z-[1];
+}
+
+.hero_wrapper_before {
+  @apply before:absolute before:content-[""] before:bg-m_bottom_leaf  before:-bottom-[100px] before:right-0 before:w-[375px] before:h-[700px] 
+  before:bg-[length:375px_700px] 
+  before:bg-no-repeat;
 }
 
 .hero_title {
@@ -11,7 +21,7 @@
 }
 
 .hero_image_wrapper {
-  @apply relative w-full mt-[44px] mb-6;
+  @apply relative w-[320px] h-[300px] mt-[44px] mb-6;
 }
 
 .hero_message_wrapper {

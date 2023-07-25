@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AsimetricRoundedBtn } from "../../../Buttons/AsimetricRoundedBtn";
 import styles from "./HeroFrom.module.css";
+import { Link } from "react-router-dom";
 
 export const HeroForm: React.FC = () => {
   const [heroInput, setHeroInput] = useState<string>("");
@@ -22,7 +23,13 @@ export const HeroForm: React.FC = () => {
         value={heroInput}
         onChange={(e) => setHeroInput(e.target.value)}
       />
-      <AsimetricRoundedBtn text={"Search"} style={styles.hero_form_btn} />
+      <Link to="/search">
+        <AsimetricRoundedBtn
+          text={"Search"}
+          style={`${styles.hero_form_btn} bg-accentDark dark:bg-accentMain`}
+          btnType={"submit"}
+        />
+      </Link>
     </form>
   );
 };

@@ -4,10 +4,14 @@ import SaladImg from "../../../images/1spoon.png";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import { HeroForm } from "./HeroForm/HeroForm";
+// import { HeroBg } from "./HeroBg/HeroBg";
 
 export const Hero: React.FC = () => {
   return (
-    <div className={styles.hero_wrapper}>
+    <div
+      className={`${styles.hero_wrapper} ${styles.hero_wrapper_before} ${styles.hero_wrapper_after} `}
+    >
+      {/* <HeroBg /> */}
       <h1 className={styles.hero_title}>
         <span className="text-accentMain">So</span>
         <span>Yummy</span>
