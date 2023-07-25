@@ -1,5 +1,5 @@
 // import React from 'react'
-import { ReactComponent as LogoSvg } from "../images/svg/logosvg.svg";
+import { ReactComponent as LogoSvg } from "/src/images/svg/logosvg.svg";
 import { AsimetricRoundedBtn } from "../components/Buttons/AsimetricRoundedBtn";
 
 export const WelcomePage = () => {
