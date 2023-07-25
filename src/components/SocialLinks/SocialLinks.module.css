@@ -1,0 +1,8 @@
+.social_link_list {
+  @apply flex flex-row gap-4 mt-auto mb-0
+  md:basis-full md:justify-center;
+}
+
+.social_link_svg {
+  @apply fill-accentMain dark:fill-whiteText;
+}

@@ -11,6 +11,7 @@ import { MyRecipesPage } from "./pages/MyRecipesPage";
 import { SearchPage } from "./pages/SearchPage";
 import { RecipePage } from "./pages/RecipePage";
 import { CategoriesPage } from "./pages/CategoriesPage";
+import { UnSubscribePage } from "./pages/UnSubscribePage";
 import LogInPage from "./pages/LogInPage";
 import RegisterPage from "./pages/RegisterPage";
 import { PrivateRoute } from "./hooks/PrivateRoute";
@@ -61,6 +62,7 @@ const App: React.FC = () => {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/recipe" element={<RecipePage />} />
           <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/unsubscription/:id" element={<UnSubscribePage />} />
         </Route>
       </Routes>
     </>
