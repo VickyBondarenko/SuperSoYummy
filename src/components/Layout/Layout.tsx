@@ -1,19 +1,20 @@
-// import React from "react"
+import React, { useRef } from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import styles from "./Layout.module.css";
 
-export const Layout = () => {
+export const Layout: React.FC = () => {
+  const headerRef = useRef<HTMLHeadElement>(null);
   return (
     <div>
-      <Header />
+      <Header ref={headerRef} />
       <main
         className={`${styles.main_before} relative container mx-auto min-h-screen`}
       >
         <Outlet />
       </main>
-      <Footer />
+      <Footer headerRef={headerRef} />
     </div>
   );
 };

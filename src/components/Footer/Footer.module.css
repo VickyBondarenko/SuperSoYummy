@@ -2,12 +2,45 @@
   @apply relative h-[500px] xl:h-[530px] w-full bg-whiteText dark:bg-accentDarker;
 }
 
+.footer_content_container {
+  @apply container mx-auto flex flex-col items-center h-[434px] md:h-[422px] xl:h-[415px] pt-7 pb-[18px] w-full bg-accentDarker dark:bg-accentMain bg-[100vw]
+ md:flex-row md:flex-wrap md:justify-between md:px-8 md:pt-[50px] md:items-start
+ xl:px-[100px] xl:pt-[61px] xl:pb-[50px];
+}
+
 .footer_content_wrapper {
-  @apply relative h-[434px] md:h-[422px] xl:h-[415px] w-full bg-accentDarker dark:bg-accentMain z-[0];
+  @apply bg-accentDarker dark:bg-accentMain;
+}
+
+.footer_title_wrapper {
+  @apply flex items-center justify-center gap-2 mb-8 flex-wrap w-[380px]
+  md:mb-0 md:justify-start md:gap-3
+  xl:w-[458px];
+}
+
+.footer_logo_wrapper {
+  @apply flex justify-center items-center h-8 w-8 rounded-[8px] bg-whiteText
+  md:h-[50px] md:w-[50px] md:mb-3;
+}
+
+.footer_logo {
+  @apply h-5 w-5 stroke-accentMain
+  md:h-[30px] md:w-[30px];
+}
+
+.footer_title {
+  @apply font-bold text-whiteText text-[18px] tracking-[0.27px]
+  md:text-customXl;
+}
+
+.nav_list {
+  @apply flex flex-col gap-4 items-center font-medium text-[14px] leading-[18px] tracking-[-0.28px] text-whiteText
+  md:items-start md:pr-[62px] md:gap-5
+   xl:pr-[110px] xl:gap-6;
 }
 
 .copywrite_wrapper {
-  @apply container mx-auto font-medium text-customRecipesText md:text-customXxs py-7 md:py-8 xl:py-[50px] text-center overflow-hidden text-accentDark relative;
+  @apply container relative mx-auto font-medium text-customRecipesText md:text-customXxs py-7 md:py-8 xl:py-[50px] text-center overflow-hidden text-accentDark;
 }
 
 .copywrite_after {

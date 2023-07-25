@@ -1,7 +1,9 @@
-// import React from 'react'
+import { forwardRef } from "react";
 
-export const Header = () => {
+export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
   return (
-    <div className="h-[100px] bg-slate-600">Header</div>
-  )
-}
+    <header ref={ref} className="h-[100px] bg-slate-600">
+      Header
+    </header>
+  );
+});

@@ -33,7 +33,7 @@ export const CategoriesNav: React.FC = () => {
                 item !== activeCategory
                   ? "text-listUnderline"
                   : "text-accentMain scale-125"
-              } ${styles.categories_nav_item}`}
+              }`}
             >
               {item}
             </li>
