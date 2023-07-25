@@ -33,5 +33,6 @@
 .subscribe_button {
   @apply rounded-[6px] font-[inherit] text-customSm leading-[16px] text-whiteText h-[38px] py-[11px] px-[67px]
    md:h-[50px]
-   xl:h-[59px];
+   xl:h-[59px]
+   transition duration-300 ease-in-out;
 }

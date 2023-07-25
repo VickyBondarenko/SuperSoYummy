@@ -4,5 +4,7 @@
 }
 
 .social_link_svg {
-  @apply fill-accentMain dark:fill-whiteText;
+  @apply fill-accentMain dark:fill-whiteText
+  hover:fill-overlayBackdrop dark:hover:fill-white
+  transition duration-300 ease-in-out;
 }
