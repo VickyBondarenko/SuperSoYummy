@@ -1,5 +1,9 @@
-import React from "react";
+import { forwardRef } from "react";
 
-export const Header: React.FC = () => {
-  return <header className="h-[100px] bg-slate-600">Header</header>;
-};
+export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
+  return (
+    <header ref={ref} className="h-[100px] bg-slate-600">
+      Header
+    </header>
+  );
+});

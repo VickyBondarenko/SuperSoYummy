@@ -6,10 +6,15 @@ import { SubscribeForm } from "./SubscribeForm/SubscribeForm";
 import { SocialLinks } from "../SocialLinks/SocialLinks";
 import { AdvantageList } from "./AdvantageList/AdvantageList";
 import { Link } from "react-router-dom";
+import { scrollToHeader } from "../../services/scrollTo";
 
 interface INavList {
   name: string;
   route: string;
+}
+
+interface IFooterProps {
+  headerRef: React.RefObject<HTMLHeadElement>;
 }
 
 const navList: INavList[] = [
@@ -21,7 +26,7 @@ const navList: INavList[] = [
   { name: "Shopping list", route: "/shopping" },
 ];
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC<IFooterProps> = ({ headerRef }) => {
   const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
 
   return (
@@ -32,7 +37,7 @@ export const Footer: React.FC = () => {
         <div className={styles.footer_content_container}>
           <div className={styles.footer_title_wrapper}>
             <div className={styles.footer_logo_wrapper}>
-              <Link to="/">
+              <Link to="/" onClick={() => scrollToHeader(headerRef)}>
                 <Logo className={styles.footer_logo} />
               </Link>
             </div>
@@ -42,7 +47,7 @@ export const Footer: React.FC = () => {
           <nav>
             <ul className={styles.nav_list}>
               {navList.map((item, index: number) => (
-                <li key={index}>
+                <li key={index} onClick={() => scrollToHeader(headerRef)}>
                   <Link to={`${item.route}`}>{item.name}</Link>
                 </li>
               ))}
