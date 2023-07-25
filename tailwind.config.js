@@ -9,6 +9,9 @@ export default {
         xl: "1440px",
       },
       backgroundImage: {
+        authPage_mob: "url('/src/assets/AuthPage/auth_back_mob.png')",
+        authPage_tab: "url('/src/assets/AuthPage/auth_back_tablet.png')",
+        authPage_desc: "url('/src/assets/AuthPage/auth_back_desktop.png')",
         recipePage: "url('/src/images/recipePage.webp')",
         hero: "url('/src/images/salat.webp')",
         main_d: "url('/src/images/bg_main-desc.webp')",
@@ -62,7 +65,9 @@ export default {
         customXs: ["14px", "21px"],
         customSm: ["16px", "20px"],
         customBase: ["24px", "24px"],
+        customBaseH1: ["24px", "28px"],
         customLg: ["28px", "28px"],
+        customLgH1: ["28px", "30px"],
         customXl: ["32px", "32px"],
         customXxl: ["44px", "44px"],
       },
@@ -91,7 +96,11 @@ export default {
       },
     },
   },
-
+  variants: {
+    extend: {
+      backgroundColor: ["active"],
+    },
+  },
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   plugins: [
     require("tailwind-scrollbar"),
