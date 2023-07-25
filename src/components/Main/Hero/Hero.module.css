@@ -1,0 +1,32 @@
+.hero_wrapper {
+  @apply relative bg-main_m bg-cover bg-no-repeat px-7 pb-[83px];
+}
+
+.hero_title {
+  @apply font-normal text-[60px] tracking-[-0.3px] text-accentDark text-center pt-[68px];
+}
+
+.hero_text {
+  @apply text-[#23262A] text-[14px] tracking-[-0.28px] text-center w-[250px] mx-auto mt-4;
+}
+
+.hero_image_wrapper {
+  @apply relative w-full mt-[44px] mb-6;
+}
+
+.hero_message_wrapper {
+  @apply absolute top-1/2 -translate-y-1/2 right-0 w-[225px]  p-2
+ rounded-lg bg-whiteText dark:bg-accentHalfDark  text-secondaryText dark:text-whiteText;
+}
+
+.hero_message_text {
+  @apply text-customShoppingList tracking-[-0.24px];
+}
+
+.hero_message_button {
+  @apply flex items-center ml-auto text-customRecipesTime;
+}
+
+.hero_message_svg {
+  @apply inline ml-2 fill-secondaryText dark:fill-whiteText;
+}

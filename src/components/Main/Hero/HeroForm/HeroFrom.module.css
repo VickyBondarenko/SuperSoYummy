@@ -1,0 +1,11 @@
+.hero_form {
+  @apply relative h-[52px] w-[295px] mx-auto;
+}
+
+.hero_form_input {
+  @apply bg-white w-full h-full px-6  py-[12px] border-2 rounded-tl-[24px] rounded-br-[24px] rounded-bl-[44px] rounded-tr-[44px] text-customShoppingList text-secondaryText;
+}
+
+.hero_form_btn {
+  @apply absolute right-0 h-full bg-accentDark border-0;
+}
