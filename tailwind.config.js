@@ -25,6 +25,9 @@ export default {
           "url('/src/images/bgMainContainerDesctop.webp')",
         main_container_bottom_leaf: "url('/src/images/leafs.png')",
         test_leaf: "url('./src/images/test-leaf.png')",
+        welcome: "url('./src/images/salat.webp')",
+        welcome_mob: "url('./src/images/salat_mob.png')",
+        welcome_tab: "url('./src/images/salat_tab.png')",
       },
       backgroundSize: {
         auto: "auto",
