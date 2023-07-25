@@ -39,6 +39,10 @@
    xl:pr-[110px] xl:gap-6;
 }
 
+.nav_item {
+  @apply hover:text-accentMain dark:hover:text-accentDark transition duration-300 ease-in-out;
+}
+
 .copywrite_wrapper {
   @apply container relative mx-auto font-medium text-customRecipesText md:text-customXxs py-7 md:py-8 xl:py-[50px] text-center overflow-hidden text-accentDark;
 }

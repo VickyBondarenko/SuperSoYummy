@@ -47,7 +47,11 @@ export const Footer: React.FC<IFooterProps> = ({ headerRef }) => {
           <nav>
             <ul className={styles.nav_list}>
               {navList.map((item, index: number) => (
-                <li key={index} onClick={() => scrollToHeader(headerRef)}>
+                <li
+                  key={index}
+                  className={styles.nav_item}
+                  onClick={() => scrollToHeader(headerRef)}
+                >
                   <Link to={`${item.route}`}>{item.name}</Link>
                 </li>
               ))}

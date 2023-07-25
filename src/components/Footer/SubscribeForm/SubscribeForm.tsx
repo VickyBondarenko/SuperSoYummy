@@ -54,7 +54,7 @@ export const SubscribeForm: React.FC = () => {
 
         <button
           type="submit"
-          className={`${styles.subscribe_button} bg-accentMain dark:bg-accentDarker`}
+          className={`${styles.subscribe_button} bg-accentMain dark:bg-accentDarker hover:bg-overlayBackdrop dark:hover:bg-accentHalfDark`}
         >
           Subscribe
         </button>
