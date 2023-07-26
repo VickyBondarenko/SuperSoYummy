@@ -24,6 +24,7 @@ export const Hero: React.FC = () => {
           cookbook. You can add your own recipes to save them for the future.
         </p>
       </div>
+      <HeroForm />
       <div className={styles.hero_image_wrapper}>
         <img className={styles.hero_image} src={SaladImg} alt="salad" />
         <div className={styles.hero_message_wrapper}>
@@ -42,7 +43,6 @@ export const Hero: React.FC = () => {
           )}
         </div>
       </div>
-      <HeroForm />
     </div>
   );
 };

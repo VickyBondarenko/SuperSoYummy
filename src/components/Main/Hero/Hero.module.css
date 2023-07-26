@@ -1,21 +1,21 @@
 .hero_wrapper {
-  @apply container relative overflow-hidden flex flex-col justify-center items-center px-7 pb-[83px] z-[1]
-  md:pl-8 md:pr-0 md:flex-row md:flex-wrap md:justify-start;
+  @apply container relative flex flex-col justify-center items-center px-7 pb-[83px] z-[1]
+  md:pl-8 md:pb-0 md:pr-0 md:flex-wrap md:justify-start md:content-between md:gap-y-8 md:h-[640px];
 }
 
 .hero_wrapper_after {
-  @apply after:absolute after:content-[""] after:bg-m_angle  after:top-[125px] after:right-0 after:w-[300px] after:h-full after:bg-[length:300px_700px] after:bg-no-repeat after:-z-[1];
+  @apply after:absolute after:content-[""] after:bg-m_angle  after:top-[125px] after:right-0 after:w-[300px] after:h-full after:bg-[length:300px_700px] after:bg-no-repeat after:-z-[1]
+  md:after:bg-t_angle md:after:-top-[85px] md:after:w-[300px] md:after:bg-[length:300px_640px];
 }
 
 .hero_wrapper_before {
-  @apply before:absolute before:content-[""] before:bg-m_bottom_leaf  before:-bottom-[80px] before:right-0 before:w-[375px] before:h-[700px] 
-  before:bg-[length:375px_700px] 
-  before:bg-no-repeat;
+  @apply before:absolute before:content-[""] before:bg-m_bottom_leaf  before:-bottom-[80px] before:right-0 before:w-[375px] before:h-[700px]  before:bg-[length:375px_700px]   before:bg-no-repeat
+  md:before:bg-t_bottom_leaf md:before:w-[620px] md:before:bg-[length:620px_650px] md:before:bottom-[10px] md:before:right-[0];
 }
 
 .hero_title_wrapper {
   @apply pt-[68px]
-  md:pt-0 md:flex md:flex-col md:justify-center md:items-start;
+ md:self-auto md:flex md:flex-col md:justify-center md:items-start md:pt-[120px];
 }
 
 .hero_title {
@@ -30,14 +30,14 @@
 }
 
 .hero_image_wrapper {
-  @apply relative w-[320px] h-[300px] mt-[44px] mb-6
-  md:w-[360px] md:h-[350px];
+  @apply relative order-1 w-[320px] h-[300px] mt-[44px] mb-6
+  md:basis-full md:order-none  md:w-[380px] md:h-[350px] md:mt-[95px];
 }
 
 .hero_message_wrapper {
-  @apply absolute bottom-1/2 -translate-y-1/2 right-0 w-[225px]  p-2
+  @apply absolute top-1/2 -translate-y-1/2 right-0 w-[225px]  p-2
  rounded-lg bg-whiteText dark:bg-accentHalfDark  text-secondaryText dark:text-whiteText
- md:translate-y-0  md:bottom-[55px] md:right-[43px]   md:w-[260px] md:h-[100px];
+ md:translate-y-0  md:top-[200px] md:right-[43px] md:w-[260px] md:h-[100px];
 }
 
 .hero_message_text {

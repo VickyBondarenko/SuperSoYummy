@@ -1,5 +1,6 @@
 .hero_form {
-  @apply relative h-[52px] w-[295px] mx-auto outline-none;
+  @apply relative order-2 h-[52px] w-[295px] mx-auto outline-none
+ md:w-[362px] md:order-none;
 }
 
 .hero_form_input {
