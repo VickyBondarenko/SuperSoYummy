@@ -4,6 +4,22 @@ const plugin = require("tailwindcss/plugin");
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    transitionDuration: {
+      DEFAULT: "300ms",
+      75: "75ms",
+      100: "100ms",
+      150: "150ms",
+      200: "200ms",
+      400: "400ms",
+      450: "450ms",
+      300: "300ms",
+      500: "500ms",
+      700: "700ms",
+      1000: "1000ms",
+    },
+    transitionTimingFunction: {
+      DEFAULT: "ease-in-out",
+    },
     extend: {
       screens: {
         xl: "1440px",
@@ -57,6 +73,7 @@ export default {
         listUnderline: "#E0E0E0",
         greenSelectArrow: "8BAA36",
         overlayBackdrop: "rgba(139, 170, 54, 0.8)",
+        inputBorder: "rgba(250, 250, 250, 0.50)",
       },
       boxShadow: {
         custom: "0px 4px 4px rgba(135, 135, 135, 0.2)",
@@ -81,10 +98,8 @@ export default {
         customXl: ["32px", "32px"],
         customXxl: ["44px", "44px"],
       },
-      border: { grey1: "#F0F0F0" },
-      transitionTimingFunction: {
-        customCubic: "cubic-bezier(0.1, 0.7, 1.0, 0.1)",
-        altCubic: "cubic-bezier(0.4, 0.0, 0.2, 1)",
+      border: {
+        grey1: "#F0F0F0",
       },
       transitionDuration: {
         400: "400ms",

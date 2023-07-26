@@ -1,16 +1,19 @@
 .hero_wrapper {
   @apply container relative flex flex-col justify-center items-center px-7 pb-[83px] z-[1]
-  md:pl-8 md:pb-0 md:pr-0 md:flex-wrap md:justify-start md:content-between md:gap-y-8 md:h-[640px];
+  md:pl-8 md:pb-0 md:pr-0 md:flex-wrap md:justify-start md:content-around md:gap-y-8 md:h-[640px]
+  xl:h-[800px] xl:pl-[107px] xl:gap-x-40 xl:gap-y-[50px] xl:content-start;
 }
 
 .hero_wrapper_after {
   @apply after:absolute after:content-[""] after:bg-m_angle  after:top-[125px] after:right-0 after:w-[300px] after:h-full after:bg-[length:300px_700px] after:bg-no-repeat after:-z-[1]
-  md:after:bg-t_angle md:after:-top-[85px] md:after:w-[300px] md:after:bg-[length:300px_640px];
+  md:after:bg-t_angle md:after:-top-[85px] md:after:w-[300px] md:after:bg-[length:300px_640px]
+   xl:after:bg-d_angle xl:after:w-[700px] xl:after:bg-[length:700px_700px];
 }
 
 .hero_wrapper_before {
   @apply before:absolute before:content-[""] before:bg-m_bottom_leaf  before:-bottom-[80px] before:right-0 before:w-[375px] before:h-[700px]  before:bg-[length:375px_700px]   before:bg-no-repeat
-  md:before:bg-t_bottom_leaf md:before:w-[620px] md:before:bg-[length:620px_650px] md:before:bottom-[10px] md:before:right-[0];
+  md:before:bg-t_bottom_leaf md:before:w-[620px] md:before:bg-[length:620px_650px] md:before:bottom-[10px] md:before:right-[0]
+  xl:before:bg-d_bottom_leaf xl:before:w-[900px] xl:before:h-[700px] xl:before:bg-[length:900px_700px] xl:before:bottom-[150px] xl:before:-right-[0];
 }
 
 .hero_title_wrapper {
@@ -20,7 +23,8 @@
 
 .hero_title {
   @apply font-normal text-[60px] tracking-[-0.3px] text-accentDark text-center 
-  md:text-[72px] md:tracking-[-0.36px];
+  md:text-[72px] md:tracking-[-0.36px]
+   xl:text-[100px] xl:tracking-[-0.5px];
 }
 
 .hero_text {
@@ -31,18 +35,21 @@
 
 .hero_image_wrapper {
   @apply relative order-1 w-[320px] h-[300px] mt-[44px] mb-6
-  md:basis-full md:order-none  md:w-[380px] md:h-[350px] md:mt-[95px];
+  md:basis-full md:order-none  md:w-[380px] md:h-[350px] md:mt-[95px]
+  xl:w-[540px] xl:h-[540px]  xl:mt-[62px];
 }
 
 .hero_message_wrapper {
   @apply absolute top-1/2 -translate-y-1/2 right-0 w-[225px]  p-2
  rounded-lg bg-whiteText dark:bg-accentHalfDark  text-secondaryText dark:text-whiteText
- md:translate-y-0  md:top-[200px] md:right-[43px] md:w-[260px] md:h-[100px];
+ md:translate-y-0  md:top-[200px] md:right-[43px] md:w-[260px] md:h-[100px]
+ xl:top-[330px] xl:-right-[40px] xl:w-[300px] xl:h-[115px] xl:p-4;
 }
 
 .hero_message_text {
   @apply text-customShoppingList tracking-[-0.24px]
- md:font-medium md:text-[14px] md:leading-[18px];
+ md:font-medium md:text-[14px] md:leading-[18px]
+ xl:leading-[20px];
 }
 
 .hero_message_button {
@@ -55,5 +62,6 @@
 }
 
 .arrow_img {
-  @apply block h-[72px] w-[111px] mx-auto -mt-2 rotate-[-5deg];
+  @apply block h-[72px] w-[111px] mx-auto -mt-2 rotate-[-5deg]
+  xl:h-[90px] xl:w-[160px];
 }

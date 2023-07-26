@@ -3,7 +3,7 @@
 }
 
 .footer_content_container {
-  @apply container mx-auto flex flex-col items-center h-[434px] md:h-[422px] xl:h-[415px] pt-7 pb-[18px] w-full bg-accentDarker dark:bg-accentMain bg-[100vw]
+  @apply container mx-auto flex flex-col items-center h-full md:h-[422px] xl:h-[415px] pt-7 pb-[18px] w-full bg-accentDarker dark:bg-accentMain bg-[100vw]
  md:flex-row md:flex-wrap md:justify-between md:px-8 md:pt-[50px] md:items-start
  xl:px-[100px] xl:pt-[61px] xl:pb-[50px];
 }
@@ -40,7 +40,7 @@
 }
 
 .nav_item {
-  @apply hover:text-accentMain dark:hover:text-accentDark transition duration-300 ease-in-out;
+  @apply hover:text-accentMain dark:hover:text-accentDark transition;
 }
 
 .copywrite_wrapper {

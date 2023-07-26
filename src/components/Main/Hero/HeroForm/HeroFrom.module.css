@@ -1,12 +1,14 @@
 .hero_form {
-  @apply relative order-2 h-[52px] w-[295px] mx-auto outline-none
- md:w-[362px] md:order-none;
+  @apply relative order-2 h-[52px] w-[295px] mx-auto
+ md:w-[362px] md:order-none
+ xl:w-[510px] xl:h-[70px];
 }
 
 .hero_form_input {
-  @apply bg-white dark:bg-accentHalfDark  font-main w-full h-full px-6 pl-8 pr-[115px] border-0 rounded-tl-[24px] rounded-br-[24px] rounded-bl-[44px] rounded-tr-[44px]  text-secondaryText dark:text-whiteText outline-none outline-2 outline-offset-0 outline-accentDark;
+  @apply bg-white dark:bg-accentHalfDark  font-main w-full h-full px-6 pl-8 pr-[115px] rounded-tl-[24px] rounded-br-[24px] rounded-bl-[44px] rounded-tr-[44px]  text-secondaryText dark:text-whiteText focus:outline-4  focus:outline-secondaryText border-[1px] border-inputBorder
+  md:text-[16px] xl:pl-12;
 }
 
 .hero_form_btn {
-  @apply absolute right-0 top-0 h-full flex justify-center items-center  border-[1px];
+  @apply absolute right-0 top-0 h-full flex justify-center items-center  border-[0];
 }

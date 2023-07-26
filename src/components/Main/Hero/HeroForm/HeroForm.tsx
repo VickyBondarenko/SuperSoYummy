@@ -26,7 +26,7 @@ export const HeroForm: React.FC = () => {
       <Link to="/search">
         <AsimetricRoundedBtn
           text={"Search"}
-          style={`${styles.hero_form_btn} bg-accentDark dark:bg-accentMain`}
+          style={`${styles.hero_form_btn} border-[1px] border-secondaryText bg-accentDark dark:bg-accentMain hover:bg-accentHalfDark dark:hover:bg-overlayBackdrop transition`}
           btnType={"submit"}
         />
       </Link>
