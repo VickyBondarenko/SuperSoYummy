@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./Categories.module.css";
+
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { changeCategory } from "../../../redux/categoriesSlice/categoriesSlice";
 import { fetchCategories } from "../../../redux/categoriesSlice/categoriesThunk";
@@ -8,7 +9,7 @@ import {
   selectCategory,
 } from "../../../redux/categoriesSlice/categoriesSelector";
 
-import { Draggable } from "../../Draggable/Draggable";
+import { Draggable } from "../../ServiceComponents/Draggable";
 
 export const CategoriesNav: React.FC = () => {
   const listRef = useRef(null);
@@ -23,7 +24,7 @@ export const CategoriesNav: React.FC = () => {
 
   return (
     <Draggable innerRef={listRef} rootClass={"drag"}>
-      <div className={styles.categories_wrapper}>
+      <div id="scrollToCatWrap" className={styles.categories_wrapper}>
         <ul className={styles.categories_nav_list}>
           {categoryList.map((item: string, index: number) => (
             <li
