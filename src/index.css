@@ -17,3 +17,7 @@
 html {
   height: 100vh;
 }
+
+body {
+  @apply bg-whiteText dark:bg-accentDarker;
+}

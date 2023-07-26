@@ -1,5 +1,5 @@
 .subscribe_form_wrapper {
-  @apply flex flex-col gap-2  
+  @apply flex flex-col gap-2 mb-[46px] 
   md:flex-row md:basis-full md:justify-center md:mx-auto
   xl:flex-col xl:mx-0 xl:w-[339px] xl:basis-auto;
 }
@@ -34,5 +34,5 @@
   @apply rounded-[6px] font-[inherit] text-customSm leading-[16px] text-whiteText h-[38px] py-[11px] px-[67px]
    md:h-[50px]
    xl:h-[59px]
-   transition duration-300 ease-in-out;
+   transition;
 }

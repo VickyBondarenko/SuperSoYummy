@@ -1,0 +1,9 @@
+.main_section {
+  @apply mx-auto;
+}
+
+.main_section_before {
+  @apply before:absolute before:content-[""] before:bg-m_top_leaf before:bg-auto before:-top-[30px] before:left-0 before:w-full before:h-full before:bg-no-repeat
+  md:before:bg-t_top_leaf md:before:-top-[75px]
+  xl:before:bg-d_top_leaf xl:before:-top-[90px];
+}
