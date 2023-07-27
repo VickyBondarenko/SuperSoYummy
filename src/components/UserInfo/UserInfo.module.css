@@ -1,0 +1,11 @@
+.userInfo_conteiner {
+  @apply flex items-center gap-[14px];
+}
+
+.userInfo_avatar {
+  @apply rounded-full w-[34px] md:w-11 h-[34px] md:h-11;
+}
+
+.userInfo_userName {
+  @apply font-main font-semibold text-accentDark text-[12px] md:text-[14px] leading-[20px] md:leading-[24px];
+}
