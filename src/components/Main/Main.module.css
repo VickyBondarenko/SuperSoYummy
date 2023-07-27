@@ -9,7 +9,7 @@
 }
 
 .main_link {
-  @apply flex justify-center bg-transparent mx-auto mt-10
+  @apply flex justify-center bg-transparent mx-auto mt-10 text-accentDark dark:text-whiteText
   md:mt-8
   xl:mt-[14px];
 }

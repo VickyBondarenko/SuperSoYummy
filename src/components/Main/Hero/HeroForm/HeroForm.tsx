@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styles from "./HeroFrom.module.css";
 import { useNavigate } from "react-router-dom";
 
 import { AsimetricRoundedBtn } from "../../../Buttons/AsimetricRoundedBtn";
@@ -25,9 +24,9 @@ export const HeroForm: React.FC = () => {
   };
 
   return (
-    <form className={styles.hero_form} onSubmit={handleSubmit}>
+    <form className="search_form order-2 md:order-none" onSubmit={handleSubmit}>
       <input
-        className={styles.hero_form_input}
+        className="search_form_input"
         type="text"
         placeholder="Ex: Beef"
         value={heroInput}
@@ -36,7 +35,7 @@ export const HeroForm: React.FC = () => {
 
       <AsimetricRoundedBtn
         text={"Search"}
-        style={`${styles.hero_form_btn} border-[1px] border-secondaryText bg-accentDark dark:bg-accentMain hover:bg-accentHalfDark dark:hover:bg-overlayBackdrop transition`}
+        style="search_form_btn border-[1px] border-secondaryText bg-accentDark dark:bg-accentMain hover:bg-accentHalfDark dark:hover:bg-overlayBackdrop transition"
         btnType={"submit"}
       />
     </form>

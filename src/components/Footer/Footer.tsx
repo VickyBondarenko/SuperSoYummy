@@ -33,11 +33,9 @@ export const Footer: React.FC = () => {
       <div className={styles.footer_content_wrapper}>
         <div className={styles.footer_content_container}>
           <div className={styles.footer_title_wrapper}>
-            <div className={styles.footer_logo_wrapper}>
-              <Link to="/">
-                <Logo className={styles.footer_logo} />
-              </Link>
-            </div>
+            <Link to="/" className={styles.footer_logo_wrapper}>
+              <Logo className={styles.footer_logo} />
+            </Link>
             <h2 className={styles.footer_title}>So Yummy</h2>
             {isTablet && <AdvantageList />}
           </div>

@@ -13,7 +13,7 @@
 }
 
 .footer_title_wrapper {
-  @apply flex items-center justify-center gap-2 mb-8 flex-wrap w-[380px]
+  @apply flex items-center justify-center gap-2 mb-8 flex-wrap w-full
   md:mb-0 md:justify-start md:gap-3
   xl:w-[458px];
 }
