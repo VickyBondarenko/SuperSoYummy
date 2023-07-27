@@ -1,13 +1,18 @@
 import React from "react";
 import styles from "./Hero.module.css";
+import { useMediaQuery } from "react-responsive";
+import { useAppDispatch } from "../../../hooks/reduxHooks";
+import { changeCategory } from "../../../redux/categoriesSlice/categoriesSlice";
+
+import { Link } from "react-router-dom";
+import { HeroForm } from "./HeroForm/HeroForm";
+
+import { BsArrowRight } from "react-icons/bs";
 import SaladImg from "../../../images/1spoon.png";
 import ArrowImg from "../../../images/1arrow.png";
-import { Link } from "react-router-dom";
-import { BsArrowRight } from "react-icons/bs";
-import { HeroForm } from "./HeroForm/HeroForm";
-import { useMediaQuery } from "react-responsive";
 
 export const Hero: React.FC = () => {
+  const dispatch = useAppDispatch();
   const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
 
   return (
@@ -32,12 +37,19 @@ export const Hero: React.FC = () => {
             <span className="text-accentMain">Delicious and healthy </span>
             way to enjoy a variety of fresh ingredients in one satisfying meal
           </p>
-          <button type="button" className={styles.hero_message_button}>
-            <Link to="/categories">
+          <Link
+            to="/categories"
+            onClick={() => dispatch(changeCategory("Beef"))}
+            className={`${styles.hero_message_link} group`}
+          >
+            <button type="button" className={styles.hero_message_button}>
               See recipes
-              <BsArrowRight size={18} className={styles.hero_message_svg} />
-            </Link>
-          </button>
+              <BsArrowRight
+                size={18}
+                className={`${styles.hero_message_svg} group-hover:fill-overlayBackdrop`}
+              />
+            </button>
+          </Link>
           {isTablet && (
             <img src={ArrowImg} alt="arrowImg" className={styles.arrow_img} />
           )}

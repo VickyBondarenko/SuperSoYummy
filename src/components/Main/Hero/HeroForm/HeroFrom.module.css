@@ -5,8 +5,9 @@
 }
 
 .hero_form_input {
-  @apply bg-white dark:bg-accentHalfDark  font-main w-full h-full px-6 pl-8 pr-[115px] rounded-tl-[24px] rounded-br-[24px] rounded-bl-[44px] rounded-tr-[44px]  text-secondaryText dark:text-whiteText focus:outline-4  focus:outline-secondaryText border-[1px] border-inputBorder
-  md:text-[16px] xl:pl-12;
+  @apply bg-white dark:bg-accentHalfDark  font-main w-full h-full px-6 pl-8 pr-[115px] rounded-tl-[24px] rounded-br-[24px] rounded-bl-[44px] rounded-tr-[44px]  text-secondaryText dark:text-whiteText focus:outline-4  focus:outline-secondaryText border-2 border-inputBorder
+  md:text-[16px] xl:pl-12 
+  hover:border-2 hover:border-secondaryText transition;
 }
 
 .hero_form_btn {

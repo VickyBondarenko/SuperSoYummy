@@ -1,9 +1,20 @@
 .main_section {
-  @apply mx-auto;
+  @apply mx-auto pb-[100px];
 }
 
 .main_section_before {
-  @apply before:absolute before:content-[""] before:bg-m_top_leaf before:bg-auto before:-top-[30px] before:left-0 before:w-full before:h-full before:bg-no-repeat
+  @apply before:absolute before:content-[""] before:bg-m_top_leaf before:bg-auto before:-top-[30px] before:left-0 before:w-full before:h-[450px] before:bg-no-repeat
   md:before:bg-t_top_leaf md:before:-top-[75px]
   xl:before:bg-d_top_leaf xl:before:-top-[90px];
+}
+
+.main_link {
+  @apply flex justify-center bg-transparent mx-auto mt-10
+  md:mt-8
+  xl:mt-[14px];
+}
+
+.main_btn {
+  @apply flex justify-center items-center cursor-pointer border-2 border-accentMain hover:shadow-[0px_0px_22px_2px_rgba(139,170,54,1)] transition duration-300 w-[195px] h-[46px] 
+  md:w-[239px] md:h-[61px] md:text-[16px];
 }

@@ -1,16 +1,26 @@
 import React, { useState } from "react";
-import { AsimetricRoundedBtn } from "../../../Buttons/AsimetricRoundedBtn";
 import styles from "./HeroFrom.module.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { AsimetricRoundedBtn } from "../../../Buttons/AsimetricRoundedBtn";
+import { Notify } from "notiflix";
 
 export const HeroForm: React.FC = () => {
   const [heroInput, setHeroInput] = useState<string>("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const { value } = form.elements[0] as HTMLInputElement;
-    console.log(value);
+    const trimmedValue = value.trim();
+    if (trimmedValue === "") {
+      Notify.warning("Enter recipe title to search", {
+        position: "left-top",
+      });
+      return;
+    }
+    navigate("/search");
     setHeroInput("");
   };
 
@@ -23,13 +33,12 @@ export const HeroForm: React.FC = () => {
         value={heroInput}
         onChange={(e) => setHeroInput(e.target.value)}
       />
-      <Link to="/search">
-        <AsimetricRoundedBtn
-          text={"Search"}
-          style={`${styles.hero_form_btn} border-[1px] border-secondaryText bg-accentDark dark:bg-accentMain hover:bg-accentHalfDark dark:hover:bg-overlayBackdrop transition`}
-          btnType={"submit"}
-        />
-      </Link>
+
+      <AsimetricRoundedBtn
+        text={"Search"}
+        style={`${styles.hero_form_btn} border-[1px] border-secondaryText bg-accentDark dark:bg-accentMain hover:bg-accentHalfDark dark:hover:bg-overlayBackdrop transition`}
+        btnType={"submit"}
+      />
     </form>
   );
 };

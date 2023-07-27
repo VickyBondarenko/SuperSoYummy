@@ -1,5 +1,6 @@
-import styles from "./CategoriesGallery.module.css";
 import React, { useEffect } from "react";
+import styles from "./CategoriesGallery.module.css";
+
 import { fetchCurrentCategory } from "../../../redux/categoriesSlice/categoriesThunk";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import {
