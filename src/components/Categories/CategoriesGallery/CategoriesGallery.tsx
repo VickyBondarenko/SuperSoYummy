@@ -9,6 +9,7 @@ import {
   selectCategory,
 } from "../../../redux/categoriesSlice/categoriesSelector";
 
+import { Link } from "react-router-dom";
 import { RecipeCard } from "../../RecipeCard/RecipeCard";
 import { IRecipeInfo } from "../../RecipeCard/RecipeCard";
 import { Loader } from "../../Preloader/Loader";
@@ -30,14 +31,16 @@ export const CategoriesGallery: React.FC = () => {
       ) : (
         <ul className={styles.category_gallery_list}>
           {categoryRecipes.map((item: IRecipeInfo) => (
-            <RecipeCard
-              key={item._id}
-              _id={item._id}
-              preview={item.preview}
-              title={item.title}
-              description={item.description}
-              time={item.time}
-            />
+            <Link to="/recipe">
+              <RecipeCard
+                key={item._id}
+                _id={item._id}
+                preview={item.preview}
+                title={item.title}
+                description={item.description}
+                time={item.time}
+              />
+            </Link>
           ))}
         </ul>
       )}
