@@ -15,8 +15,8 @@ import { UnSubscribePage } from "./pages/UnSubscribePage";
 import LogInPage from "./pages/LogInPage";
 import RegisterPage from "./pages/RegisterPage";
 
-// import { PrivateRoute } from "./hooks/PrivateRoute";
-// import { PublicRoute } from "./hooks/PublicRoute";
+import { PrivateRoute } from "./hooks/PrivateRoute";
+import { PublicRoute } from "./hooks/PublicRoute";
 
 const App: React.FC = () => {
   return (
@@ -25,34 +25,34 @@ const App: React.FC = () => {
         <Route
           path="/welcome"
           element={
-            // <PublicRoute>
-            <WelcomePage />
-            // </PublicRoute>
+            <PublicRoute>
+              <WelcomePage />
+            </PublicRoute>
           }
         />
         <Route
           path="/login"
           element={
-            // <PublicRoute>
-            <LogInPage />
-            // </PublicRoute>
+            <PublicRoute>
+              <LogInPage />
+            </PublicRoute>
           }
         />
         <Route
           path="/register"
           element={
-            // <PublicRoute>
-            <RegisterPage />
-            // </PublicRoute>
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
           }
         />
 
         <Route
           path="/"
           element={
-            // <PrivateRoute>
-            <Layout />
-            // </PrivateRoute>
+            <PrivateRoute>
+              <Layout />
+            </PrivateRoute>
           }
         >
           <Route index element={<Main />} />
