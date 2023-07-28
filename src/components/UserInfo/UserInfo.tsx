@@ -13,7 +13,7 @@ export const UserInfo = () => {
         alt="userAvatar"
       />
 
-      <div className={styles.userInfo_userName}>{userName}</div>
+      <p className={styles.userInfo_userName}>{userName}</p>
     </div>
   );
 };
