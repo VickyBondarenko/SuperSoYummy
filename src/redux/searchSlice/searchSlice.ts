@@ -6,8 +6,9 @@ import { ISearchState } from "../../types/searchTypes";
 const SEARCH_REDUCER = "SEARCH_REDUCER";
 
 const searchInitState: ISearchState = {
-  totalPages: 0,
-  searchParam: "title",
+  totalPages: 1,
+  searchQuery: "",
+  searchParam: "Title",
   recipes: [],
   isLoading: false,
   error: null,
@@ -17,7 +18,18 @@ const searchSlice = createSlice({
   name: SEARCH_REDUCER,
   initialState: searchInitState,
   reducers: {
-    changeParam: (state, action) => void (state.searchParam = action.payload),
+    changeParam: (state, action) => {
+      state.searchParam = action.payload;
+    },
+    updateSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+    },
+    resetSearchPage: (state, _) => {
+      state.recipes = [];
+      state.searchQuery = "";
+      state.searchParam = "Title";
+      state.totalPages = 1;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -54,4 +66,5 @@ const searchSlice = createSlice({
 
 export default searchSlice.reducer;
 
-export const { changeParam } = searchSlice.actions;
+export const { changeParam, updateSearchQuery, resetSearchPage } =
+  searchSlice.actions;

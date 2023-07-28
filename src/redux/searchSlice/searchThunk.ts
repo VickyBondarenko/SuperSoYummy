@@ -34,7 +34,7 @@ export const fetchSearchRecipes = createAsyncThunk<
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.log(error);
-        console.log(error.response?.data);
+        return rejectWithValue(error.response?.data.message);
       } else if (error instanceof Error) console.log(error.message);
       return rejectWithValue("Error");
     }

@@ -14,7 +14,7 @@
 
 .footer_title_wrapper {
   @apply flex items-center justify-center gap-2 mb-8 flex-wrap w-full
-  md:mb-0 md:justify-start md:gap-3
+  md:mb-0 md:justify-start md:gap-3 md:w-[380px]
   xl:w-[458px];
 }
 

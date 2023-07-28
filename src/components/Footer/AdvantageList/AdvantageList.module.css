@@ -1,4 +1,5 @@
 .advantage_list {
   @apply list-disc flex basis-full flex-col gap-[10px] text-whiteText text-customXs leading-[18px] tracking-[-0.28px] font-extralight pl-4
+ 
   xl:text-[18px] xl:leading-6 xl:tracking-[-0.36px] xl:gap-3;
 }

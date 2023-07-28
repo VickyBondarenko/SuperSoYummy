@@ -29,18 +29,23 @@ export interface ISearchRecipeResponse {
 }
 
 export interface ISearchRequest {
-  searchParam: "ingredient" | "title";
+  searchParam: "Ingredient" | "Title";
   searchQuery: string;
   page: number;
   limit: number;
 }
 
+export interface SearchError {
+  message: string;
+}
+
 export interface ISearchState {
   totalPages: number;
-  searchParam: "ingredient" | "title";
+  searchQuery: string;
+  searchParam: "Ingredient" | "Title";
   recipes: IRecipe[];
   isLoading: boolean;
-  error: string | null;
+  error: string | null | SearchError;
 }
 
 export type SearchPayload = Partial<

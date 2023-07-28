@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./Footer.module.css";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { changeParam } from "../../redux/searchSlice/searchSlice";
 
 import { ReactComponent as Logo } from "../../images/svg/logosvg.svg";
 
@@ -25,6 +27,7 @@ const navList: INavList[] = [
 
 export const Footer: React.FC = () => {
   const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
+  const dispatch = useAppDispatch();
 
   return (
     <footer
@@ -42,7 +45,11 @@ export const Footer: React.FC = () => {
           <nav>
             <ul className={styles.nav_list}>
               {navList.map((item, index: number) => (
-                <li key={index} className={styles.nav_item}>
+                <li
+                  key={index}
+                  onClick={() => dispatch(changeParam("Ingredient"))}
+                  className={styles.nav_item}
+                >
                   <Link to={`${item.route}`}>{item.name}</Link>
                 </li>
               ))}

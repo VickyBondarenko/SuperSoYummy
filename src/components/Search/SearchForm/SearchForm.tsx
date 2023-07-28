@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { fetchSearchRecipes } from "../../../redux/searchSlice/searchThunk";
+import { updateSearchQuery } from "../../../redux/searchSlice/searchSlice";
 import { selectSearchParam } from "../../../redux/searchSlice/searchSelector";
 
 import { Notify } from "notiflix";
@@ -9,21 +9,20 @@ import { AsimetricRoundedBtn } from "../../Buttons/AsimetricRoundedBtn";
 
 interface ISearchFormProp {
   page: number;
+  limit: number;
 }
 
-export const SearchForm: React.FC<ISearchFormProp> = ({ page }) => {
+export const SearchForm: React.FC<ISearchFormProp> = ({ page, limit }) => {
   const [searchInput, setSearchInput] = useState<string>("");
   const searchParam = useAppSelector(selectSearchParam);
   const dispatch = useAppDispatch();
 
-  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
-  const limit = isDesktop ? 12 : 6;
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const { value } = form.elements[0] as HTMLInputElement;
-    const searchQuery = value.trim();
-    if (searchQuery === "") {
+    const inputValue = value.trim();
+    if (inputValue === "") {
       Notify.warning("Enter recipe title to search", {
         position: "left-top",
       });
@@ -33,14 +32,15 @@ export const SearchForm: React.FC<ISearchFormProp> = ({ page }) => {
       page,
       limit,
       searchParam,
-      searchQuery,
+      searchQuery: inputValue,
     };
+    dispatch(updateSearchQuery(inputValue));
     dispatch(fetchSearchRecipes(request));
     setSearchInput("");
   };
 
   return (
-    <form className="search_form mb-10" onSubmit={handleSubmit}>
+    <form id="ahcnor1" className="search_form mb-10" onSubmit={handleSubmit}>
       <input
         className="search_form_input"
         type="text"
