@@ -1,5 +1,5 @@
 .dropdown_wrapper {
-  @apply relative flex items-center gap-[15px] w-[225px] h-[35px] mx-auto text-black text-[12px] tracking-[-0.24px] bg-opacity-10 text-opacity-50
+  @apply relative flex items-center gap-[15px] w-[225px] h-[35px] mb-[62px] mx-auto text-black text-[12px] tracking-[-0.24px] bg-opacity-10 text-opacity-50
   md:gap-[18px] md:w-[265px] md:h-[40px] md:text-customXxs md:tracking-[-0.28px]
   xl:w-[310px] xl:h-[50px];
 }

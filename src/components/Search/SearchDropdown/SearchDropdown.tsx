@@ -1,19 +1,22 @@
 import { useState } from "react";
 import styles from "./SearchDropdown.module.css";
+import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
+import { selectSearchParam } from "../../../redux/searchSlice/searchSelector";
+import { changeParam } from "../../../redux/searchSlice/searchSlice";
 
 import { FiChevronDown } from "react-icons/fi";
 
-const options = ["Title", "Ingredients"];
+const options = ["Title", "Ingredient"];
 
-export const DropdownFilter = () => {
+export const SearchDropdown = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedOption, setSelectedOption] = useState<string>("Title");
+  const selectedOption = useAppSelector(selectSearchParam);
+  const dispatch = useAppDispatch();
 
   const toggling = () => setIsOpen(!isOpen);
 
   const onOptionClicked = (value: string) => () => {
-    setSelectedOption(value);
-
+    dispatch(changeParam(value));
     setIsOpen(false);
   };
 
