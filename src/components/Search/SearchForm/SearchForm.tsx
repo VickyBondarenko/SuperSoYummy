@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { fetchSearchRecipes } from "../../../redux/searchSlice/searchThunk";
 import { updateSearchQuery } from "../../../redux/searchSlice/searchSlice";
-import { selectSearchParam } from "../../../redux/searchSlice/searchSelector";
+import {
+  selectSearchParam,
+  selectSearchQuery,
+} from "../../../redux/searchSlice/searchSelector";
 
 import { Notify } from "notiflix";
+import { ReactComponent as CrossSvg } from "../../../assets/cross.svg";
 import { AsimetricRoundedBtn } from "../../Buttons/AsimetricRoundedBtn";
 
 interface ISearchFormProp {
@@ -13,7 +17,8 @@ interface ISearchFormProp {
 }
 
 export const SearchForm: React.FC<ISearchFormProp> = ({ page, limit }) => {
-  const [searchInput, setSearchInput] = useState<string>("");
+  const searchQuery = useAppSelector(selectSearchQuery);
+  const [searchInput, setSearchInput] = useState<string>(searchQuery);
   const searchParam = useAppSelector(selectSearchParam);
   const dispatch = useAppDispatch();
 
@@ -36,7 +41,6 @@ export const SearchForm: React.FC<ISearchFormProp> = ({ page, limit }) => {
     };
     dispatch(updateSearchQuery(inputValue));
     dispatch(fetchSearchRecipes(request));
-    setSearchInput("");
   };
 
   return (
@@ -48,7 +52,15 @@ export const SearchForm: React.FC<ISearchFormProp> = ({ page, limit }) => {
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
       />
-
+      {searchInput !== "" && (
+        <button
+          type="reset"
+          onClick={() => setSearchInput("")}
+          className="absolute top-1/2 -translate-y-1/2 right-1/2 translate-x-full "
+        >
+          <CrossSvg className="w-5 h-5 stroke-gray-400 hover:stroke-secondaryText dark:hover:stroke-whiteText transition" />
+        </button>
+      )}
       <AsimetricRoundedBtn
         text="Search"
         style="search_form_btn bg-accentMain hover:bg-overlayBackdrop transition border-2 border-transparent hover:border-overlayBackdrop"

@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { updateSearchQuery } from "../../../../redux/searchSlice/searchSlice";
+import { useAppDispatch } from "../../../../hooks/reduxHooks";
 
 import { AsimetricRoundedBtn } from "../../../Buttons/AsimetricRoundedBtn";
 import { Notify } from "notiflix";
 
 export const HeroForm: React.FC = () => {
   const [heroInput, setHeroInput] = useState<string>("");
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -19,6 +22,7 @@ export const HeroForm: React.FC = () => {
       });
       return;
     }
+    dispatch(updateSearchQuery(trimmedValue));
     navigate("/search");
     setHeroInput("");
   };
