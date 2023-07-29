@@ -47,9 +47,8 @@ export const MainGallery: React.FC = () => {
                 <ul className={styles.gallery_recipe_list}>
                   {recipes.map((item) => {
                     return (
-                      <Link to="/recipe">
+                      <Link to="/recipe" key={item._id}>
                         <RecipeCard
-                          key={item._id}
                           _id={item._id}
                           preview={item.preview}
                           title={item.title}

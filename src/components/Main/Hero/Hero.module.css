@@ -5,15 +5,15 @@
 }
 
 .hero_wrapper_after {
-  @apply after:absolute after:content-[""] after:bg-m_angle  after:top-[125px] after:right-0 after:w-[300px] after:h-full after:bg-[length:300px_700px] after:bg-no-repeat after:-z-[1]
+  @apply after:absolute after:content-[""] after:bg-m_angle  after:top-[125px] after:right-0 after:w-[300px] after:h-full after:bg-[length:300px_700px] after:bg-no-repeat after:z-[-2]
   md:after:bg-t_angle md:after:-top-[85px] md:after:w-[300px] md:after:bg-[length:300px_640px]
   xl:after:-top-[120px] xl:after:bg-d_angle xl:after:w-[800px] xl:after:h-[750px] xl:after:bg-[length:800px_750px];
 }
 
 .hero_wrapper_before {
-  @apply before:absolute before:content-[""] before:bg-m_bottom_leaf  before:-bottom-[80px] before:right-0 before:w-[375px] before:h-[700px]  before:bg-[length:375px_700px]   before:bg-no-repeat
+  @apply before:absolute before:content-[""] before:bg-m_bottom_leaf  before:-bottom-[80px] before:right-0 before:w-[375px] before:h-[700px]  before:bg-[length:375px_700px] before:bg-no-repeat
   md:before:bg-t_bottom_leaf md:before:w-[620px] md:before:bg-[length:620px_650px] md:before:bottom-[10px] md:before:right-[0]
-  xl:before:bg-d_bottom_leaf xl:before:w-[900px] xl:before:h-[700px] xl:before:bg-[length:900px_700px] xl:before:bottom-[0px] xl:before:-right-[0];
+  xl:before:bg-d_bottom_leaf xl:before:w-[900px] xl:before:h-[700px] xl:before:bg-[length:900px_700px] xl:before:bottom-[0px] xl:before:-right-[0] before:z-[-1];
 }
 
 .hero_title_wrapper {
