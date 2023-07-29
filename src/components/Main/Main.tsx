@@ -20,7 +20,7 @@ export const Main: React.FC = () => {
         to="/categories"
       >
         <AsimetricRoundedBtn
-          style="flex justify-center items-center cursor-pointer border-2 border-accentMain hover:shadow-[0px_0px_22px_2px_rgba(139,170,54,1)] transition duration-300 w-[195px] h-[46px] md:w-[239px] md:h-[61px] md:text-[16px]  text-accentDark dark:text-whiteText"
+          style="flex justify-center items-center cursor-pointer border-2 border-accentMain hover:shadow-[0px_0px_22px_2px_rgba(139,170,54,1)] transition duration-300 w-[195px] h-[46px] md:w-[239px] md:h-[61px] md:text-[16px] text-accentDark dark:text-whiteText"
           text="Other categories"
         />
       </Link>

@@ -56,7 +56,7 @@ export const SearchForm: React.FC<ISearchFormProp> = ({ page, limit }) => {
         <button
           type="reset"
           onClick={() => setSearchInput("")}
-          className="absolute top-1/2 -translate-y-1/2 right-1/2 translate-x-full "
+          className="absolute top-1/2 -translate-y-1/2 right-1/3 -translate-x-1/2  md:right-1/2 md:translate-x-full xl:right-1/3 xl:translate-x-1"
         >
           <CrossSvg className="w-5 h-5 stroke-gray-400 hover:stroke-secondaryText dark:hover:stroke-whiteText transition" />
         </button>
