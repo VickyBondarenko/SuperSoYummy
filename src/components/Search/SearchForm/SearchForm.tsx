@@ -63,7 +63,7 @@ export const SearchForm: React.FC<ISearchFormProp> = ({ page, limit }) => {
       )}
       <AsimetricRoundedBtn
         text="Search"
-        style="search_form_btn bg-accentMain hover:bg-overlayBackdrop transition border-2 border-transparent hover:border-overlayBackdrop"
+        style="search_form_btn text-whiteText bg-accentMain hover:bg-overlayBackdrop transition border-2 border-transparent hover:border-overlayBackdrop"
         btnType="submit"
       />
     </form>
