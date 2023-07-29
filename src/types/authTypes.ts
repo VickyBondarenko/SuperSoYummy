@@ -40,3 +40,15 @@ export interface IAuthState {
 export interface IRouteProps {
   children: ReactNode | any;
 }
+
+export interface IAppState {
+  // Здесь указывайте другие свойства вашего состояния, если они есть
+  auth: IAuthState;
+}
+
+export type IAsyncThunkCurrentUserReturn = IUserResponsData | { to: string };
+
+export interface IUserEdition {
+  name: string;
+  avatarURL: string;
+}

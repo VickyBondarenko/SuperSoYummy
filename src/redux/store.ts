@@ -21,13 +21,11 @@ const authPersistConfig = {
   whitelist: ["token"],
 };
 
-const middleware = [
-  ...getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
-];
+const customMiddleware = getDefaultMiddleware({
+  serializableCheck: {
+    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+  },
+});
 
 export const store = configureStore({
   reducer: {
@@ -35,7 +33,7 @@ export const store = configureStore({
     categories: categoriesReducer,
     subsbcribe: subscribeReducer,
   },
-  middleware,
+  middleware: customMiddleware,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
