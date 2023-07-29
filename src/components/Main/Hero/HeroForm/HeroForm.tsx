@@ -39,7 +39,7 @@ export const HeroForm: React.FC = () => {
 
       <AsimetricRoundedBtn
         text={"Search"}
-        style="search_form_btn border-[1px] border-secondaryText bg-accentDark dark:bg-accentMain hover:bg-accentHalfDark dark:hover:bg-overlayBackdrop transition"
+        style="search_form_btn border-[1px] border-secondaryText bg-accentDark text-whiteText dark:bg-accentMain hover:bg-accentHalfDark dark:hover:bg-overlayBackdrop transition"
         btnType={"submit"}
       />
     </form>
