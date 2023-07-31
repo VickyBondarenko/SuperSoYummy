@@ -1,5 +1,3 @@
-// import React from 'react'
-// import { ReactComponent as LogoSvg } from "/src/images/svg/logosvg.svg";
 import { AsimetricRoundedBtn } from "../components/Buttons/AsimetricRoundedBtn";
 import { Logo } from "../components/Logo/Logo";
 
@@ -7,7 +5,6 @@ export const WelcomePage = () => {
   return (
     <div className=" min-h-screen flex flex-col justify-center text-center px-[35px] md:px-[131px] xl:px-[450px]  bg-welcome_mob md:bg-welcome_tab xl:bg-welcome bg-cover  bg-center">
       <div className="block mx-auto">
-        {/* <LogoSvg className="] bg-accentMain stroke-whiteText rounded-[12px] p-[5px] md:p-3 h-[54px] md:h-[68px] w-[54px] md:w-[68px]" /> */}
         <Logo style="p-[5px] md:p-3 h-[54px] md:h-[68px] w-[54px] md:w-[68px]" />
       </div>
       <div>

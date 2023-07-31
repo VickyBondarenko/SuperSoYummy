@@ -8,7 +8,7 @@ import { AdvantageList } from "./AdvantageList/AdvantageList";
 import { Link } from "react-router-dom";
 import { scrollToHeader } from "../../services/scrollTo";
 
-interface INavList {
+export interface INavList {
   name: string;
   route: string;
 }

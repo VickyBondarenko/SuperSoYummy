@@ -1,0 +1,23 @@
+.container {
+  @apply flex items-center;
+}
+
+.switch {
+  @apply relative inline-block w-[61px] h-[27px];
+}
+
+.switch input {
+  @apply opacity-0 w-0 h-0;
+}
+
+.slider {
+  @apply absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-gray-200 transition rounded-[27px] before:absolute before:content-[''] before:h-[21px] before:w-[21px] before:left-[3px] before:bottom-[3px] before:bg-white before:transition before:rounded-full before:drop-shadow-[2px_1px_6px_rgba(0,0,0,0.25)];
+}
+
+input:checked + .slider {
+  @apply bg-accentMain;
+}
+
+input:checked + .slider:before {
+  transform: translateX(34px);
+}
