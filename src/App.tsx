@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { Routes, Route } from "react-router-dom";
-import { useAppSelector } from "./hooks/reduxHooks";
+
 import { selectTheme } from "./redux/themeSlice/themeSelector";
 
 import { Layout } from "./components/Layout/Layout";
@@ -21,7 +21,17 @@ import RegisterPage from "./pages/RegisterPage";
 import { PrivateRoute } from "./hooks/PrivateRoute";
 import { PublicRoute } from "./hooks/PublicRoute";
 
+import { useAppSelector } from "./hooks/reduxHooks";
+// import { logoutUser } from "./redux/authSlice/authThunk";
+// import { selectUserInfo } from "./redux/authSlice/authSelectors";
+import { refreshTokenHandler } from "./api/apiHelpers";
+
 const App: React.FC = () => {
+  // const dispatch = useAppDispatch();
+  // const user: any = useAppSelector(selectUserInfo);
+  useEffect(() => {
+    refreshTokenHandler();
+  }, []);
   const darkMode = useAppSelector(selectTheme);
   useEffect(() => {
     if (darkMode) {
