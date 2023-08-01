@@ -37,13 +37,12 @@ export interface IAuthState {
   error: string | null;
 }
 
-export interface IRouteProps {
-  children: ReactNode | any;
+export interface IAppState {
+  auth: IAuthState;
 }
 
-export interface IAppState {
-  // Здесь указывайте другие свойства вашего состояния, если они есть
-  auth: IAuthState;
+export interface IRouteProps {
+  children: ReactNode | any;
 }
 
 export type IAsyncThunkCurrentUserReturn = IUserResponsData | { to: string };
