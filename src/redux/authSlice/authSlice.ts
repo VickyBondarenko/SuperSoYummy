@@ -11,6 +11,7 @@ const authInitialState: IAuthState = {
     avatarURL: "",
     email: "",
   },
+  refreshToken: "",
   accessToken: null,
   isLoading: true,
   isRefreshing: false,
@@ -27,10 +28,12 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
       })
       .addCase(logoutUser.fulfilled, (state, _) => {
         state.user = {

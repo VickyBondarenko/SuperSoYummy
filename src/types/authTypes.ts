@@ -21,7 +21,7 @@ export interface IUserResponsData {
 export interface IAuthRespons {
   // token: string;
   accessToken: string;
-  refreshToken?: string;
+  refreshToken: string;
   user: IUserResponsData;
 }
 
@@ -32,6 +32,7 @@ export interface IAuthState {
     avatarURL: string;
     email: string;
   };
+  refreshToken: string | null;
   accessToken: string | null;
   isLoading: boolean;
   isRefreshing: boolean;
