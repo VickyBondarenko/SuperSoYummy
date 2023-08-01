@@ -19,7 +19,6 @@ export interface IUserResponsData {
 }
 
 export interface IAuthRespons {
-  // token: string;
   accessToken: string;
   refreshToken: string;
   user: IUserResponsData;
