@@ -3,6 +3,7 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import categoriesReducer from "./categoriesSlice/categoriesSlice";
 import subscribeReducer from "./subscribeSlice/subscribeSlice";
 import authReducer from "./authSlice/authSlice";
+
 import {
   persistStore,
   persistReducer,
@@ -14,6 +15,8 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+// import mainPageReducer from "./mainPageSlice/mainPageSlice";
+// import searchReducer from "./searchSlice/searchSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -29,7 +32,10 @@ const customMiddleware = getDefaultMiddleware({
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    // mainPage: mainPageReducer,
+
     categories: categoriesReducer,
+    // search: searchReducer,
     subsbcribe: subscribeReducer,
   },
   middleware: customMiddleware,
