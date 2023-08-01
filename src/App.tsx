@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import { Routes, Route } from "react-router-dom";
+import { useAppSelector } from "./hooks/reduxHooks";
+import { selectTheme } from "./redux/themeSlice/themeSelector";
 
 import { Layout } from "./components/Layout/Layout";
 import { Main } from "./components/Main/Main";
@@ -19,6 +22,14 @@ import { PrivateRoute } from "./hooks/PrivateRoute";
 import { PublicRoute } from "./hooks/PublicRoute";
 
 const App: React.FC = () => {
+  const darkMode = useAppSelector(selectTheme);
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
   return (
     <>
       <Routes>

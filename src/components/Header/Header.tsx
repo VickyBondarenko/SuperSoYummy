@@ -25,7 +25,7 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
 
   return (
     <header ref={ref} className="relative   w-full z-10 dark:bg-yellow-300 ">
-      <div className="container mx-auto flex justify-between items-center w-full bg-transparent px-4 pt-[21px] xl:px-[100px]">
+      <div className="container mx-auto flex justify-between items-center w-full bg-transparent px-4 py-[21px] xl:px-[100px]">
         <a href="/">
           <Logo style="p-[6px] md:p-[7px] h-10 md:h-11 w-10 md:w-11" />
         </a>
