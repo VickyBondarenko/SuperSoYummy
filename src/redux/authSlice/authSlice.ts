@@ -1,6 +1,6 @@
 import { createSlice, Action, PayloadAction } from "@reduxjs/toolkit";
 import { IAuthState } from "../../types/authTypes";
-import { registerUser, loginUser } from "./authThunk";
+import { registerUser, loginUser, logoutUser } from "./authThunk";
 
 const AUTH_REDUCER = "AUTH_REDUCER";
 
@@ -11,7 +11,8 @@ const authInitialState: IAuthState = {
     avatarURL: "",
     email: "",
   },
-  token: null,
+  refreshToken: "",
+  accessToken: null,
   isLoading: true,
   isRefreshing: false,
   isEditModalOpen: false,
@@ -26,11 +27,22 @@ const authSlice = createSlice({
     builder
       .addCase(registerUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
+      })
+      .addCase(logoutUser.fulfilled, (state, _) => {
+        state.user = {
+          _id: "",
+          name: "",
+          avatarURL: "",
+          email: "",
+        };
+        state.accessToken = null;
       })
       .addMatcher(
         (action: Action<string>) =>

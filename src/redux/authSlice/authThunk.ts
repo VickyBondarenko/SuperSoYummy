@@ -23,10 +23,10 @@ export const registerUser = createAsyncThunk<
 >(`/api/auth/register`, async (userData, { rejectWithValue }) => {
   try {
     const {
-      data: { user, token },
+      data: { user, accessToken, refreshToken },
     } = await axios.post<IAuthRespons>(`/api/auth/register`, userData);
-    setAuthHeader(token);
-    return { user, token };
+    setAuthHeader(accessToken);
+    return { user, accessToken, refreshToken };
   } catch (error) {
     const axiosError = error as AxiosError<SerializedError>;
     if (axiosError.response?.status === 409) {
@@ -43,11 +43,10 @@ export const loginUser = createAsyncThunk<
 >(`/api/auth/login`, async (userData, { rejectWithValue }) => {
   try {
     const {
-      data: { user, token },
+      data: { user, accessToken, refreshToken },
     } = await axios.post(`/api/auth/login`, userData);
-
-    setAuthHeader(token);
-    return { user, token };
+    setAuthHeader(accessToken);
+    return { user, accessToken, refreshToken };
   } catch (error) {
     Notify.failure("Incorect email or password");
     return rejectWithValue("Error");
@@ -59,17 +58,17 @@ export const getCurrentUser = createAsyncThunk<
   void,
   { rejectValue: string; state: IAppState }
 >("auth/current", async (_, { rejectWithValue, getState }) => {
-  const { token } = getState().auth;
+  const { accessToken } = getState().auth;
 
-  if (!token) {
+  if (!accessToken) {
     return rejectWithValue("Unable to fetch user");
   }
 
   try {
-    setAuthHeader(token);
+    setAuthHeader(accessToken);
     const { data } = await axios.get<IUserResponsData>("/api/auth/current", {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     });
     return data;
@@ -89,13 +88,13 @@ export const logoutUser = createAsyncThunk<
   string,
   { rejectValue: string; state: IAppState }
 >("auth/logout", async (_, { rejectWithValue, getState }) => {
-  const { token } = getState().auth;
-  if (!token) {
+  const { accessToken } = getState().auth;
+  if (!accessToken) {
     return rejectWithValue("Token is null");
   }
   try {
-    setAuthHeader(token);
-    const { data } = await axios.post(`/api/auth/logout`, token);
+    setAuthHeader(accessToken);
+    const { data } = await axios.post(`/api/auth/logout`, accessToken);
     clearAuthHeader();
     return data;
   } catch (error: any) {
