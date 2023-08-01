@@ -1,7 +1,10 @@
 import React, { memo } from "react";
-import { BsClock } from "react-icons/bs";
 import styles from "./RecipeCard.module.css";
 import { truncateText } from "../../services/truncateText";
+
+import { BsClock } from "react-icons/bs";
+
+
 
 export interface IRecipeInfo {
   _id: string;

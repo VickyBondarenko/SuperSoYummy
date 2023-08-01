@@ -19,13 +19,13 @@ export const WelcomePage = () => {
         <div className="flex justify-center gap-3 md:gap-[18px]">
           <a href="/register">
             <AsimetricRoundedBtn
-              style="bg-accentMain border-transparent hover:bg-accentDark  focus:bg-accentDark"
+              style="bg-accentMain border-transparent text-whiteText hover:bg-accentDark  focus:bg-accentDark transition"
               text="Registration"
             />
           </a>
           <a href="/login">
             <AsimetricRoundedBtn
-              style="border-whiteText hover:border-accentMain hover:text-accentMain focus:border-accentMain focus:text-accentMain"
+              style="border-whiteText hover:border-accentMain text-whiteText hover:text-accentMain focus:border-accentMain focus:text-accentMain transition"
               text="Sign In"
             />
           </a>

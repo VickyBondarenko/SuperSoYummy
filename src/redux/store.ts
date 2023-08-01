@@ -14,6 +14,10 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import mainPageReducer from "./mainPageSlice/mainPageSlice";
+import searchReducer from "./searchSlice/searchSlice";
+
+
 
 const authPersistConfig = {
   key: "auth",
@@ -26,10 +30,17 @@ const customMiddleware = getDefaultMiddleware({
   },
 });
 
+ 
+
+
+
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
+     auth: persistReducer(authPersistConfig, authReducer),
+    mainPage: mainPageReducer,
+
     categories: categoriesReducer,
+    search: searchReducer,
     subsbcribe: subscribeReducer,
   },
   middleware: customMiddleware,

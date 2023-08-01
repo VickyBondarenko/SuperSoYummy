@@ -4,6 +4,22 @@ const plugin = require("tailwindcss/plugin");
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    transitionDuration: {
+      DEFAULT: "300ms",
+      75: "75ms",
+      100: "100ms",
+      150: "150ms",
+      200: "200ms",
+      400: "400ms",
+      450: "450ms",
+      300: "300ms",
+      500: "500ms",
+      700: "700ms",
+      1000: "1000ms",
+    },
+    transitionTimingFunction: {
+      DEFAULT: "ease-in-out",
+    },
     extend: {
       screens: {
         xl: "1440px",
@@ -14,9 +30,6 @@ export default {
         authPage_desc: "url('/src/assets/AuthPage/auth_back_desktop.png')",
         recipePage: "url('/src/images/recipePage.webp')",
         hero: "url('/src/images/salat.webp')",
-        main_d: "url('/src/images/bg_main-desc.webp')",
-        main_t: "url('/src/images/bg_main-tablet.webp')",
-        main_m: "url('/src/images/bg_main-mob.webp')",
         mob_menu_leaf: "url('/src/images/bgLeafMobMenu.webp')",
         tablet_mob_menu_leaf: "url('/src/images/bgLeafTabletMobMenu.webp')",
         main_container_mob_leaf: "url('/src/images/bgMainContainerMob.webp')",
@@ -28,6 +41,16 @@ export default {
         welcome: "url('/src/images/salat.webp')",
         welcome_mob: "url('/src/images/salat_mob.png')",
         welcome_tab: "url('/src/images/salat_tab.png')",
+        // HeroBackground
+        m_angle: "url('/src/images/HeroBg/m-bg-green.png')",
+        t_angle: "url('/src/images/HeroBg/t-bg-green.png')",
+        d_angle: "url('/src/images/HeroBg/d-bg-green.png')",
+        m_top_leaf: "url('./src/images/HeroBg/m-spinach-top.png')",
+        t_top_leaf: "url('./src/images/HeroBg/t-spinach-top.png')",
+        d_top_leaf: "url('./src/images/HeroBg/d-spinach-top.png')",
+        m_bottom_leaf: "url('./src/images/HeroBg/m-spinach-bottom.png')",
+        t_bottom_leaf: "url('./src/images/HeroBg/t-spinach-bottom.png')",
+        d_bottom_leaf: "url('./src/images/HeroBg/d-spinach-bottom.png')",
       },
       backgroundSize: {
         auto: "auto",
@@ -50,6 +73,7 @@ export default {
         listUnderline: "#E0E0E0",
         greenSelectArrow: "8BAA36",
         overlayBackdrop: "rgba(139, 170, 54, 0.8)",
+        inputBorder: "rgba(250, 250, 250, 0.50)",
       },
       boxShadow: {
         custom: "0px 4px 4px rgba(135, 135, 135, 0.2)",
@@ -74,10 +98,8 @@ export default {
         customXl: ["32px", "32px"],
         customXxl: ["44px", "44px"],
       },
-      border: { grey1: "#F0F0F0" },
-      transitionTimingFunction: {
-        customCubic: "cubic-bezier(0.1, 0.7, 1.0, 0.1)",
-        altCubic: "cubic-bezier(0.4, 0.0, 0.2, 1)",
+      border: {
+        grey1: "#F0F0F0",
       },
       transitionDuration: {
         400: "400ms",
