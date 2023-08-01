@@ -39,24 +39,17 @@ export interface IAuthState {
   error: string | null;
 }
 
+export interface IAppState {
+  auth: IAuthState;
+}
+
 export interface IRouteProps {
   children: ReactNode | any;
 }
 
-export interface IAuthState {
-  user: {
-    _id: string;
-    name: string;
-    avatarURL: string;
-    email: string;
-  };
-  accessToken: string | null;
-  isLoading: boolean;
-  isRefreshing: boolean;
-  isEditModalOpen: boolean;
-  error: string | null;
-}
+export type IAsyncThunkCurrentUserReturn = IUserResponsData | { to: string };
 
-export interface IAppState {
-  auth: IAuthState;
+export interface IUserEdition {
+  name: string;
+  avatarURL: string;
 }

@@ -11,7 +11,7 @@ import { SubscribeForm } from "./SubscribeForm/SubscribeForm";
 import { SocialLinks } from "../SocialLinks/SocialLinks";
 import { AdvantageList } from "./AdvantageList/AdvantageList";
 
-interface INavList {
+export interface INavList {
   name: string;
   route: string;
 }
