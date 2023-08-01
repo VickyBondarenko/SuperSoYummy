@@ -3,6 +3,7 @@
 const plugin = require("tailwindcss/plugin");
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
     transitionDuration: {
       DEFAULT: "300ms",

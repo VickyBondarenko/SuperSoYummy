@@ -17,6 +17,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import mainPageReducer from "./mainPageSlice/mainPageSlice";
 import searchReducer from "./searchSlice/searchSlice";
+import themeReducer from "./themeSlice/themeSlise";
 
 const authPersistConfig = {
   key: "auth",
@@ -36,6 +37,7 @@ export const store = configureStore({
     mainPage: mainPageReducer,
     search: searchReducer,
     subsbcribe: subscribeReducer,
+    theme: themeReducer,
   },
   middleware: customMiddleware,
 });

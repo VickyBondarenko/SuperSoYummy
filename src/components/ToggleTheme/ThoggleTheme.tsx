@@ -1,21 +1,22 @@
-import { useState } from "react";
+// import { useState } from "react";
 // import { useSelector, useDispatch } from "react-redux";
-// import { toggleDarkMode } from "redux/theme/themeSlice";
-// import { selectDarkMode } from "redux/theme/themeSelector";
+import { toggleTheme } from "../../redux/themeSlice/themeSlise";
+import { selectTheme } from "../../redux/themeSlice/themeSelector";
+import { useAppSelector, useAppDispatch } from "../../hooks/reduxHooks";
 import styles from "./ThoggleTheme.module.css";
 
 const ToggleTheme = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
 
+  // const handleThemeToggle = () => {
+  //   setDarkMode((prevMode) => !prevMode);
+  // };
+
+  const darkMode = useAppSelector(selectTheme);
+  const dispatch = useAppDispatch();
   const handleThemeToggle = () => {
-    setDarkMode((prevMode) => !prevMode);
+    dispatch(toggleTheme());
   };
-
-  //   const darkMode = useSelector(selectDarkMode);
-  //   const dispatch = useDispatch();
-  //   const handleThemeToggle = () => {
-  //     dispatch(toggleDarkMode());
-  //   };
 
   return (
     <div className={`${styles.container} ${darkMode ? styles.dark_theme : ""}`}>
