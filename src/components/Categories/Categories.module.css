@@ -1,7 +1,11 @@
 .categories_section {
-  @apply min-h-screen pt-[50px] md:pt-[72px] pb-[100px] md:pb-[180px] px-4 md:px-8 xl:px-[100px];
+  @apply min-h-screen pt-[50px] pb-[100px]  px-4
+  md:pt-[72px]  md:pb-[180px] md:px-8 
+  xl:px-[100px];
 }
 
 .categories_title {
-  @apply font-main font-semibold text-mainText dark:text-whiteText text-customLg  md:text-customXl xl:text-customXxl mb-[50px] xl:mb-[100px];
+  @apply font-main font-semibold text-mainText dark:text-whiteText text-customLg  mb-[50px]
+  md:text-customXl 
+  xl:text-customXxl  xl:mb-[100px];
 }

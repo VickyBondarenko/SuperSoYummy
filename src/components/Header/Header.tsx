@@ -1,3 +1,4 @@
+
 import { forwardRef } from "react";
 import { Logo } from "../Logo/Logo";
 import { ReactComponent as MenuSvg } from "../../images/svg/burgerMenu.svg";
@@ -70,3 +71,4 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
     </header>
   );
 });
+

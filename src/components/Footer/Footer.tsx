@@ -1,20 +1,19 @@
 import React from "react";
-import { useMediaQuery } from "react-responsive";
 import styles from "./Footer.module.css";
+import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { changeParam } from "../../redux/searchSlice/searchSlice";
+
 import { ReactComponent as Logo } from "../../images/svg/logosvg.svg";
+
 import { SubscribeForm } from "./SubscribeForm/SubscribeForm";
 import { SocialLinks } from "../SocialLinks/SocialLinks";
 import { AdvantageList } from "./AdvantageList/AdvantageList";
-import { Link } from "react-router-dom";
-import { scrollToHeader } from "../../services/scrollTo";
 
 export interface INavList {
   name: string;
   route: string;
-}
-
-interface IFooterProps {
-  headerRef: React.RefObject<HTMLHeadElement>;
 }
 
 const navList: INavList[] = [
@@ -26,8 +25,9 @@ const navList: INavList[] = [
   { name: "Shopping list", route: "/shopping" },
 ];
 
-export const Footer: React.FC<IFooterProps> = ({ headerRef }) => {
+export const Footer: React.FC = () => {
   const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
+  const dispatch = useAppDispatch();
 
   return (
     <footer
@@ -36,11 +36,9 @@ export const Footer: React.FC<IFooterProps> = ({ headerRef }) => {
       <div className={styles.footer_content_wrapper}>
         <div className={styles.footer_content_container}>
           <div className={styles.footer_title_wrapper}>
-            <div className={styles.footer_logo_wrapper}>
-              <Link to="/" onClick={() => scrollToHeader(headerRef)}>
-                <Logo className={styles.footer_logo} />
-              </Link>
-            </div>
+            <Link to="/" className={styles.footer_logo_wrapper}>
+              <Logo className={styles.footer_logo} />
+            </Link>
             <h2 className={styles.footer_title}>So Yummy</h2>
             {isTablet && <AdvantageList />}
           </div>
@@ -49,8 +47,8 @@ export const Footer: React.FC<IFooterProps> = ({ headerRef }) => {
               {navList.map((item, index: number) => (
                 <li
                   key={index}
+                  onClick={() => dispatch(changeParam("Ingredient"))}
                   className={styles.nav_item}
-                  onClick={() => scrollToHeader(headerRef)}
                 >
                   <Link to={`${item.route}`}>{item.name}</Link>
                 </li>

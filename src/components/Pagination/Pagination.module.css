@@ -1,0 +1,17 @@
+.pagination {
+  @apply flex justify-between items-center max-w-[275px] mx-auto bg-whiteText shadow-[0px_4px_4px_rgba(135,_135,_135,_0.2)] rounded-full p-[10px] mt-[50px] cursor-pointer
+  md:min-w-[320px];
+}
+
+.pageDigit {
+  @apply flex justify-center items-center font-medium text-customShoppingList w-[30px] h-[30px] py-[15px] text-center text-[#656565]
+  md:w-[35px] md:h-[35px] md:text-customXs;
+}
+
+.active {
+  @apply flex bg-accentLighter  rounded-full;
+}
+
+.arrowBtn {
+  @apply block mx-5 text-[#a9a9a9] bg-transparent border-none;
+}

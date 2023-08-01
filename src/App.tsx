@@ -14,6 +14,7 @@ import { CategoriesPage } from "./pages/CategoriesPage";
 import { UnSubscribePage } from "./pages/UnSubscribePage";
 import LogInPage from "./pages/LogInPage";
 import RegisterPage from "./pages/RegisterPage";
+
 import { PrivateRoute } from "./hooks/PrivateRoute";
 import { PublicRoute } from "./hooks/PublicRoute";
 
