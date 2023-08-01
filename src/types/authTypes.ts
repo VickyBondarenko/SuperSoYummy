@@ -19,7 +19,9 @@ export interface IUserResponsData {
 }
 
 export interface IAuthRespons {
-  token: string;
+  // token: string;
+  accessToken: string;
+  refreshToken?: string;
   user: IUserResponsData;
 }
 
@@ -30,7 +32,7 @@ export interface IAuthState {
     avatarURL: string;
     email: string;
   };
-  token: string | null;
+  accessToken: string | null;
   isLoading: boolean;
   isRefreshing: boolean;
   isEditModalOpen: boolean;
@@ -39,4 +41,22 @@ export interface IAuthState {
 
 export interface IRouteProps {
   children: ReactNode | any;
+}
+
+export interface IAuthState {
+  user: {
+    _id: string;
+    name: string;
+    avatarURL: string;
+    email: string;
+  };
+  accessToken: string | null;
+  isLoading: boolean;
+  isRefreshing: boolean;
+  isEditModalOpen: boolean;
+  error: string | null;
+}
+
+export interface IAppState {
+  auth: IAuthState;
 }
