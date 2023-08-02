@@ -26,6 +26,7 @@ export const registerUser = createAsyncThunk<
       data: { user, accessToken, refreshToken },
     } = await axios.post<IAuthRespons>(`/api/auth/register`, userData);
     setAuthHeader(accessToken);
+    localStorage.setItem("refreshToken", refreshToken);
     return { user, accessToken, refreshToken };
   } catch (error) {
     const axiosError = error as AxiosError<SerializedError>;
@@ -46,6 +47,7 @@ export const loginUser = createAsyncThunk<
       data: { user, accessToken, refreshToken },
     } = await axios.post(`/api/auth/login`, userData);
     setAuthHeader(accessToken);
+    localStorage.setItem("refreshToken", refreshToken);
     return { user, accessToken, refreshToken };
   } catch (error) {
     Notify.failure("Incorect email or password");
@@ -87,14 +89,14 @@ export const logoutUser = createAsyncThunk<
   void,
   string,
   { rejectValue: string; state: IAppState }
->("auth/logout", async (_, { rejectWithValue, getState }) => {
-  const { accessToken } = getState().auth;
-  if (!accessToken) {
-    return rejectWithValue("Token is null");
-  }
+>("auth/logout", async (_id, { rejectWithValue }) => {
+  // const { accessToken } = getState().auth;
+  // if (!accessToken) {
+  //   return rejectWithValue("Token is null");
+  // }
   try {
-    setAuthHeader(accessToken);
-    const { data } = await axios.post(`/api/auth/logout`, accessToken);
+    // setAuthHeader(accessToken);
+    const { data } = await axios.post(`/api/auth/logout`, { _id });
     clearAuthHeader();
     return data;
   } catch (error: any) {
