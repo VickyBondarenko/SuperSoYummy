@@ -10,8 +10,16 @@ import ToggleTheme from "../ToggleTheme/ThoggleTheme";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { logoutUser } from "../../redux/authSlice/authThunk";
 import { selectUserInfo } from "../../redux/authSlice/authSelectors";
+import MainUserModal from "../Modals/MainUserModal";
+import { useState } from "react";
 
 export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsOpen(true);
+  };
+
   const navList: INavList[] = [
     { name: "Categories", route: "/categories" },
     { name: "Add Recipes", route: "/add" },
@@ -67,7 +75,11 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
           </nav>
         )}
         <div className="flex items-center gap-6 md:gap-[50px]">
-          <UserInfo />
+          <div onClick={handleOpenModal}>
+            <UserInfo />
+          </div>
+
+          <MainUserModal isOpen={isOpen} setIsOpen={setIsOpen} />
           <button
             id="myModal"
             className="hidden"
