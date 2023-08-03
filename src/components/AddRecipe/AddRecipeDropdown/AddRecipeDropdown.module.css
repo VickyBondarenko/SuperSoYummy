@@ -1,24 +1,19 @@
 .dropdown_wrapper {
-  @apply relative flex items-center gap-[15px] w-[225px] h-[35px] mb-[62px] mx-auto text-black text-[12px] tracking-[-0.24px] bg-opacity-10 text-opacity-50
-  md:gap-[18px] md:w-[265px] md:h-[40px] md:text-customXxs md:tracking-[-0.28px]
-  xl:w-[310px] xl:h-[50px];
+  @apply relative flex items-center justify-between w-full h-10 bg-whiteText border-b-2 px-2 text-black text-opacity-50 text-[14px] tracking-[-0.28px];
 }
 
 .dropdown_header {
-  @apply flex w-[146px] justify-between items-center px-4 py-2 rounded-md bg-[#D9D9D9] text-black bg-opacity-10 text-opacity-50 cursor-pointer
+  @apply flex w-[146px] justify-between items-center px-4 py-2 rounded-md bg-[#D9D9D9] text-black bg-opacity-10 cursor-pointer
   md:w-[175px] md:py-[10px]
   xl:w-[198px] xl:py-4;
 }
 
 .dropdown_list_container {
-  @apply absolute z-10 -bottom-16 right-[2px]
-  md:-bottom-14;
+  @apply absolute bg-white z-10 -bottom-0 translate-y-full right-[6px];
 }
 
 .dropdown_list {
-  @apply flex flex-col gap-2 px-4 py-2 w-[146px] bg-whiteText border-2 border-transparent hover:border-2 hover:border-greyInput rounded-md outline-1 outline-black
-  md:w-[175px] md:py-[10px]
-  xl:w-[200px] xl:py-4;
+  @apply flex flex-col gap-2 px-4 py-2 w-[175px] h-[150px] bg-white border-2 border-transparent hover:border-2 hover:border-greyInput rounded-md outline-1 outline-black overflow-y-auto overflow-x-hidden scrollbar scrollbar-thumb-accentMain scrollbar-dropdown;
 }
 
 .dropdown_item {
