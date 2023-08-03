@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-
-import { Routes, Route } from "react-router-dom";
 import { useAppSelector } from "./hooks/reduxHooks";
+import { Routes, Route } from "react-router-dom";
+
 import { selectTheme } from "./redux/themeSlice/themeSelector";
 
 import { Layout } from "./components/Layout/Layout";
