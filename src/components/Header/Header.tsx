@@ -7,6 +7,9 @@ import { INavList } from "../Footer/Footer";
 import { Link, useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import ToggleTheme from "../ToggleTheme/ThoggleTheme";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+import { logoutUser } from "../../redux/authSlice/authThunk";
+import { selectUserInfo } from "../../redux/authSlice/authSelectors";
 
 export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
   const navList: INavList[] = [
@@ -16,19 +19,24 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
     { name: "Favorite", route: "/favorite" },
     { name: "Shopping list", route: "/shopping" },
   ];
+  const { _id: userId } = useAppSelector(selectUserInfo);
+  const dispatch = useAppDispatch();
+  const location = useLocation();
 
   const isDesktop = useMediaQuery({
     query: "(min-width: 1024px)",
   });
 
-  const location = useLocation();
+  const handleLogOut = () => {
+    dispatch(logoutUser(userId));
+  };
 
   return (
     <header ref={ref} className="relative   w-full z-10 dark:bg-yellow-300 ">
       <div className="container mx-auto flex justify-between items-center w-full bg-transparent px-4 py-[21px] xl:px-[100px]">
-        <a href="/">
+        <Link to="/">
           <Logo style="p-[6px] md:p-[7px] h-10 md:h-11 w-10 md:w-11" />
-        </a>
+        </Link>
         {isDesktop && (
           <nav>
             <ul className="flex gap-[30px]">
@@ -60,6 +68,14 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
         )}
         <div className="flex items-center gap-6 md:gap-[50px]">
           <UserInfo />
+          <button
+            id="myModal"
+            className="hidden"
+            type="button"
+            onClick={handleLogOut}
+          >
+            modal
+          </button>
           {isDesktop ? (
             <ToggleTheme />
           ) : (
