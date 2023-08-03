@@ -1,0 +1,7 @@
+.add_form {
+  @apply flex flex-col gap-y-8;
+}
+
+.title_input {
+  @apply w-full h-10 bg-whiteText border-b-2 px-2 text-black text-[14px] tracking-[-0.28px];
+}

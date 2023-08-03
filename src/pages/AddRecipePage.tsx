@@ -1,7 +1,15 @@
-// import React from 'react'
+import React from "react";
+import { PageTitle } from "../components/PageTitle/PageTitle";
+import { AddRecipe } from "../components/AddRecipe/AddRecipe";
 
-export const AddRecipePage = () => {
+export const AddRecipePage: React.FC = () => {
   return (
-    <div>AddRecipePage</div>
-  )
-}
+    <section className="px-4 pb-[100px] pt-3">
+      <PageTitle title="Add recipe" />
+      <div>
+        <AddRecipe />
+      </div>
+      <div></div>
+    </section>
+  );
+};
