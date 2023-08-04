@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "./AddRecipe.module.css";
-import { Formik, Form, Field, FormikHelpers, FieldArray } from "formik";
+import {
+  Formik,
+  Form,
+  Field,
+  FormikHelpers,
+  FieldArray,
+  // FieldProps,
+} from "formik";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { fetchCategories } from "../../redux/categoriesSlice/categoriesThunk";
 import { selectMemoCategoryList } from "../../redux/categoriesSlice/categoriesSelector";
@@ -22,7 +29,7 @@ interface FormValues {
   category: string;
   time: string;
   description: string;
-  ingredients: Ingredient[] | "";
+  ingredients: Ingredient[];
 }
 const timeForCook: string[] = [];
 for (let i = 15; i <= 300; i += 5) {
@@ -79,7 +86,7 @@ export const AddRecipe: React.FC = () => {
           category: "Beef",
           time: "",
           description: "",
-          ingredients: "",
+          ingredients: [{ ingredient: "", amount: 0, measurement: "" }],
         }}
         onSubmit={handleSumbitForm}
       >
@@ -127,18 +134,29 @@ export const AddRecipe: React.FC = () => {
               type="Cooking time"
             />
             <div className="w-full">
-              <h3 className={styles.description_title}>Ingredients</h3>
-              <label htmlFor="ingredient">Выберите ингредиент:</label>
               <FieldArray name="ingredients">
                 {(arrayHelpers) => (
                   <div>
+                    <h3 className={styles.description_title}>Ingredients</h3>
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          arrayHelpers.push({
+                            ingredient: "",
+                            amount: 0,
+                            measurement: "",
+                          })
+                        }
+                      >
+                        Add ingredient
+                      </button>
+                    </div>
+
                     {arrayHelpers.form.values.ingredients.map(
                       (_ingredient: any, index: number) => (
                         <div key={index}>
                           <div>
-                            <label htmlFor={`ingredients.${index}.ingredient`}>
-                              Выберите ингредиент:
-                            </label>
                             <Field
                               name={`ingredients.${index}.ingredient`}
                               component={IngredientField}
@@ -146,9 +164,6 @@ export const AddRecipe: React.FC = () => {
                             />
                           </div>
                           <div>
-                            <label htmlFor={`ingredients.${index}.amount`}>
-                              Введите количество:
-                            </label>
                             <Field
                               name={`ingredients.${index}.amount`}
                               type="number"
@@ -178,21 +193,33 @@ export const AddRecipe: React.FC = () => {
                         </div>
                       )
                     )}
-                    <button
-                      type="button"
-                      onClick={() =>
-                        arrayHelpers.push({
-                          ingredient: "",
-                          amount: 0,
-                          measurement: "",
-                        })
-                      }
-                    >
-                      Добавить ингредиент
-                    </button>
                   </div>
                 )}
               </FieldArray>
+              {/* <Field name="ingredient">
+                {(
+                  { field }: FieldProps<string> // здесь тайпскрипт бьет ошибку
+                ) => (
+                  <IngredientField options={ingredientOptions} field={field} />
+                )}
+              </Field>
+              <label htmlFor="amount">Введите количество:</label>
+              <Field
+                name="amount"
+                type="number"
+                className="w-48 py-2 px-4 border border-gray-300 rounded"
+              />
+              <Field
+                name="measurement"
+                as="select"
+                className="w-48 py-2 px-4 border border-gray-300 rounded"
+              >
+                {measurementOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </Field> */}
             </div>
             <div className="w-full">
               <h3 className={styles.description_title}>Recipe Preparation</h3>
