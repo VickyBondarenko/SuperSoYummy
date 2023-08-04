@@ -1,7 +1,15 @@
 .add_form {
-  @apply flex flex-col gap-y-8;
+  @apply flex flex-col items-center gap-y-8;
 }
 
 .title_input {
   @apply w-full h-10 bg-whiteText border-b-2 px-2 text-black text-[14px] tracking-[-0.28px];
+}
+
+.description_title {
+  @apply text-[24px] tracking-[-0.48px] font-semibold text-secondaryText mb-6;
+}
+
+.description_input {
+  @apply w-full min-h-[154px] bg-[#D9D9D9] bg-opacity-10 text-start py-2 px-4 resize-y overflow-auto max-h-[300px] rounded-lg;
 }

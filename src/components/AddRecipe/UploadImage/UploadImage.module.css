@@ -1,0 +1,11 @@
+.image_placeholder {
+  @apply relative w-[275px] h-[275px]  rounded-lg;
+}
+
+.image_svg {
+  @apply absolute z-10  bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 w-16 h-16 pointer-events-none;
+}
+
+.image_preview {
+  @apply absolute bottom-0 top-0 right-0 left-0 w-full h-full pointer-events-none rounded-lg;
+}

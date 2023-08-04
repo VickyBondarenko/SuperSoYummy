@@ -7,12 +7,14 @@ import { selectMemoCategoryList } from "../../redux/categoriesSlice/categoriesSe
 
 import { AddRecipeDropdown } from "./AddRecipeDropdown/AddRecipeDropdown";
 import UploadImage from "./UploadImage/UploadImage";
+import { AsimetricRoundedBtn } from "../Buttons/AsimetricRoundedBtn";
 
 interface FormValues {
   title: string;
   about: string;
   category: string;
   time: string;
+  description: string;
 }
 const timeForCook: string[] = [];
 for (let i = 15; i <= 300; i += 5) {
@@ -64,6 +66,7 @@ export const AddRecipe: React.FC = () => {
           about: "",
           category: "Beef",
           time: "",
+          description: "",
         }}
         onSubmit={handleSumbitForm}
       >
@@ -110,7 +113,31 @@ export const AddRecipe: React.FC = () => {
               selectedOption={selectedTime}
               type="Cooking time"
             />
-
+            <div className="w-full">
+              <h3 className={styles.description_title}>Ingredients</h3>
+              <Field
+                as="textarea"
+                name="description"
+                type="textarea"
+                placeholder="Enter recipe"
+                className={styles.description_input}
+              />
+            </div>
+            <div className="w-full">
+              <h3 className={styles.description_title}>Recipe Preparation</h3>
+              <Field
+                as="textarea"
+                name="description"
+                type="textarea"
+                placeholder="Enter recipe"
+                className={styles.description_input}
+              />
+            </div>
+            <AsimetricRoundedBtn
+              btnType="submit"
+              text="Add"
+              style="bg-accentDark text-whiteText w-[129px] self-start"
+            />
             <button type="submit" disabled={isSubmitting}>
               Submit
             </button>
