@@ -1,34 +1,31 @@
 import React, { useState, useEffect } from "react";
 import styles from "./AddRecipe.module.css";
-import {
-  Formik,
-  Form,
-  Field,
-  FormikHelpers,
-  FieldArray,
-  // FieldProps,
-} from "formik";
+import { Formik, Form, Field, FormikHelpers, FieldArray } from "formik";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { fetchCategories } from "../../redux/categoriesSlice/categoriesThunk";
+import { fetchIngredients } from "../../redux/ingredientsSlice/ingredientsThunk";
 import { selectMemoCategoryList } from "../../redux/categoriesSlice/categoriesSelector";
+import { selectMemoIngredientsList } from "../../redux/ingredientsSlice/ingredientSelect";
 
 import { AddRecipeDropdown } from "./AddRecipeDropdown/AddRecipeDropdown";
 import UploadImage from "./UploadImage/UploadImage";
 import { AsimetricRoundedBtn } from "../Buttons/AsimetricRoundedBtn";
-import { IngredientField } from "./IngredientDropdown/IngredientDropdown";
+import { AddIngredient } from "./AddIngedient/AddIngredient";
 
-interface Ingredient {
-  ingredient: string;
-  amount: number;
-  measurement: string;
+import { AddRecipeSchema } from "../../schemas/yupAddRecipeSchema";
+import { selectTheme } from "../../redux/themeSlice/themeSelector";
+
+export interface Ingredient {
+  ingredient?: string;
+  measure?: string;
 }
 
-interface FormValues {
+export interface FormValues {
   title: string;
-  about: string;
+  description: string;
   category: string;
   time: string;
-  description: string;
+  instructions: string;
   ingredients: Ingredient[];
 }
 const timeForCook: string[] = [];
@@ -36,22 +33,23 @@ for (let i = 15; i <= 300; i += 5) {
   timeForCook.push(`${i}`);
 }
 
-const ingredientOptions = ["chicken", "chilli", "onion", "tomato", "potato"];
-
-const measurementOptions = ["gr", "ml", "pcs"];
+const measurementOptions = ["tbs", "tsp", "kg", "g", "ltr", "ml"];
 
 export const AddRecipe: React.FC = () => {
   const dispatch = useAppDispatch();
   const categories = useAppSelector(selectMemoCategoryList);
-  const [selectedCategory, setSelectedCategory] = useState<string>("Beef");
-  const [selectedTime, setSelectedTime] = useState<string>("15");
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const ingredientOptions = useAppSelector(selectMemoIngredientsList);
+  const isDarkMode = useAppSelector(selectTheme);
+  const [selectedImage, setSelectedImage] = useState<File | null | string>(
+    null
+  );
 
   const handleImageSelected = (file: File | null) => {
     setSelectedImage(file);
   };
 
   useEffect(() => {
+    dispatch(fetchIngredients());
     dispatch(fetchCategories());
   }, []);
 
@@ -65,9 +63,9 @@ export const AddRecipe: React.FC = () => {
         JSON.stringify(
           {
             ...values,
-            category: selectedCategory,
-            time: selectedTime,
-            image: selectedImage,
+            image: selectedImage
+              ? selectedImage
+              : "../../images/best-gordon-ramsay-memes-10.jpg",
           },
           null,
           2
@@ -77,168 +75,125 @@ export const AddRecipe: React.FC = () => {
     }, 400);
   };
 
+  const initialValues: FormValues = {
+    title: "",
+    description: "",
+    category: "Beef",
+    time: "",
+    instructions: "",
+    ingredients: Array.from({ length: 1 }, () => ({
+      ingredient: "",
+      measure: "",
+    })),
+  };
+
   return (
     <>
       <Formik
-        initialValues={{
-          title: "",
-          about: "",
-          category: "Beef",
-          time: "",
-          description: "",
-          ingredients: [{ ingredient: "", amount: 0, measurement: "" }],
-        }}
+        initialValues={initialValues}
         onSubmit={handleSumbitForm}
+        validationSchema={AddRecipeSchema}
       >
-        {({
-          // values,
-          // errors,
-          // touched,
-          // handleChange,
-          // handleBlur,
-
-          isSubmitting,
-        }) => (
+        {({ values, errors, touched, handleBlur, setFieldValue }) => (
           <Form className={styles.add_form}>
             <Field
               type="file"
               component={UploadImage}
               onImageSelected={handleImageSelected}
             />
-            <Field
-              type="text"
-              name="title"
-              placeholder="Enter item title"
-              className={styles.title_input}
-            />
-            <Field
-              type="text"
-              name="about"
-              placeholder="Enter about recipe"
-              className={styles.title_input}
-            />
-            <Field
-              name="category"
-              component={AddRecipeDropdown}
-              options={categories}
-              setSelectedOption={setSelectedCategory}
-              selectedOption={selectedCategory}
-              type="Category"
-            />
-            <Field
-              name="Cooking time"
-              component={AddRecipeDropdown}
-              options={timeForCook}
-              setSelectedOption={setSelectedTime}
-              selectedOption={selectedTime}
-              type="Cooking time"
-            />
-            <div className="w-full">
-              <FieldArray name="ingredients">
-                {(arrayHelpers) => (
-                  <div>
-                    <h3 className={styles.description_title}>Ingredients</h3>
-                    <div>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          arrayHelpers.push({
-                            ingredient: "",
-                            amount: 0,
-                            measurement: "",
-                          })
-                        }
-                      >
-                        Add ingredient
-                      </button>
-                    </div>
 
-                    {arrayHelpers.form.values.ingredients.map(
-                      (_ingredient: any, index: number) => (
-                        <div key={index}>
-                          <div>
-                            <Field
-                              name={`ingredients.${index}.ingredient`}
-                              component={IngredientField}
-                              options={ingredientOptions}
-                            />
-                          </div>
-                          <div>
-                            <Field
-                              name={`ingredients.${index}.amount`}
-                              type="number"
-                              className="w-48 py-2 px-4 border border-gray-300 rounded"
-                            />
-                            <label htmlFor={`ingredients.${index}.measurement`}>
-                              Выберите единицы измерения:
-                            </label>
-                            <Field
-                              name={`ingredients.${index}.measurement`}
-                              as="select"
-                              className="w-48 py-2 px-4 border border-gray-300 rounded"
-                            >
-                              {measurementOptions.map((option) => (
-                                <option key={option} value={option}>
-                                  {option}
-                                </option>
-                              ))}
-                            </Field>
-                            <button
-                              type="button"
-                              onClick={() => arrayHelpers.remove(index)}
-                            >
-                              Удалить
-                            </button>
-                          </div>
-                        </div>
-                      )
-                    )}
-                  </div>
-                )}
-              </FieldArray>
-              {/* <Field name="ingredient">
-                {(
-                  { field }: FieldProps<string> // здесь тайпскрипт бьет ошибку
-                ) => (
-                  <IngredientField options={ingredientOptions} field={field} />
-                )}
-              </Field>
-              <label htmlFor="amount">Введите количество:</label>
+            <div className="w-full relative">
               <Field
-                name="amount"
-                type="number"
-                className="w-48 py-2 px-4 border border-gray-300 rounded"
+                type="text"
+                name="title"
+                onBlur={handleBlur}
+                placeholder="Enter item title"
+                className={`${styles.title_input} dark:border-b-[#393A42] dark:text-whiteText `}
               />
-              <Field
-                name="measurement"
-                as="select"
-                className="w-48 py-2 px-4 border border-gray-300 rounded"
-              >
-                {measurementOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </Field> */}
+              {touched.title && errors.title && (
+                <p className={styles.error_message}>{errors.title}</p>
+              )}
             </div>
-            <div className="w-full">
-              <h3 className={styles.description_title}>Recipe Preparation</h3>
+            <div className="w-full relative">
               <Field
-                as="textarea"
+                type="text"
                 name="description"
-                type="textarea"
-                placeholder="Enter recipe"
-                className={styles.description_input}
+                placeholder="Enter about recipe"
+                className={`${styles.title_input} dark:border-b-[#393A42] dark:text-whiteText `}
               />
+              {touched.description && errors.description && (
+                <p className={styles.error_message}>{errors.description}</p>
+              )}
+            </div>
+
+            <div className="w-full relative">
+              <Field
+                name="category"
+                component={AddRecipeDropdown}
+                options={categories}
+                setSelectedOption={(value: any) =>
+                  setFieldValue("category", value)
+                }
+                selectedOption={values.category}
+                isDarkMode={isDarkMode}
+                type="Category"
+              />
+              {touched.category && errors.category && (
+                <p className={styles.error_message}>{errors.category}</p>
+              )}
+            </div>
+
+            <div className="w-full relative">
+              <Field
+                name="time"
+                component={AddRecipeDropdown}
+                options={timeForCook}
+                setSelectedOption={(value: any) => setFieldValue("time", value)}
+                selectedOption={values.time}
+                isDarkMode={isDarkMode}
+                type="Cooking time"
+              />
+              {touched.time && errors.time && (
+                <p className={styles.error_message}>{errors.time}</p>
+              )}
+            </div>
+
+            <FieldArray name="ingredients">
+              {(arrayHelpers) => (
+                <AddIngredient
+                  ingredientOptions={ingredientOptions}
+                  measurementOptions={measurementOptions}
+                  ingredients={arrayHelpers.form.values.ingredients}
+                  push={arrayHelpers.push}
+                  remove={arrayHelpers.remove}
+                  titleStyle={styles.instructions_title}
+                  form={{
+                    touched,
+                    errors: errors as { ingredients: Ingredient[] },
+                  }}
+                />
+              )}
+            </FieldArray>
+            <div className="w-full">
+              <h3 className={styles.instructions_title}>Recipe Preparation</h3>
+              <div className="w-full relative">
+                <Field
+                  as="textarea"
+                  name="instructions"
+                  type="textarea"
+                  placeholder="Enter recipe"
+                  className={styles.instructions_input}
+                />
+                {touched.instructions && errors.instructions && (
+                  <p className={styles.error_message}>{errors.instructions}</p>
+                )}
+              </div>
             </div>
             <AsimetricRoundedBtn
               btnType="submit"
               text="Add"
-              style="bg-accentDark text-whiteText w-[129px] self-start"
+              style="bg-accentDark text-whiteText w-[129px] self-start mb-12"
             />
-            <button type="submit" disabled={isSubmitting}>
-              Submit
-            </button>
           </Form>
         )}
       </Formik>

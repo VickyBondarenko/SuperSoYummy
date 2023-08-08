@@ -1,5 +1,5 @@
 .image_placeholder {
-  @apply relative w-[275px] h-[275px]  rounded-lg;
+  @apply relative w-[275px] h-[275px]  rounded-lg mb-2;
 }
 
 .image_svg {
@@ -8,4 +8,7 @@
 
 .image_preview {
   @apply absolute bottom-0 top-0 right-0 left-0 w-full h-full pointer-events-none rounded-lg;
+}
+.image_warning {
+  @apply absolute text-[12px] text-center text-yellow-600;
 }

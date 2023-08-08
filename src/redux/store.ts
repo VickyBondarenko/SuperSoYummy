@@ -3,6 +3,7 @@ import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import categoriesReducer from "./categoriesSlice/categoriesSlice";
 import subscribeReducer from "./subscribeSlice/subscribeSlice";
 import authReducer from "./authSlice/authSlice";
+import ingredientsReducer from "./ingredientsSlice/ingredientsSlice";
 
 import {
   persistStore,
@@ -17,6 +18,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import mainPageReducer from "./mainPageSlice/mainPageSlice";
 import searchReducer from "./searchSlice/searchSlice";
+import popularReducer from "./popularSlice/popularSlice";
 import themeReducer from "./themeSlice/themeSlise";
 
 const authPersistConfig = {
@@ -34,6 +36,8 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     categories: categoriesReducer,
+    ingredients: ingredientsReducer,
+    popular: popularReducer,
     mainPage: mainPageReducer,
     search: searchReducer,
     subsbcribe: subscribeReducer,

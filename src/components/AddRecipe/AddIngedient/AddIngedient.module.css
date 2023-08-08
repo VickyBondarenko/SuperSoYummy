@@ -1,0 +1,19 @@
+.addIngredient_wrapper {
+  @apply w-full h-[80px] flex justify-between items-center;
+}
+
+.title_wrapper {
+  @apply flex justify-between items-center;
+}
+
+.counter_wrapper {
+  @apply flex justify-between items-center py-[7px] px-4 h-[30px] min-w-[98px] border-2 border-[#ccc] rounded-full;
+}
+
+.couner_btn_icon {
+  @apply fill-accentMain;
+}
+
+.error_message {
+  @apply absolute  text-red-700 text-[12px] -right-[2px];
+}
