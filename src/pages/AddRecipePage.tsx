@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
-import { PageTitle } from "../components/PageTitle/PageTitle";
-import { AddRecipe } from "../components/AddRecipe/AddRecipe";
+
 import { fetchPopularRecipes } from "../redux/popularSlice/popularThunk";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
 import {
   selectIsLoading,
   selectMemoPopularRecipes,
 } from "../redux/popularSlice/popularSelect";
-import { PopularRecipeCard } from "../components/RecipeCard/PopularRecipeCard";
-import { Link } from "react-router-dom";
-import { SocialLinks } from "../components/SocialLinks/SocialLinks";
+
 import { Loader } from "../components/Preloader/Loader";
+import { Link } from "react-router-dom";
+import { PopularRecipeCard } from "../components/RecipeCard/PopularRecipeCard";
+import { PageTitle } from "../components/PageTitle/PageTitle";
+import { AddRecipe } from "../components/AddRecipe/AddRecipe";
+import { SocialLinks } from "../components/SocialLinks/SocialLinks";
 
 export const AddRecipePage: React.FC = () => {
   const dispatch = useAppDispatch();

@@ -3,7 +3,7 @@
 }
 
 .recipe_title {
-  @apply absolute bottom-5 right-5 left-5 rounded-md bg-whiteText dark:bg-accentHalfDark p-4 text-secondaryText dark:text-whiteText text-customSm font-main font-medium;
+  @apply absolute bottom-5 right-5 left-5 rounded-md bg-whiteText  p-4 text-secondaryText  text-customSm font-main font-medium;
 }
 
 .recipe_overlay_time {

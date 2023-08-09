@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
-import { ReactComponent as Camera } from "../../../assets/imageCapture.svg";
 import styles from "./UploadImage.module.css";
+import { ReactComponent as Camera } from "../../../assets/imageCapture.svg";
 
 interface UploadImageProps {
   onImageSelected: (file: File | null) => void;
@@ -9,7 +9,9 @@ interface UploadImageProps {
 const defaultMessage =
   "If you don't upload image, there will be default placeholder instead";
 
-const UploadImage: React.FC<UploadImageProps> = ({ onImageSelected }) => {
+export const UploadImage: React.FC<UploadImageProps> = ({
+  onImageSelected,
+}) => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [imageWarning, setImageWarning] = useState<string | null>(
     defaultMessage
@@ -77,5 +79,3 @@ const UploadImage: React.FC<UploadImageProps> = ({ onImageSelected }) => {
     </div>
   );
 };
-
-export default UploadImage;

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import styles from "./AddRecipe.module.css";
-import { Formik, Form, Field, FormikHelpers, FieldArray } from "formik";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+
 import { fetchCategories } from "../../redux/categoriesSlice/categoriesThunk";
 import { fetchIngredients } from "../../redux/ingredientsSlice/ingredientsThunk";
 import { selectMemoCategoryList } from "../../redux/categoriesSlice/categoriesSelector";
 import { selectMemoIngredientsList } from "../../redux/ingredientsSlice/ingredientSelect";
-
-import { AddRecipeDropdown } from "./AddRecipeDropdown/AddRecipeDropdown";
-import UploadImage from "./UploadImage/UploadImage";
-import { AsimetricRoundedBtn } from "../Buttons/AsimetricRoundedBtn";
-import { AddIngredient } from "./AddIngedient/AddIngredient";
+import { selectTheme } from "../../redux/themeSlice/themeSelector";
 
 import { AddRecipeSchema } from "../../schemas/yupAddRecipeSchema";
-import { selectTheme } from "../../redux/themeSlice/themeSelector";
+import { Formik, Form, Field, FormikHelpers, FieldArray } from "formik";
+
+import { AddRecipeDropdown } from "./AddRecipeDropdown/AddRecipeDropdown";
+import { AddIngredient } from "./AddIngedient/AddIngredient";
+import { AsimetricRoundedBtn } from "../Buttons/AsimetricRoundedBtn";
+import { UploadImage } from "./UploadImage/UploadImage";
 
 export interface Ingredient {
   ingredient?: string;

@@ -43,7 +43,9 @@ export const MainGallery: React.FC = () => {
           {recipeList.map(({ _id, recipes, category }) => {
             return (
               <li key={_id} className={styles.gallery_item}>
-                <h2 className={styles.gallery_title}>{category}</h2>
+                <h2 className={`${styles.gallery_title} dark:text-whiteText`}>
+                  {category}
+                </h2>
                 <ul className={styles.gallery_recipe_list}>
                   {recipes.map((item) => {
                     return (

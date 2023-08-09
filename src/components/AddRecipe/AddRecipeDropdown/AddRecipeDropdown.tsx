@@ -1,7 +1,7 @@
 import React from "react";
-import Select from "react-select";
-// import { useMediaQuery } from "react-responsive";
 import styles from "./AddRecipeDropdown.module.css";
+import Select from "react-select";
+
 import { timeCatSelectStyles } from "../../../styles/reactSelectStyles";
 
 interface IDropdownProps {
@@ -19,10 +19,6 @@ export const AddRecipeDropdown: React.FC<IDropdownProps> = ({
   type,
   isDarkMode,
 }) => {
-  // const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
-  // const isDesktop = useMediaQuery({
-  //   query: "(min-width: 1440px)",
-  // });
   const customStyles = timeCatSelectStyles(isDarkMode);
 
   const selectOptions = options.map((option) => ({

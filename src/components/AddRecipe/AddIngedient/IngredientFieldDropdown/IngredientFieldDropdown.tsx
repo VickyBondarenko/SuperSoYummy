@@ -1,9 +1,10 @@
 import React from "react";
-// import styles from "./IngredientFieldDropdown.module.css";
-import { FieldInputProps } from "formik";
-import Select from "react-select";
-import { IIngredientOption } from "../AddIngredient";
 import { ingrSelectStyles } from "../../../../styles/reactSelectStyles";
+import Select from "react-select";
+
+import { FieldInputProps } from "formik";
+
+import { IIngredientOption } from "../AddIngredient";
 
 interface IngredientFieldProps {
   options: IIngredientOption[];

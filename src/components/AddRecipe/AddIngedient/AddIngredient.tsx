@@ -1,11 +1,14 @@
-import { Field, FormikTouched } from "formik";
-import styles from "./AddIngedient.module.css";
 import React from "react";
-import { IngredientFieldDropdown } from "./IngredientFieldDropdown/IngredientFieldDropdown";
-import { FormValues, Ingredient } from "../AddRecipe";
-import { BiPlus, BiMinus } from "react-icons/bi";
+import styles from "./AddIngedient.module.css";
+
+import { Field, FormikTouched } from "formik";
+
 import { MeasurementDropdown } from "./IngredientFieldDropdown/MeasurementDropdown";
+import { IngredientFieldDropdown } from "./IngredientFieldDropdown/IngredientFieldDropdown";
+import { BiPlus, BiMinus } from "react-icons/bi";
 import { MdOutlineClose } from "react-icons/md";
+
+import { FormValues, Ingredient } from "../AddRecipe";
 
 export interface IIngredientOption {
   _id: string;

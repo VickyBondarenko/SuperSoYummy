@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styles from "./MeasurementDropdown.module.css";
-import { FieldInputProps } from "formik";
-import Select from "react-select";
 import { measurementSelectStyles } from "../../../../styles/reactSelectStyles";
+
+import Select from "react-select";
+import { FieldInputProps } from "formik";
 
 interface IngredientFieldProps {
   options: string[];
