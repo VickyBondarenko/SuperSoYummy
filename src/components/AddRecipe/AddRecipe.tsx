@@ -166,7 +166,8 @@ export const AddRecipe: React.FC = () => {
                   ingredients={arrayHelpers.form.values.ingredients}
                   push={arrayHelpers.push}
                   remove={arrayHelpers.remove}
-                  titleStyle={styles.instructions_title}
+                  titleStyle={`${styles.instructions_title} dark:text-whiteText`}
+                  isDarkMode={isDarkMode}
                   form={{
                     touched,
                     errors: errors as { ingredients: Ingredient[] },
@@ -175,14 +176,18 @@ export const AddRecipe: React.FC = () => {
               )}
             </FieldArray>
             <div className="w-full">
-              <h3 className={styles.instructions_title}>Recipe Preparation</h3>
+              <h3
+                className={`${styles.instructions_title} dark:text-whiteText`}
+              >
+                Recipe Preparation
+              </h3>
               <div className="w-full relative">
                 <Field
                   as="textarea"
                   name="instructions"
                   type="textarea"
                   placeholder="Enter recipe"
-                  className={styles.instructions_input}
+                  className={`${styles.instructions_input} dark:border-[#393A42] dark:text-whiteText`}
                 />
                 {touched.instructions && errors.instructions && (
                   <p className={styles.error_message}>{errors.instructions}</p>
@@ -192,7 +197,9 @@ export const AddRecipe: React.FC = () => {
             <AsimetricRoundedBtn
               btnType="submit"
               text="Add"
-              style="bg-accentDark text-whiteText w-[129px] self-start mb-12"
+              style="bg-accentDark dark:bg-accentMain 
+              hover:bg-accentDarker hover:dark:bg-overlayBackdrop  border-transparent
+              hover:border-accentMain hover:dark:border-whiteText transition text-whiteText w-[129px] self-start mb-12"
             />
           </Form>
         )}

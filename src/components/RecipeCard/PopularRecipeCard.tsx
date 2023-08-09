@@ -22,8 +22,12 @@ export const PopularRecipeCard: React.FC<IPopularProps> = ({
       />
 
       <div className={styles.popular_info}>
-        <h4 className={styles.popular_title}>{title}</h4>
-        <p className={styles.popular_text}>
+        <h4 className={`${styles.popular_title} dark:text-whiteText`}>
+          {title}
+        </h4>
+        <p
+          className={`${styles.popular_text} dark:text-whiteText dark:text-opacity-60`}
+        >
           {truncateText(instructions as string)}
         </p>
       </div>

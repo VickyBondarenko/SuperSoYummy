@@ -4,6 +4,6 @@
 }
 
 .social_link_svg {
-  @apply fill-accentMain dark:fill-whiteText
-  hover:fill-overlayBackdrop dark:hover:fill-white transition;
+  @apply fill-accentMain 
+  hover:fill-overlayBackdrop hover:scale-110 transition;
 }

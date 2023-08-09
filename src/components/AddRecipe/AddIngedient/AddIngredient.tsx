@@ -19,6 +19,7 @@ interface IAddIngredientProps {
   push: (ingredient: Ingredient) => void;
   remove: (index: number) => void;
   titleStyle: string;
+  isDarkMode: boolean;
   form: {
     touched: FormikTouched<FormValues>;
     errors: {
@@ -35,6 +36,7 @@ export const AddIngredient: React.FC<IAddIngredientProps> = ({
   push,
   titleStyle,
   form: { touched, errors },
+  isDarkMode,
 }) => {
   return (
     <div className="w-full flex flex-col gap-6">
@@ -74,6 +76,7 @@ export const AddIngredient: React.FC<IAddIngredientProps> = ({
               name={`ingredients.${index}.ingredient`}
               component={IngredientFieldDropdown}
               options={ingredientOptions}
+              isDarkMode={isDarkMode}
             />
             {touched.ingredients?.[index]?.ingredient && errors.ingredients && (
               <p className={styles.error_message}>
@@ -86,6 +89,7 @@ export const AddIngredient: React.FC<IAddIngredientProps> = ({
               name={`ingredients.${index}.measure`}
               component={MeasurementDropdown}
               options={measurementOptions}
+              isDarkMode={isDarkMode}
               className=" max-w-[48px] py-2 px-4 border border-gray-300 rounded"
             />
             {touched.ingredients?.[index]?.measure && errors.ingredients && (
@@ -95,7 +99,11 @@ export const AddIngredient: React.FC<IAddIngredientProps> = ({
             )}
           </div>
           {ingredients.length > 1 && (
-            <button type="button" onClick={() => remove(index)}>
+            <button
+              className="dark:text-whiteText"
+              type="button"
+              onClick={() => remove(index)}
+            >
               <MdOutlineClose />
             </button>
           )}

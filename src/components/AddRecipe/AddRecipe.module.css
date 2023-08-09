@@ -11,7 +11,7 @@
 }
 
 .instructions_input {
-  @apply w-full min-h-[154px] bg-[#D9D9D9] bg-opacity-10 text-start py-2 px-4 resize-y overflow-auto max-h-[300px] rounded-lg;
+  @apply w-full min-h-[154px] bg-transparent border-2 text-start py-2 px-4 resize-y overflow-auto max-h-[300px] rounded-lg;
 }
 
 .error_message {
