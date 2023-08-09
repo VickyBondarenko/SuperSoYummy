@@ -48,7 +48,7 @@ export const SubscribeForm: React.FC = () => {
             }
             value={formValue}
             placeholder="Enter your email address"
-            className={styles.subscribe_input}
+            className={`${styles.subscribe_input} dark:border-whiteText placeholder:dark:text-whiteText`}
           />
         </label>
 

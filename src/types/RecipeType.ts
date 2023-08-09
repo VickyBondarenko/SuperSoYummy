@@ -3,6 +3,8 @@ export interface IRecipe {
   title: string;
   preview: string;
   thumb?: string;
+  instructions?: string;
   description: string;
   time: string;
+  point?: string;
 }

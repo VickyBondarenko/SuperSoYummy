@@ -1,0 +1,20 @@
+.popular_item {
+  @apply w-full flex gap-3 border-b-[1px]  border-b-[#707070] border-opacity-20 pb-4
+  md:flex-grow;
+}
+
+.popular_image {
+  @apply block w-[105px] rounded-md;
+}
+
+.popular_info {
+  @apply pr-4;
+}
+
+.popular_title {
+  @apply text-customSm font-medium tracking-[-0.24px] text-secondaryText dark:text-whiteText mb-1;
+}
+
+.popular_text {
+  @apply text-[12px] leading-4 tracking-[-0.24px] text-[#7e7e7e] whitespace-normal;
+}

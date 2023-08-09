@@ -7,22 +7,34 @@ export const SocialLinks: React.FC = () => {
     <ul className={styles.social_link_list}>
       <li>
         <a href="https://www.facebook.com/" target="_blank">
-          <BsFacebook className={styles.social_link_svg} size={20} />
+          <BsFacebook
+            className={`${styles.social_link_svg} dark:fill-whiteText dark:hover:fill-white`}
+            size={20}
+          />
         </a>
       </li>
       <li>
         <a href="https://www.youtube.com/" target="_blank">
-          <BsYoutube className={styles.social_link_svg} size={20} />
+          <BsYoutube
+            className={`${styles.social_link_svg} dark:fill-whiteText dark:hover:fill-white`}
+            size={20}
+          />
         </a>
       </li>
       <li>
         <a href="https://twitter.com/" target="_blank">
-          <BsTwitter className={styles.social_link_svg} size={20} />
+          <BsTwitter
+            className={`${styles.social_link_svg} dark:fill-whiteText dark:hover:fill-white`}
+            size={20}
+          />
         </a>
       </li>
       <li>
         <a href="https://www.instagram.com/" target="_blank">
-          <BsInstagram className={styles.social_link_svg} size={20} />
+          <BsInstagram
+            className={`${styles.social_link_svg} dark:fill-whiteText dark:hover:fill-white`}
+            size={20}
+          />
         </a>
       </li>
     </ul>

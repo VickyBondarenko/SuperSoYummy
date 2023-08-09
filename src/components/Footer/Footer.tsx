@@ -34,7 +34,9 @@ export const Footer: React.FC = () => {
       className={`${styles.footer_container} ${styles.footer_container_before}`}
     >
       <div className={styles.footer_content_wrapper}>
-        <div className={styles.footer_content_container}>
+        <div
+          className={`${styles.footer_content_container} dark:bg-accentMain `}
+        >
           <div className={styles.footer_title_wrapper}>
             <Link to="/" className={styles.footer_logo_wrapper}>
               <Logo className={styles.footer_logo} />
@@ -48,7 +50,7 @@ export const Footer: React.FC = () => {
                 <li
                   key={index}
                   onClick={() => dispatch(changeParam("Ingredient"))}
-                  className={styles.nav_item}
+                  className={`${styles.nav_item} dark:hover:text-accentDark`}
                 >
                   <Link to={`${item.route}`}>{item.name}</Link>
                 </li>
@@ -59,7 +61,9 @@ export const Footer: React.FC = () => {
           <SocialLinks />
         </div>
       </div>
-      <div className={`${styles.copywrite_wrapper} ${styles.copywrite_after}`}>
+      <div
+        className={`${styles.copywrite_wrapper} ${styles.copywrite_after} dark:bg-accentDarker dark:text-whiteText`}
+      >
         <span className="mr-4 opacity-50">© 2023 All Rights Reserved. </span>
         <span className="opacity-50">Terms of Service</span>
       </div>

@@ -9,6 +9,10 @@
     height: 4px;
   }
 
+  .scrollbar-dropdown::-webkit-scrollbar {
+    width: 4px;
+  }
+
   .scrollbar::-webkit-scrollbar-thumb {
     border-radius: 100vh;
   }
