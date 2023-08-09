@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./IngredientFieldDropdown.module.css";
+// import styles from "./IngredientFieldDropdown.module.css";
 import { FieldInputProps } from "formik";
 import Select from "react-select";
 import { IIngredientOption } from "../AddIngredient";
@@ -31,19 +31,17 @@ export const IngredientFieldDropdown: React.FC<IngredientFieldProps> = ({
   }));
 
   return (
-    <div className={styles.ingr_input_wrapper}>
-      <Select
-        options={formattedOptions}
-        styles={customStyles}
-        isSearchable={true}
-        value={
-          field.value
-            ? formattedOptions.find((opt) => opt.value === field.value)
-            : null
-        }
-        onChange={handleSelect}
-        placeholder="Select ingredient"
-      />
-    </div>
+    <Select
+      options={formattedOptions}
+      styles={customStyles}
+      isSearchable={true}
+      value={
+        field.value
+          ? formattedOptions.find((opt) => opt.value === field.value)
+          : null
+      }
+      onChange={handleSelect}
+      placeholder="Select ingredient"
+    />
   );
 };

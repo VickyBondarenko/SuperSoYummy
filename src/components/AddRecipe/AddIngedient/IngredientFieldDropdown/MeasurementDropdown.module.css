@@ -1,5 +1,5 @@
 .measureField_wrapper {
-  @apply h-full flex flex-col items-center gap-2;
+  @apply h-full w-[90px] flex flex-col items-center gap-2;
 }
 
 .amount_input {

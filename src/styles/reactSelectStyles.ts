@@ -4,7 +4,7 @@ export const timeCatSelectStyles = (isDarkMode: boolean) => {
       ...provided,
       marginBottom: "4px",
       border: `2px solid ${isDarkMode ? "#393A42" : "#ccc"}`,
-      width: "120px",
+      width: "140px",
       borderRadius: "4px",
       display: "flex",
       outline: state.isFocused && "2px solid #8BAA36",
@@ -91,8 +91,10 @@ export const ingrSelectStyles = (isDarkMode: boolean) => {
     control: (provided: any, state: { isFocused: boolean }) => ({
       ...provided,
       height: "100%",
+      width: "100%",
       border: `2px solid ${isDarkMode ? "#393A42" : "#ccc"}`,
       borderRadius: "4px",
+
       display: "flex",
       outline: state.isFocused && "2px solid #8BAA36",
       backgroundColor: "transparent",
@@ -104,7 +106,7 @@ export const ingrSelectStyles = (isDarkMode: boolean) => {
     valueContainer: (provided: any) => ({
       ...provided,
       height: "53px",
-      width: "150px",
+      width: "100%",
       backgroundColor: "transparent",
       cursor: "text",
     }),

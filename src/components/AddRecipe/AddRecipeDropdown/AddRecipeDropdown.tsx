@@ -1,5 +1,6 @@
 import React from "react";
 import Select from "react-select";
+// import { useMediaQuery } from "react-responsive";
 import styles from "./AddRecipeDropdown.module.css";
 import { timeCatSelectStyles } from "../../../styles/reactSelectStyles";
 
@@ -18,6 +19,10 @@ export const AddRecipeDropdown: React.FC<IDropdownProps> = ({
   type,
   isDarkMode,
 }) => {
+  // const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
+  // const isDesktop = useMediaQuery({
+  //   query: "(min-width: 1440px)",
+  // });
   const customStyles = timeCatSelectStyles(isDarkMode);
 
   const selectOptions = options.map((option) => ({
@@ -30,7 +35,7 @@ export const AddRecipeDropdown: React.FC<IDropdownProps> = ({
       className={`${styles.dropdown_wrapper} dark:border-b-[#393A42] dark:text-gray-500 `}
     >
       <p className={styles.dropdown_title}>{type}</p>
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center">
         <Select
           options={selectOptions}
           value={{ value: selectedOption, label: selectedOption }}
@@ -40,9 +45,6 @@ export const AddRecipeDropdown: React.FC<IDropdownProps> = ({
           styles={customStyles}
           placeholder="time"
         />
-        {type === "Cooking time" && (
-          <span className={styles.min_label}> min</span>
-        )}
       </div>
     </div>
   );

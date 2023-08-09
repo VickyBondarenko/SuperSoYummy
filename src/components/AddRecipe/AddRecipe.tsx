@@ -30,7 +30,7 @@ export interface FormValues {
 }
 const timeForCook: string[] = [];
 for (let i = 15; i <= 300; i += 5) {
-  timeForCook.push(`${i}`);
+  timeForCook.push(`${i} min`);
 }
 
 const measurementOptions = ["tbs", "tsp", "kg", "g", "ltr", "ml"];
@@ -96,66 +96,69 @@ export const AddRecipe: React.FC = () => {
       >
         {({ values, errors, touched, handleBlur, setFieldValue }) => (
           <Form className={styles.add_form}>
-            <Field
-              type="file"
-              component={UploadImage}
-              onImageSelected={handleImageSelected}
-            />
-
-            <div className="w-full relative">
+            <div className={styles.form_container}>
               <Field
-                type="text"
-                name="title"
-                onBlur={handleBlur}
-                placeholder="Enter item title"
-                className={`${styles.title_input} dark:border-b-[#393A42] dark:text-whiteText `}
+                type="file"
+                component={UploadImage}
+                onImageSelected={handleImageSelected}
               />
-              {touched.title && errors.title && (
-                <p className={styles.error_message}>{errors.title}</p>
-              )}
-            </div>
-            <div className="w-full relative">
-              <Field
-                type="text"
-                name="description"
-                placeholder="Enter about recipe"
-                className={`${styles.title_input} dark:border-b-[#393A42] dark:text-whiteText `}
-              />
-              {touched.description && errors.description && (
-                <p className={styles.error_message}>{errors.description}</p>
-              )}
-            </div>
-
-            <div className="w-full relative">
-              <Field
-                name="category"
-                component={AddRecipeDropdown}
-                options={categories}
-                setSelectedOption={(value: any) =>
-                  setFieldValue("category", value)
-                }
-                selectedOption={values.category}
-                isDarkMode={isDarkMode}
-                type="Category"
-              />
-              {touched.category && errors.category && (
-                <p className={styles.error_message}>{errors.category}</p>
-              )}
-            </div>
-
-            <div className="w-full relative">
-              <Field
-                name="time"
-                component={AddRecipeDropdown}
-                options={timeForCook}
-                setSelectedOption={(value: any) => setFieldValue("time", value)}
-                selectedOption={values.time}
-                isDarkMode={isDarkMode}
-                type="Cooking time"
-              />
-              {touched.time && errors.time && (
-                <p className={styles.error_message}>{errors.time}</p>
-              )}
+              <div className={styles.form_subcontainer}>
+                <div className="w-full relative">
+                  <Field
+                    type="text"
+                    name="title"
+                    onBlur={handleBlur}
+                    placeholder="Enter item title"
+                    className={`${styles.title_input} dark:border-b-[#393A42] dark:text-whiteText `}
+                  />
+                  {touched.title && errors.title && (
+                    <p className={styles.error_message}>{errors.title}</p>
+                  )}
+                </div>
+                <div className="w-full relative">
+                  <Field
+                    type="text"
+                    name="description"
+                    placeholder="Enter about recipe"
+                    className={`${styles.title_input} dark:border-b-[#393A42] dark:text-whiteText `}
+                  />
+                  {touched.description && errors.description && (
+                    <p className={styles.error_message}>{errors.description}</p>
+                  )}
+                </div>
+                <div className="w-full relative">
+                  <Field
+                    name="category"
+                    component={AddRecipeDropdown}
+                    options={categories}
+                    setSelectedOption={(value: any) =>
+                      setFieldValue("category", value)
+                    }
+                    selectedOption={values.category}
+                    isDarkMode={isDarkMode}
+                    type="Category"
+                  />
+                  {touched.category && errors.category && (
+                    <p className={styles.error_message}>{errors.category}</p>
+                  )}
+                </div>
+                <div className="w-full relative">
+                  <Field
+                    name="time"
+                    component={AddRecipeDropdown}
+                    options={timeForCook}
+                    setSelectedOption={(value: any) =>
+                      setFieldValue("time", value)
+                    }
+                    selectedOption={values.time}
+                    isDarkMode={isDarkMode}
+                    type="Cooking time"
+                  />
+                  {touched.time && errors.time && (
+                    <p className={styles.error_message}>{errors.time}</p>
+                  )}
+                </div>
+              </div>
             </div>
 
             <FieldArray name="ingredients">
@@ -175,7 +178,7 @@ export const AddRecipe: React.FC = () => {
                 />
               )}
             </FieldArray>
-            <div className="w-full">
+            <div className="w-full xl:w-[610px]">
               <h3
                 className={`${styles.instructions_title} dark:text-whiteText`}
               >
@@ -199,7 +202,8 @@ export const AddRecipe: React.FC = () => {
               text="Add"
               style="bg-accentDark dark:bg-accentMain 
               hover:bg-accentDarker hover:dark:bg-overlayBackdrop  border-transparent
-              hover:border-accentMain hover:dark:border-whiteText transition text-whiteText w-[129px] self-start mb-12"
+              hover:border-accentMain hover:dark:border-whiteText transition text-whiteText w-[129px] self-start mb-12
+              md:w-[162px] md:h-[52px] md:flex md:items-center md:justify-center"
             />
           </Form>
         )}

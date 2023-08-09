@@ -39,7 +39,7 @@ export const AddIngredient: React.FC<IAddIngredientProps> = ({
   isDarkMode,
 }) => {
   return (
-    <div className="w-full flex flex-col gap-6">
+    <div className="w-full flex flex-col gap-6 xl:w-[610px] ">
       <div className={styles.title_wrapper}>
         <h3 className={`${titleStyle} mb-0`}>Ingredients</h3>
         <div className={styles.counter_wrapper}>
@@ -54,7 +54,9 @@ export const AddIngredient: React.FC<IAddIngredientProps> = ({
               }`}
             />
           </button>
-          <p className="dark:text-whiteText">{ingredients.length}</p>
+          <p className="dark:text-whiteText md:text-customSm">
+            {ingredients.length}
+          </p>
           <button
             type="button"
             onClick={() =>
@@ -71,32 +73,35 @@ export const AddIngredient: React.FC<IAddIngredientProps> = ({
 
       {ingredients.map((_ingredient: any, index: number) => (
         <div key={index} className={styles.addIngredient_wrapper}>
-          <div className="w-full relative">
-            <Field
-              name={`ingredients.${index}.ingredient`}
-              component={IngredientFieldDropdown}
-              options={ingredientOptions}
-              isDarkMode={isDarkMode}
-            />
-            {touched.ingredients?.[index]?.ingredient && errors.ingredients && (
-              <p className={styles.error_message}>
-                {errors.ingredients[index]?.ingredient}
-              </p>
-            )}
-          </div>
-          <div className="w-full relative">
-            <Field
-              name={`ingredients.${index}.measure`}
-              component={MeasurementDropdown}
-              options={measurementOptions}
-              isDarkMode={isDarkMode}
-              className=" max-w-[48px] py-2 px-4 border border-gray-300 rounded"
-            />
-            {touched.ingredients?.[index]?.measure && errors.ingredients && (
-              <p className={styles.error_message}>
-                {errors.ingredients[index]?.measure}
-              </p>
-            )}
+          <div className={styles.ingredient_input_wrapper}>
+            <div className="w-full relative">
+              <Field
+                name={`ingredients.${index}.ingredient`}
+                component={IngredientFieldDropdown}
+                options={ingredientOptions}
+                isDarkMode={isDarkMode}
+              />
+              {touched.ingredients?.[index]?.ingredient &&
+                errors.ingredients && (
+                  <p className={styles.error_message}>
+                    {errors.ingredients[index]?.ingredient}
+                  </p>
+                )}
+            </div>
+            <div className="w-full relative">
+              <Field
+                name={`ingredients.${index}.measure`}
+                component={MeasurementDropdown}
+                options={measurementOptions}
+                isDarkMode={isDarkMode}
+                className=" max-w-[48px] py-2 px-4 border border-gray-300 rounded"
+              />
+              {touched.ingredients?.[index]?.measure && errors.ingredients && (
+                <p className={styles.error_message}>
+                  {errors.ingredients[index]?.measure}
+                </p>
+              )}
+            </div>
           </div>
           {ingredients.length > 1 && (
             <button
