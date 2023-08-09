@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6); /* Прозрачный черный цвет */
-  z-index: 9999; /* Убедитесь, что бекдроп над другими элементами */
-  pointer-events: auto; /* Обработка событий клика */
+  background-color: inherit;
+  z-index: 9999;
+  pointer-events: auto;
 }
