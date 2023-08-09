@@ -26,6 +26,11 @@ const authPersistConfig = {
   storage,
 };
 
+const themePersistConfig = {
+  key: "theme",
+  storage,
+};
+
 const customMiddleware = getDefaultMiddleware({
   serializableCheck: {
     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
@@ -41,7 +46,7 @@ export const store = configureStore({
     mainPage: mainPageReducer,
     search: searchReducer,
     subsbcribe: subscribeReducer,
-    theme: themeReducer,
+    theme: persistReducer(themePersistConfig, themeReducer),
   },
   middleware: customMiddleware,
 });

@@ -32,7 +32,7 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
   };
 
   return (
-    <header ref={ref} className="relative   w-full z-10 dark:bg-yellow-300 ">
+    <header ref={ref} className="relative   w-full z-10  ">
       <div className="container mx-auto flex justify-between items-center w-full bg-transparent px-4 py-[21px] xl:px-[100px]">
         <Link to="/">
           <Logo style="p-[6px] md:p-[7px] h-10 md:h-11 w-10 md:w-11" />
@@ -43,10 +43,10 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
               {navList.map((item, index: number) => (
                 <li
                   key={index}
-                  className={`font-main font-medium text-customXs text-[#23262A] transition focus:text-accentMain ${
+                  className={`font-main font-medium text-customXs text-[#23262A] transition focus:text-accentMain dark:focus:text-accentMain dark:text-whiteText  ${
                     item.route === location.pathname
-                      ? "text-accentMain"
-                      : "hover:text-accentMain"
+                      ? "text-accentMain dark:text-accentMain"
+                      : "hover:text-accentMain dark:hover:text-accentMain"
                   }`}
                 >
                   <Link to={`${item.route}`}>{item.name}</Link>
@@ -55,10 +55,10 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
               <li>
                 <Link to="/search">
                   <SearchSvg
-                    className={`w-6 h-6 transition stroke-accentDark focus:stroke-accentMain  ${
+                    className={`w-6 h-6 transition stroke-accentDark dark:stroke-whiteText focus:stroke-accentMain dark:focus:stroke-accentMain  ${
                       "/search" === location.pathname
-                        ? "stroke-accentMain"
-                        : "hover:stroke-accentMain"
+                        ? "stroke-accentMain dark:stroke-accentMain"
+                        : "hover:stroke-accentMain dark:hover:stroke-accentMain"
                     }`}
                   />
                 </Link>
@@ -79,7 +79,7 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
           {isDesktop ? (
             <ToggleTheme />
           ) : (
-            <MenuSvg className="stroke-accentDark w-7 md:w-8 h-7 md:h-8 " />
+            <MenuSvg className="stroke-accentDark dark:stroke-whiteText w-7 md:w-8 h-7 md:h-8 " />
           )}
         </div>
       </div>
