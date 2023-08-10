@@ -2,6 +2,8 @@ import { forwardRef } from "react";
 import { Logo } from "../Logo/Logo";
 import { ReactComponent as MenuSvg } from "../../images/svg/burgerMenu.svg";
 import { ReactComponent as SearchSvg } from "../../images/svg/search-icon.svg";
+import EditModal from "../Modals/EditModal";
+import LogOutModal from "../Modals/LogOutModal";
 import { UserInfo } from "../UserInfo/UserInfo";
 import { INavList } from "../Footer/Footer";
 import { Link, useLocation } from "react-router-dom";
@@ -16,10 +18,26 @@ import SessionEndModal from "../Modals/SessionEndModal";
 
 export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const handleOpenModal = () => {
     setIsOpen(true);
   };
+
+  //  const handleCloseModal = () => {
+  //    setIsOpen(false);
+  //  };
+
+  //   const handleOpenEditModal = () => {
+  //     handleCloseModal();
+  //     setIsEditModalOpen(true);
+  //   };
+
+  //   const handleOpenLogOutModal = () => {
+  //     handleCloseModal();
+  //     setIsLogOutModalOpen(true);
+  //   };
 
   const navList: INavList[] = [
     { name: "Categories", route: "/categories" },
@@ -80,16 +98,19 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
             <UserInfo />
           </div>
 
-          <MainUserModal isOpen={isOpen} setIsOpen={setIsOpen} />
+          <MainUserModal
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            setIsEditModalOpen={setIsEditModalOpen}
+            setIsLogOutModalOpen={setIsLogOutModalOpen}
+          />
+          <EditModal isOpen={isEditModalOpen} setIsOpen={setIsEditModalOpen} />
+          <LogOutModal
+            isOpen={isLogOutModalOpen}
+            setIsOpen={setIsLogOutModalOpen}
+          />
           <SessionEndModal />
-          {/* <button
-            id="logOutModal"
-            className="hidden"
-            type="button"
-            onClick={handleLogOut}
-          >
-            modal
-          </button> */}
+
           {isDesktop ? (
             <ToggleTheme />
           ) : (
