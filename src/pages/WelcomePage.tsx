@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { AsimetricRoundedBtn } from "../components/Buttons/AsimetricRoundedBtn";
 import { Logo } from "../components/Logo/Logo";
 
@@ -17,18 +18,18 @@ export const WelcomePage = () => {
           retrieve your own recipes at any time.
         </p>
         <div className="flex justify-center gap-3 md:gap-[18px]">
-          <a href="/register">
+          <Link to="/register">
             <AsimetricRoundedBtn
               style="bg-accentMain border-transparent text-whiteText hover:bg-accentDark  focus:bg-accentDark transition"
               text="Registration"
             />
-          </a>
-          <a href="/login">
+          </Link>
+          <Link to="/login">
             <AsimetricRoundedBtn
               style="border-whiteText hover:border-accentMain text-whiteText hover:text-accentMain focus:border-accentMain focus:text-accentMain transition"
               text="Sign In"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,0 +1,15 @@
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  pointer-events: auto;
+  display: none;
+}
+
+.modalContent {
+  @apply absolute  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-6 md:p-10 xl:p-[50px]  bg-white  rounded-lg  border border-accentMain   outline-none;
+}

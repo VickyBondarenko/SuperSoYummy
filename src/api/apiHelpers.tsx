@@ -1,15 +1,16 @@
 import { SerializedError } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
-import { Notify } from "notiflix";
+// import { Notify } from "notiflix";
 
 const VITE_BACKEND_BASE_URL: string = import.meta.env.VITE_BACKEND_BASE_URL;
 
 axios.defaults.baseURL = VITE_BACKEND_BASE_URL;
 
 const handleLogOut = () => {
-  var modal = document.getElementById("myModal");
+  const modal = document.getElementById("logOutModal");
   if (modal) {
     modal.style.display = "block";
+    document.body.classList.add("overflow-hidden");
   }
 };
 
@@ -45,7 +46,7 @@ axios.interceptors.response.use(
         const axiosError = error as AxiosError<SerializedError>;
         if (axiosError.response?.status === 403) {
           handleLogOut();
-          Notify.failure("Session timeout. Login again");
+          // Notify.failure("Session timeout. Login again");
         }
 
         return Promise.reject(error);
@@ -54,5 +55,3 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-// };
