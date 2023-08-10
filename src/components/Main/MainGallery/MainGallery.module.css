@@ -9,7 +9,7 @@
 }
 
 .gallery_title {
-  @apply font-semibold text-mainText dark:text-whiteText text-customLg tracking-[-0.56px] mb-8
+  @apply font-semibold text-mainText  text-customLg tracking-[-0.56px] mb-8
   md:text-customXxl md:tracking-[-0.88px] md:mb-10
   xl:mb-[50px];
 }

@@ -1,0 +1,11 @@
+.measureField_wrapper {
+  @apply h-full w-[90px] flex flex-col items-center gap-2;
+}
+
+.amount_input {
+  @apply w-[90px] h-[30px] px-3 py-1 rounded-md border-2 border-[#ccc] bg-transparent text-black  cursor-text hover:border-black transition placeholder:text-[#808080];
+}
+
+.measure_wrapper {
+  @apply w-[50px] h-[30px] px-1 py-1 rounded-md border-2 border-transparent  text-black  cursor-text hover:border-black transition;
+}

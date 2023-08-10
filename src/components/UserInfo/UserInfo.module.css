@@ -7,5 +7,5 @@
 }
 
 .userInfo_userName {
-  @apply font-main font-semibold text-accentDark text-[12px] md:text-[14px] leading-[20px] md:leading-[24px];
+  @apply font-main font-semibold text-accentDark  text-[12px] md:text-[14px] leading-[20px] md:leading-[24px] dark:text-whiteText;
 }
