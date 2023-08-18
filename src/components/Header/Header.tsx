@@ -2,16 +2,43 @@ import { forwardRef } from "react";
 import { Logo } from "../Logo/Logo";
 import { ReactComponent as MenuSvg } from "../../images/svg/burgerMenu.svg";
 import { ReactComponent as SearchSvg } from "../../images/svg/search-icon.svg";
+import EditModal from "../Modals/EditModal";
+import LogOutModal from "../Modals/LogOutModal";
 import { UserInfo } from "../UserInfo/UserInfo";
 import { INavList } from "../Footer/Footer";
 import { Link, useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import ToggleTheme from "../ToggleTheme/ThoggleTheme";
-import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
-import { logoutUser } from "../../redux/authSlice/authThunk";
-import { selectUserInfo } from "../../redux/authSlice/authSelectors";
+// import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+// import { logoutUser } from "../../redux/authSlice/authThunk";
+// import { selectUserInfo } from "../../redux/authSlice/authSelectors";
+import MainUserModal from "../Modals/MainUserModal";
+import { useState } from "react";
+import SessionEndModal from "../Modals/SessionEndModal";
 
 export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsOpen(true);
+  };
+
+  //  const handleCloseModal = () => {
+  //    setIsOpen(false);
+  //  };
+
+  //   const handleOpenEditModal = () => {
+  //     handleCloseModal();
+  //     setIsEditModalOpen(true);
+  //   };
+
+  //   const handleOpenLogOutModal = () => {
+  //     handleCloseModal();
+  //     setIsLogOutModalOpen(true);
+  //   };
+
   const navList: INavList[] = [
     { name: "Categories", route: "/categories" },
     { name: "Add Recipes", route: "/add" },
@@ -19,17 +46,17 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
     { name: "Favorite", route: "/favorite" },
     { name: "Shopping list", route: "/shopping" },
   ];
-  const { _id: userId } = useAppSelector(selectUserInfo);
-  const dispatch = useAppDispatch();
+  // const { _id: userId } = useAppSelector(selectUserInfo);
+  // const dispatch = useAppDispatch();
   const location = useLocation();
 
   const isDesktop = useMediaQuery({
     query: "(min-width: 1024px)",
   });
 
-  const handleLogOut = () => {
-    dispatch(logoutUser(userId));
-  };
+  // const handleLogOut = () => {
+  //   dispatch(logoutUser(userId));
+  // };
 
   return (
     <header ref={ref} className="relative   w-full z-10  ">
@@ -67,15 +94,23 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
           </nav>
         )}
         <div className="flex items-center gap-6 md:gap-[50px]">
-          <UserInfo />
-          <button
-            id="myModal"
-            className="hidden"
-            type="button"
-            onClick={handleLogOut}
-          >
-            modal
-          </button>
+          <div onClick={handleOpenModal}>
+            <UserInfo />
+          </div>
+
+          <MainUserModal
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            setIsEditModalOpen={setIsEditModalOpen}
+            setIsLogOutModalOpen={setIsLogOutModalOpen}
+          />
+          <EditModal isOpen={isEditModalOpen} setIsOpen={setIsEditModalOpen} />
+          <LogOutModal
+            isOpen={isLogOutModalOpen}
+            setIsOpen={setIsLogOutModalOpen}
+          />
+          <SessionEndModal />
+
           {isDesktop ? (
             <ToggleTheme />
           ) : (
