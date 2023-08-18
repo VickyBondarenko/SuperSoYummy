@@ -15,9 +15,10 @@ export interface IRecipeInfo {
 
 export const RecipeCard: React.FC<IRecipeInfo> = memo((props) => {
   const { preview, title, description, time } = props;
+
   const defaultDescription =
     description.trim() === "" ? "No description" : description;
-  const defaultTime = time.trim() === "" ? "N/A" : `${time} min`;
+  const defaultTime = time.trim() === "" ? "N/A" : `${time}`;
   return (
     <li className="relative overflow-hidden group">
       <img src={preview} className={styles.recipe_image} />
@@ -32,7 +33,7 @@ export const RecipeCard: React.FC<IRecipeInfo> = memo((props) => {
         </p>
         <p className={styles.recipe_overlay_time}>
           <BsClock />
-          {defaultTime}
+          {`${defaultTime} ${defaultTime.length < 6 ? "min" : ""}`}
         </p>
       </div>
     </li>

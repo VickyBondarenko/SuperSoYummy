@@ -1,34 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "./AddRecipe.module.css";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 
 import { fetchCategories } from "../../redux/categoriesSlice/categoriesThunk";
 import { fetchIngredients } from "../../redux/ingredientsSlice/ingredientsThunk";
+import { fetchAddOwnRecipe } from "../../redux/ownRecipeSlice/ownRecipeThunk";
 import { selectMemoCategoryList } from "../../redux/categoriesSlice/categoriesSelector";
 import { selectMemoIngredientsList } from "../../redux/ingredientsSlice/ingredientSelect";
 import { selectTheme } from "../../redux/themeSlice/themeSelector";
 
 import { AddRecipeSchema } from "../../schemas/yupAddRecipeSchema";
 import { Formik, Form, Field, FormikHelpers, FieldArray } from "formik";
+import { IAddOwnRecipeForm, IIngredient } from "../../types/ownRecipeTypes";
 
 import { AddRecipeDropdown } from "./AddRecipeDropdown/AddRecipeDropdown";
 import { AddIngredient } from "./AddIngedient/AddIngredient";
 import { AsimetricRoundedBtn } from "../Buttons/AsimetricRoundedBtn";
 import { UploadImage } from "./UploadImage/UploadImage";
 
-export interface Ingredient {
-  ingredient?: string;
-  measure?: string;
-}
-
-export interface FormValues {
-  title: string;
-  description: string;
-  category: string;
-  time: string;
-  instructions: string;
-  ingredients: Ingredient[];
-}
 const timeForCook: string[] = [];
 for (let i = 15; i <= 300; i += 5) {
   timeForCook.push(`${i} min`);
@@ -41,13 +30,6 @@ export const AddRecipe: React.FC = () => {
   const categories = useAppSelector(selectMemoCategoryList);
   const ingredientOptions = useAppSelector(selectMemoIngredientsList);
   const isDarkMode = useAppSelector(selectTheme);
-  const [selectedImage, setSelectedImage] = useState<File | null | string>(
-    null
-  );
-
-  const handleImageSelected = (file: File | null) => {
-    setSelectedImage(file);
-  };
 
   useEffect(() => {
     dispatch(fetchIngredients());
@@ -55,28 +37,34 @@ export const AddRecipe: React.FC = () => {
   }, []);
 
   const handleSumbitForm = (
-    values: FormValues,
-    formikHelpers: FormikHelpers<FormValues>
+    values: IAddOwnRecipeForm,
+    formikHelpers: FormikHelpers<IAddOwnRecipeForm>
   ) => {
-    console.log(selectedImage);
-    setTimeout(() => {
-      alert(
-        JSON.stringify(
-          {
-            ...values,
-            image: selectedImage
-              ? selectedImage
-              : "../../images/best-gordon-ramsay-memes-10.jpg",
-          },
-          null,
-          2
-        )
-      );
-      formikHelpers.setSubmitting(false);
-    }, 400);
+    const updatedIngredients = values.ingredients.map((ingredientData) => ({
+      id: ingredientData.ingredient,
+      measure: ingredientData.measure,
+    }));
+
+    const formData = new FormData();
+    if (values.preview) {
+      formData.append("preview", values.preview);
+    }
+    formData.append("title", values.title);
+    formData.append("description", values.description);
+    formData.append("category", values.category);
+    formData.append("time", values.time);
+    formData.append("ingredients", JSON.stringify(updatedIngredients));
+    formData.append("instructions", values.instructions);
+    formData.append("isPublic", values.isPublic.toString());
+
+    dispatch(fetchAddOwnRecipe(formData));
+
+    formikHelpers.setSubmitting(false);
+    formikHelpers.resetForm();
   };
 
-  const initialValues: FormValues = {
+  const initialValues: IAddOwnRecipeForm = {
+    preview: "",
     title: "",
     description: "",
     category: "Beef",
@@ -86,6 +74,7 @@ export const AddRecipe: React.FC = () => {
       ingredient: "",
       measure: "",
     })),
+    isPublic: false,
   };
 
   return (
@@ -101,7 +90,9 @@ export const AddRecipe: React.FC = () => {
               <Field
                 type="file"
                 component={UploadImage}
-                onImageSelected={handleImageSelected}
+                onImageSelected={(file: File) => {
+                  setFieldValue("preview", file);
+                }}
               />
               <div className={styles.form_subcontainer}>
                 <div className="w-full relative">
@@ -174,7 +165,7 @@ export const AddRecipe: React.FC = () => {
                   isDarkMode={isDarkMode}
                   form={{
                     touched,
-                    errors: errors as { ingredients: Ingredient[] },
+                    errors: errors as { ingredients: IIngredient[] },
                   }}
                 />
               )}
@@ -197,6 +188,16 @@ export const AddRecipe: React.FC = () => {
                   <p className={styles.error_message}>{errors.instructions}</p>
                 )}
               </div>
+              <label className="flex items-center space-x-2">
+                <Field
+                  type="checkbox"
+                  name="isPublic"
+                  className="accent-accentMain w-4 h-4"
+                />
+                <span className="dark:text-whiteText">
+                  Do you want to make your recipe available for all users ?
+                </span>
+              </label>
             </div>
             <AsimetricRoundedBtn
               btnType="submit"
