@@ -8,7 +8,7 @@ export const SearchNothingFound: React.FC = () => {
         src={nothingFound}
         className="w-[210px] h-[135px] md:w-[350px] md:h-[225px] "
       />
-      <p className="text-black text-opacity-50 text-[14px] tracking-[-0.28px] font-medium md:text-[24px] md:tracking-[-0.48px]">
+      <p className="text-black dark:text-whiteText text-opacity-50 text-[14px] tracking-[-0.28px] font-medium md:text-[24px] md:tracking-[-0.48px]">
         Try looking for something else...
       </p>
     </div>
