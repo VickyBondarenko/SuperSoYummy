@@ -1,5 +1,5 @@
 import { RootState } from "../store";
-export const selectIsLoading = (state: RootState) => state.ownRecipe.isLoading;
+export const selectIsLoading = (state: RootState) => state.favorites.isLoading;
 
 export const selectFavoriteRecipes = (state: RootState) =>
   state.favorites.favoriteRecipes;

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
+
 import {
-  fetchOwnRecipes,
-  fetchDeleteOwnRecipe,
-} from "../redux/ownRecipeSlice/ownRecipeThunk";
+  fetchFavoriteRecipes,
+  fetcToggleFavoriteRecipe,
+} from "../redux/favoritesSlice/favoritesThunk";
+
 import {
+  selectFavoriteRecipes,
   selectIsLoading,
-  selectOwnRecipes,
-  selectOwnRecipesTotalPages,
-} from "../redux/ownRecipeSlice/ownRecipeSelector";
+  selectFavoriteRecipesTotalPages,
+} from "../redux/favoritesSlice/favoritesSelector";
 
 import { PageTitle } from "../components/PageTitle/PageTitle";
 import { RecipeList } from "../components/RecipeList/RecipeList";
@@ -21,12 +23,12 @@ export const FavoritePage: React.FC = () => {
   const [toggleEffect, setToggleEffect] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
-  const ownRecipes = useAppSelector(selectOwnRecipes);
-  const totalPages = useAppSelector(selectOwnRecipesTotalPages);
+  const ownRecipes = useAppSelector(selectFavoriteRecipes);
+  const totalPages = useAppSelector(selectFavoriteRecipesTotalPages);
   const isLoading = useAppSelector(selectIsLoading);
 
   const handleDeleteRecipe = (_id: string): void => {
-    dispatch(fetchDeleteOwnRecipe(_id));
+    dispatch(fetcToggleFavoriteRecipe(_id));
     if (ownRecipes.length === 1 && currentPage !== 1) {
       setCurrentPage(currentPage - 1);
     }
@@ -34,7 +36,7 @@ export const FavoritePage: React.FC = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchOwnRecipes({ page: currentPage, limit: 4 }));
+    dispatch(fetchFavoriteRecipes({ page: currentPage, limit: 4 }));
   }, [currentPage, toggleEffect]);
 
   const onChangePage = (curPage: number) => {
@@ -50,7 +52,7 @@ export const FavoritePage: React.FC = () => {
       <PageTitle title="Favorites" />
       {isLoading && <Loader />}
       {!isLoading && ownRecipes.length === 0 && (
-        <SearchNothingFound text="You have not add any recipe yet..." />
+        <SearchNothingFound text="You have not add any favorite recipe yet..." />
       )}
       {!isLoading && ownRecipes.length !== 0 && (
         <RecipeList
