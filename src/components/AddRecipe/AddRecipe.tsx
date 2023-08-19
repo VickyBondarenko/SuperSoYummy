@@ -17,6 +17,7 @@ import { AddRecipeDropdown } from "./AddRecipeDropdown/AddRecipeDropdown";
 import { AddIngredient } from "./AddIngedient/AddIngredient";
 import { AsimetricRoundedBtn } from "../Buttons/AsimetricRoundedBtn";
 import { UploadImage } from "./UploadImage/UploadImage";
+import placeHolder from '../../images/best-gordon-ramsay-memes-10.jpg'
 
 const timeForCook: string[] = [];
 for (let i = 15; i <= 300; i += 5) {
@@ -48,6 +49,9 @@ export const AddRecipe: React.FC = () => {
     const formData = new FormData();
     if (values.preview) {
       formData.append("preview", values.preview);
+    }
+    if (values.preview === "") {
+      formData.append("preview", placeHolder);
     }
     formData.append("title", values.title);
     formData.append("description", values.description);

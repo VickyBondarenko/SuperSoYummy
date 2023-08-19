@@ -1,11 +1,8 @@
 import { RootState } from "../store";
-import { createSelector } from "reselect";
+export const selectIsLoading = (state: RootState) => state.ownRecipe.isLoading;
 
-export const selectIsLoading = (state: RootState) => state.mainPage.isLoading;
+export const selectOwnRecipes = (state: RootState) =>
+  state.ownRecipe.ownRecipes;
 
-const selectMainPageRecipes = (state: RootState) =>
-  state.mainPage.mainPageRecipes;
-export const selectMemoMainPageRecipes = createSelector(
-  selectMainPageRecipes,
-  (mainPageRecipes) => mainPageRecipes
-);
+export const selectOwnRecipesTotalPages = (state: RootState) =>
+  state.ownRecipe.totalPages;

@@ -28,10 +28,8 @@ export const Pagination: React.FC<IPaginationProps> = ({
       const text: string = e.target.innerText;
 
       if (text === "...") {
-        // Ничего не делать для "..."
         return;
       } else {
-        // Выполнить onChangePage для чисел
         setIsActive(Number(text));
         onChangePage(Number(text));
       }

@@ -15,7 +15,6 @@ const handleLogOut = () => {
 };
 
 export const setAuthHeader = (token: string) => {
-  console.log("setToken before", token);
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -87,7 +86,6 @@ axios.interceptors.response.use(
   }
 );
 
-
 // axios.interceptors.response.use(
 //   (response) => response,
 //   async (error) => {
@@ -124,4 +122,3 @@ axios.interceptors.response.use(
 //     return Promise.reject(error);
 //   }
 // );
-

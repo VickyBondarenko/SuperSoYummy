@@ -15,7 +15,26 @@ export interface IAddOwnRecipeForm {
 }
 
 export interface IOwnRecipesState {
-  ownRecipes: IAddOwnRecipeForm[];
+  totalPages: number;
+  ownRecipes: IOwnRecipeData[];
   isLoading: boolean;
   error: string | null;
+}
+
+export interface IOwnRecipeRequest {
+  page: number;
+  limit: number;
+}
+
+export interface IOwnRecipeResponse {
+  totalPages: number;
+  data: IOwnRecipeData[] | [];
+}
+
+interface IOwnRecipeData {
+  preview: string;
+  title: string;
+  time: string;
+  description: string;
+  _id: string;
 }

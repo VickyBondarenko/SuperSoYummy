@@ -1,7 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { IAddOwnRecipeForm } from "../../types/ownRecipeTypes";
+import {
+  IAddOwnRecipeForm,
+  IOwnRecipeRequest,
+  IOwnRecipeResponse,
+} from "../../types/ownRecipeTypes";
 
 export const fetchAddOwnRecipe = createAsyncThunk<
   IAddOwnRecipeForm,
@@ -23,3 +27,41 @@ export const fetchAddOwnRecipe = createAsyncThunk<
     return rejectWithValue("Error");
   }
 });
+
+export const fetchOwnRecipes = createAsyncThunk<
+  IOwnRecipeResponse,
+  IOwnRecipeRequest,
+  { rejectValue: string }
+>("ownRecipe/fetchOwnRecipes", async ({ page, limit }, { rejectWithValue }) => {
+  try {
+    const response = await axios.get<IOwnRecipeResponse>("/api/ownRecipes", {
+      params: { page, limit },
+    });
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log(error);
+      console.log(error.response?.data);
+    } else if (error instanceof Error) console.log(error.message);
+    return rejectWithValue("Error");
+  }
+});
+export const fetchDeleteOwnRecipe = createAsyncThunk<
+  void,
+  string,
+  { rejectValue: string }
+>(
+  "ownRecipe/fetchDeleteOwnRecipe",
+  async (ownRecipeId, { rejectWithValue }) => {
+    try {
+      await axios.delete<IOwnRecipeResponse>(`/api/ownRecipes/${ownRecipeId}`);
+      // return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(error);
+        console.log(error.response?.data);
+      } else if (error instanceof Error) console.log(error.message);
+      return rejectWithValue("Error");
+    }
+  }
+);

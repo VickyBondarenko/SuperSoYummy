@@ -16,14 +16,19 @@ export interface IRecipeInfo {
 export const RecipeCard: React.FC<IRecipeInfo> = memo((props) => {
   const { preview, title, description, time } = props;
 
+  const placeHolder =
+    "https://res.cloudinary.com/dcxlayslv/image/upload/v1692443730/ownrecipe/bvwsacbew2clghxuhte5.jpg";
+
   const defaultDescription =
     description.trim() === "" ? "No description" : description;
   const defaultTime = time.trim() === "" ? "N/A" : `${time}`;
   return (
-    <li className="relative overflow-hidden group">
-      <img src={preview} className={styles.recipe_image} />
+    <li className="relative overflow-hidden group ">
+      <img src={preview} className={`${styles.recipe_image}`} />
       <p
-        className={`${styles.recipe_title} dark:text-whiteText dark:bg-accentHalfDark`}
+        className={`${styles.recipe_title} ${
+          preview === placeHolder && "mb-10"
+        } dark:text-whiteText dark:bg-accentHalfDark`}
       >
         {title}
       </p>
