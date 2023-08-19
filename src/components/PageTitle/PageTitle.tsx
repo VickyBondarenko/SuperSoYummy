@@ -5,7 +5,7 @@ interface ITitle {
   title:
     | "Categories"
     | "Add recipe"
-    | "Favories"
+    | "Favorites"
     | "My Recipes"
     | "Search"
     | "Shopping list"
