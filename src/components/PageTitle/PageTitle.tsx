@@ -8,7 +8,8 @@ interface ITitle {
     | "Favories"
     | "My Recipes"
     | "Search"
-    | "Shopping list";
+    | "Shopping list"
+    | "";
 }
 
 export const PageTitle: React.FC<ITitle> = ({ title }) => {
