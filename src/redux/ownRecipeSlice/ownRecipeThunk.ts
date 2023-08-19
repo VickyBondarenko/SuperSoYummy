@@ -7,6 +7,8 @@ import {
   IOwnRecipeResponse,
 } from "../../types/ownRecipeTypes";
 
+import { IRecipeById } from "../../types/RecipeType";
+
 export const fetchAddOwnRecipe = createAsyncThunk<
   IAddOwnRecipeForm,
   FormData,
@@ -46,22 +48,35 @@ export const fetchOwnRecipes = createAsyncThunk<
     return rejectWithValue("Error");
   }
 });
+
 export const fetchDeleteOwnRecipe = createAsyncThunk<
   void,
   string,
   { rejectValue: string }
->(
-  "ownRecipe/fetchDeleteOwnRecipe",
-  async (ownRecipeId, { rejectWithValue }) => {
-    try {
-      await axios.delete<IOwnRecipeResponse>(`/api/ownRecipes/${ownRecipeId}`);
-      // return response.data;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log(error);
-        console.log(error.response?.data);
-      } else if (error instanceof Error) console.log(error.message);
-      return rejectWithValue("Error");
-    }
+>("ownRecipe/fetchDeleteOwnRecipe", async (id, { rejectWithValue }) => {
+  try {
+    await axios.delete<IOwnRecipeResponse>(`/api/ownRecipes/${id}`);
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log(error);
+      console.log(error.response?.data);
+    } else if (error instanceof Error) console.log(error.message);
+    return rejectWithValue("Error");
   }
-);
+});
+export const fetchOwnRecipeById = createAsyncThunk<
+  IRecipeById,
+  string,
+  { rejectValue: string }
+>("ownRecipe/fetchOwnRecipeById", async (id, { rejectWithValue }) => {
+  try {
+    const response = await axios.get<IRecipeById>(`/api/ownRecipes/${id}`);
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log(error);
+      console.log(error.response?.data);
+    } else if (error instanceof Error) console.log(error.message);
+    return rejectWithValue("Error");
+  }
+});

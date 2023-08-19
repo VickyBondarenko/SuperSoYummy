@@ -67,7 +67,9 @@ export const SearchPage: React.FC = () => {
       <SearchForm page={currentPage} limit={limit} />
       <SearchDropdown />
       {isLoading && <Loader />}
-      {!isLoading && searchError === "Not found" && <SearchNothingFound />}
+      {!isLoading && searchError === "Not found" && (
+        <SearchNothingFound text="Try to look for something else..." />
+      )}
       {!isLoading &&
         searchError !== "Not found" &&
         searchRecipes.length > 0 && (

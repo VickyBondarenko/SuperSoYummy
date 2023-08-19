@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { PageTitle } from "../components/PageTitle/PageTitle";
-import { RecipeList } from "../components/RecipeList/RecipeList";
+
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
 import {
   fetchOwnRecipes,
   fetchDeleteOwnRecipe,
 } from "../redux/ownRecipeSlice/ownRecipeThunk";
 import {
+  selectIsLoading,
   selectOwnRecipes,
   selectOwnRecipesTotalPages,
 } from "../redux/ownRecipeSlice/ownRecipeSelector";
+
+import { PageTitle } from "../components/PageTitle/PageTitle";
+import { RecipeList } from "../components/RecipeList/RecipeList";
+import { SearchNothingFound } from "../components/Search/SearchNothingFound/SearchNothingFound";
+import { Loader } from "../components/Preloader/Loader";
 
 export const MyRecipesPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -18,6 +23,7 @@ export const MyRecipesPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const ownRecipes = useAppSelector(selectOwnRecipes);
   const totalPages = useAppSelector(selectOwnRecipesTotalPages);
+  const isLoading = useAppSelector(selectIsLoading);
 
   const handleDeleteRecipe = (_id: string): void => {
     dispatch(fetchDeleteOwnRecipe(_id));
@@ -42,13 +48,19 @@ export const MyRecipesPage: React.FC = () => {
   return (
     <section className="px-4 pb-[100px] pt-[50px] md:px-8 md:pb-[200px] xl:px-[99px]">
       <PageTitle title="My Recipes" />
-      <RecipeList
-        recipeData={ownRecipes}
-        deleteFunc={handleDeleteRecipe}
-        totalPages={totalPages}
-        currentPage={currentPage}
-        onChangePage={onChangePage}
-      />
+      {isLoading && <Loader />}
+      {!isLoading && ownRecipes.length === 0 && (
+        <SearchNothingFound text="You have not add any recipe yet..." />
+      )}
+      {!isLoading && ownRecipes.length !== 0 && (
+        <RecipeList
+          recipeData={ownRecipes}
+          deleteFunc={handleDeleteRecipe}
+          totalPages={totalPages}
+          currentPage={currentPage}
+          onChangePage={onChangePage}
+        />
+      )}
     </section>
   );
 };

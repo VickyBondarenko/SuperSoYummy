@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./RecipeList.module.css";
+import { useNavigate } from "react-router-dom";
+
 import { AsimetricRoundedBtn } from "../Buttons/AsimetricRoundedBtn";
 import { HiOutlineTrash } from "react-icons/hi";
 import { Pagination } from "../Pagination/Pagination";
@@ -27,6 +29,11 @@ export const RecipeList: React.FC<IRecipeListProps> = ({
   currentPage,
   onChangePage,
 }) => {
+  const navigate = useNavigate();
+  const handleClick = (id: string) => {
+    navigate(`/recipe/${id}`);
+  };
+
   return (
     <div>
       <ul className={styles.recipe_list}>
@@ -63,10 +70,12 @@ export const RecipeList: React.FC<IRecipeListProps> = ({
                 <p className={`${styles.recipe_time} dark:text-whiteText`}>
                   {time}
                 </p>
+
                 <AsimetricRoundedBtn
                   btnType="button"
                   text="See recipe"
                   style="flex justify-center items-center h-[27px] bg-accentMain border-transparent text-whiteText text-customRecipesTime hover:bg-overlayBackdrop transition"
+                  handleClick={() => handleClick(_id)}
                 />
               </div>
             </div>

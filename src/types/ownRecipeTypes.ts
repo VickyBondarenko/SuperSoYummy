@@ -1,3 +1,5 @@
+import { IRecipeById } from "./RecipeType";
+
 export interface IIngredient {
   ingredient: string;
   measure: string;
@@ -16,6 +18,7 @@ export interface IAddOwnRecipeForm {
 
 export interface IOwnRecipesState {
   totalPages: number;
+  ownRecipe: IRecipeById | null;
   ownRecipes: IOwnRecipeData[];
   isLoading: boolean;
   error: string | null;

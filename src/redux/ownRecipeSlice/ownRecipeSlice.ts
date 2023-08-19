@@ -1,5 +1,5 @@
 import { createSlice, Action, PayloadAction } from "@reduxjs/toolkit";
-import { fetchOwnRecipes } from "./ownRecipeThunk";
+import { fetchOwnRecipes, fetchOwnRecipeById } from "./ownRecipeThunk";
 
 import { IOwnRecipesState } from "../../types/ownRecipeTypes";
 
@@ -7,6 +7,7 @@ const OWN_RECIPE_REDUCER = "OWN_RECIPE_REDUCER";
 
 const ownRecipeInitState: IOwnRecipesState = {
   totalPages: 0,
+  ownRecipe: null,
   ownRecipes: [],
   isLoading: false,
   error: null,
@@ -18,12 +19,12 @@ const ownRecipeSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // .addCase(fetchAddOwnRecipe.fulfilled, (_, _) => {
-      //   // state.ownRecipes.push(action.payload);
-      // })
       .addCase(fetchOwnRecipes.fulfilled, (state, action) => {
         state.ownRecipes = action.payload.data;
         state.totalPages = action.payload.totalPages;
+      })
+      .addCase(fetchOwnRecipeById.fulfilled, (state, action) => {
+        state.ownRecipe = action.payload;
       })
       .addMatcher(
         (action: Action<string>) =>

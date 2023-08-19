@@ -17,7 +17,7 @@ import { AddRecipeDropdown } from "./AddRecipeDropdown/AddRecipeDropdown";
 import { AddIngredient } from "./AddIngedient/AddIngredient";
 import { AsimetricRoundedBtn } from "../Buttons/AsimetricRoundedBtn";
 import { UploadImage } from "./UploadImage/UploadImage";
-import placeHolder from '../../images/best-gordon-ramsay-memes-10.jpg'
+import placeHolder from "../../images/best-gordon-ramsay-memes-10.jpg";
 
 const timeForCook: string[] = [];
 for (let i = 15; i <= 300; i += 5) {
