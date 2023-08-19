@@ -14,6 +14,7 @@ import { AdvantageList } from "./AdvantageList/AdvantageList";
 export interface INavList {
   name: string;
   route: string;
+  icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 }
 
 const navList: INavList[] = [

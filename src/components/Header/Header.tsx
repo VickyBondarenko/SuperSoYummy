@@ -15,16 +15,21 @@ import ToggleTheme from "../ToggleTheme/ThoggleTheme";
 import MainUserModal from "../Modals/MainUserModal";
 import { useState } from "react";
 import SessionEndModal from "../Modals/SessionEndModal";
+import BurgerMenu from "./BurgerMenu/BurgerMenu";
 
 export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLogOutModalOpen, setIsLogOutModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
   const handleOpenModal = () => {
     setIsOpen(true);
   };
 
+  const handleOpenBurgerMenu = () => {
+    setIsBurgerMenuOpen(true);
+  };
   //  const handleCloseModal = () => {
   //    setIsOpen(false);
   //  };
@@ -114,7 +119,16 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
           {isDesktop ? (
             <ToggleTheme />
           ) : (
-            <MenuSvg className="stroke-accentDark dark:stroke-whiteText w-7 md:w-8 h-7 md:h-8 " />
+            <>
+              <MenuSvg
+                onClick={handleOpenBurgerMenu}
+                className="stroke-accentDark dark:stroke-whiteText w-7 md:w-8 h-7 md:h-8 "
+              />
+              <BurgerMenu
+                isOpen={isBurgerMenuOpen}
+                setIsOpen={setIsBurgerMenuOpen}
+              />
+            </>
           )}
         </div>
       </div>

@@ -24,7 +24,7 @@ const EditModal: React.FC<IModalProps> = ({ isOpen, setIsOpen }) => {
         shouldCloseOnOverlayClick={false}
         className={styles.modalContent}
       >
-        <div className="flex flex-col gap-6 md:gap-8 justify-center items-center">
+        <div className="flex flex-col gap-6 md:gap-8 justify-center items-center ">
           <CloseSvg
             className="absolute top-[18px] right-[18px] w-5 md:w-6 h-5 md:h-6 stroke-accentDark cursor-pointer"
             onClick={handleCloseModal}
@@ -35,7 +35,7 @@ const EditModal: React.FC<IModalProps> = ({ isOpen, setIsOpen }) => {
 
           <button
             type="button"
-            className="w-[137px] md:w-[192px] px-[18px] md:px-[39px] py-[21px] rounded-md border border-inherit hover:border-accentDark text-accentDark dark:hover:text-accentMain  bg-accentGray  hover:bg-whiteText dark:hover:bg-whiteText dark:hover:border-accentMain font-main text-[14px] md:text-[16px] leading-[18px]"
+            className="w-[282px] md:w-[400px] text-center py-[21px] rounded-md border border-accentMain text-whiteText dark:hover:text-accentMain  bg-accentMain  hover:bg-accentDark dark:hover:bg-whiteText dark:hover:border-accentMain font-main text-[14px] md:text-[16px] leading-[18px]"
             onClick={handleCloseModal}
           >
             Cancel
