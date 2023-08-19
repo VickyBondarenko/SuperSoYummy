@@ -67,7 +67,9 @@ export const SearchPage: React.FC = () => {
       <SearchForm page={currentPage} limit={limit} />
       <SearchDropdown />
       {isLoading && <Loader />}
-      {!isLoading && searchError === "Not found" && <SearchNothingFound />}
+      {!isLoading && searchError === "Not found" && (
+        <SearchNothingFound text="Try to look for something else..." />
+      )}
       {!isLoading &&
         searchError !== "Not found" &&
         searchRecipes.length > 0 && (
@@ -86,7 +88,7 @@ export const SearchPage: React.FC = () => {
           </>
         )}
       {!isLoading && searchError === null && searchRecipes.length === 0 && (
-        <p className="text-black text-opacity-50 text-[14px] tracking-[-0.28px] font-medium md:text-[24px] md:tracking-[-0.48px] text-center">
+        <p className="text-black dark:text-whiteText text-opacity-50 text-[14px] tracking-[-0.28px] font-medium md:text-[24px] md:tracking-[-0.48px] text-center">
           Lets find something tasty
         </p>
       )}

@@ -8,7 +8,7 @@ import { IngredientFieldDropdown } from "./IngredientFieldDropdown/IngredientFie
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { MdOutlineClose } from "react-icons/md";
 
-import { FormValues, Ingredient } from "../AddRecipe";
+import { IAddOwnRecipeForm, IIngredient } from "../../../types/ownRecipeTypes";
 
 export interface IIngredientOption {
   _id: string;
@@ -16,17 +16,17 @@ export interface IIngredientOption {
 }
 
 interface IAddIngredientProps {
-  ingredients: Ingredient[];
+  ingredients: IIngredient[];
   ingredientOptions: IIngredientOption[];
   measurementOptions: string[];
-  push: (ingredient: Ingredient) => void;
+  push: (ingredient: IIngredient) => void;
   remove: (index: number) => void;
   titleStyle: string;
   isDarkMode: boolean;
   form: {
-    touched: FormikTouched<FormValues>;
+    touched: FormikTouched<IAddOwnRecipeForm>;
     errors: {
-      ingredients: Ingredient[];
+      ingredients: IIngredient[];
     };
   };
 }

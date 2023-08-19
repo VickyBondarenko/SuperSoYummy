@@ -1,0 +1,50 @@
+.recipe_list {
+  @apply flex flex-col gap-4
+  xl:gap-[50px];
+}
+
+.recipe_item {
+  @apply flex justify-between w-full bg-white rounded-lg px-[9px] py-4 
+  md:px-6 md:py-7
+  xl:p-10;
+}
+
+.recipe_image {
+  @apply w-1/3 h-auto rounded-lg
+  xl:w-1/4;
+}
+
+.content_wrapper {
+  @apply flex flex-col justify-between w-2/3 pl-4
+  md:pl-6
+  xl:pl-14 xl:w-3/4;
+}
+
+.card_top {
+  @apply flex flex-wrap;
+}
+
+.recipe_title {
+  @apply text-secondaryText text-customXxs tracking-[-0.24px] font-medium mb-4
+  md:text-customBase md:mb-7
+  xl:mb-10;
+}
+
+.recipe_description {
+  @apply text-customRecipesText text-[#23262A] tracking-[-0.16px] basis-full
+  md:text-customXs md:tracking-[-0.28px];
+}
+
+.svg_wrapper {
+  @apply flex justify-center items-center ml-auto w-6 h-6 rounded-md bg-accentMain text-whiteText hover:bg-overlayBackdrop transition cursor-pointer
+  md:w-[38px] md:h-[38px];
+}
+
+.card_bottom {
+  @apply flex justify-between items-center;
+}
+
+.recipe_time {
+  @apply text-secondaryText text-customRecipesTime tracking-[-0.24px] font-medium
+  md:text-customXs;
+}

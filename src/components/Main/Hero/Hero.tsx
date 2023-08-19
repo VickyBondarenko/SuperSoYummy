@@ -22,9 +22,9 @@ export const Hero: React.FC = () => {
       <div className={styles.hero_title_wrapper}>
         <h1 className={styles.hero_title}>
           <span className="text-accentMain">So</span>
-          <span>Yummy</span>
+          <span className="dark:text-whiteText">Yummy</span>
         </h1>
-        <p className={styles.hero_text}>
+        <p className={`${styles.hero_text} dark:text-whiteText`}>
           "What to cook?" is not only a recipe app, it is, in fact, your
           cookbook. You can add your own recipes to save them for the future.
         </p>
