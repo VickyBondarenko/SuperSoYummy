@@ -30,7 +30,7 @@ export const FavoritePage: React.FC = () => {
   const handleDeleteRecipe = (_id: string): void => {
     dispatch(fetcToggleFavoriteRecipe(_id));
     if (ownRecipes.length === 1 && currentPage !== 1) {
-      setCurrentPage(currentPage - 1);
+      setCurrentPage((prevPage) => prevPage - 1);
     }
     setToggleEffect(!toggleEffect);
   };
