@@ -1,9 +1,16 @@
-import { useAppSelector } from "../../hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { selectUserInfo } from "../../redux/authSlice/authSelectors";
 import { useLocation } from "react-router-dom";
 import styles from "./UserInfo.module.css";
+import { useEffect } from "react";
+import { getCurrentUser } from "../../redux/authSlice/authThunk";
 
 export const UserInfo = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, []);
   const { name: userName, avatarURL: userAvatar } =
     useAppSelector(selectUserInfo);
 

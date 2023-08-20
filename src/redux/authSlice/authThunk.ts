@@ -10,7 +10,6 @@ axios.defaults.baseURL = VITE_BACKEND_BASE_URL;
 import {
   IAuthRespons,
   IFormValues,
-  IUserResponsData,
   IAppState,
   IAsyncThunkCurrentUserReturn,
   IUserEdition,
@@ -68,7 +67,7 @@ export const getCurrentUser = createAsyncThunk<
 
   try {
     setAuthHeader(accessToken);
-    const { data } = await axios.get<IUserResponsData>("/api/auth/current", {
+    const { data } = await axios.get("/api/auth/current", {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
@@ -106,7 +105,7 @@ export const logoutUser = createAsyncThunk<
 
 export const editUser = createAsyncThunk<
   IUserEdition,
-  IUserEdition,
+  FormData,
   { rejectValue: string }
 >("auth/edit", async (userData, { rejectWithValue }) => {
   try {
@@ -115,6 +114,8 @@ export const editUser = createAsyncThunk<
         "Content-Type": "multipart/form-data",
       },
     });
+    console.log("hello");
+
     return data;
   } catch (error: any) {
     if (error.response.data.message === '"name" is not allowed to be empty') {

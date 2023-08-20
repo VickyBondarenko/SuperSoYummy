@@ -1,0 +1,19 @@
+.image_placeholder {
+  @apply relative w-[103px] h-[103px]  rounded-full mb-10 mx-auto
+  md:mx-0
+  xl:w-[350px] xl:h-[350px];
+}
+
+.image_svg {
+  @apply absolute z-10  bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 w-[47px] h-[47px] pointer-events-none fill-gray-400;
+}
+.image_plus_svg {
+  @apply absolute z-10  bottom-1 right-1  w-6 h-6 pointer-events-none;
+}
+.image_preview {
+  @apply absolute bottom-0 top-0 right-0 left-0 w-full h-full pointer-events-none rounded-full;
+}
+.image_warning {
+  @apply absolute text-[12px] w-full text-red-700
+    md:text-[14px];
+}

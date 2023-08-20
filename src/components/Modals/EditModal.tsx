@@ -1,6 +1,7 @@
 import Modal from "react-modal";
 
 import { ReactComponent as CloseSvg } from "../../images/svg/closeMenuIcon.svg";
+import { EditUserInfo } from "../EditUserInfo/EditUserInfo";
 import styles from "./EditModal.module.css";
 
 interface IModalProps {
@@ -29,17 +30,8 @@ const EditModal: React.FC<IModalProps> = ({ isOpen, setIsOpen }) => {
             className="absolute top-[18px] right-[18px] w-5 md:w-6 h-5 md:h-6 stroke-accentDark cursor-pointer"
             onClick={handleCloseModal}
           />
-          <h2 className="font-main text-[14px] md:text-[18px] leading-[18px] md:leading-[24px] dark:text-whiteText">
-            Edit Modal
-          </h2>
 
-          <button
-            type="button"
-            className="w-[282px] md:w-[400px] text-center py-[21px] rounded-md border border-accentMain text-whiteText dark:hover:text-accentMain  bg-accentMain  hover:bg-accentDark dark:hover:bg-whiteText dark:hover:border-accentMain font-main text-[14px] md:text-[16px] leading-[18px]"
-            onClick={handleCloseModal}
-          >
-            Cancel
-          </button>
+          <EditUserInfo handleCloseModal={handleCloseModal} />
         </div>
       </Modal>
     </div>
