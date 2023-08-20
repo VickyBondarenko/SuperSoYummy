@@ -53,13 +53,14 @@ export const EditUserInfo: React.FC<IModalProps> = ({ handleCloseModal }) => {
         onSubmit={handleSumbitForm}
         validationSchema={EditUserSchema}
       >
-        {({ errors, touched, handleBlur, setFieldValue }) => (
+        {({ values, errors, touched, handleBlur, setFieldValue }) => (
           <Form className={styles.add_form}>
             <div className={styles.form_container}>
               <Field
                 type="file"
                 name="preview"
                 component={UploadUserImage}
+                image={values.preview}
                 onImageSelected={(file: File) => {
                   setFieldValue("preview", file);
                 }}

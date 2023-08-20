@@ -4,13 +4,17 @@ import { ReactComponent as UserSvg } from "/src/images/svg/authForm/name.svg";
 import { ReactComponent as Plus } from "/src/images/svg/plus.svg";
 
 interface UploadImageProps {
+  image?: string;
   onImageSelected: (file: File | null) => void;
 }
 
 export const UploadUserImage: React.FC<UploadImageProps> = ({
+  image,
   onImageSelected,
 }) => {
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | null>(
+    image ? image : null
+  );
   const [imageWarning, setImageWarning] = useState<string | null>("");
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -54,9 +58,7 @@ export const UploadUserImage: React.FC<UploadImageProps> = ({
         className="w-full h-full opacity-0 cursor-pointer"
       />
       <UserSvg className={`${styles.image_svg} ${previewImage && "hidden"}`} />
-      <Plus
-        className={`${styles.image_plus_svg} ${previewImage && "hidden"}`}
-      />
+      <Plus className={`${styles.image_plus_svg}`} />
 
       {previewImage && (
         <img
