@@ -1,3 +1,5 @@
+import { IIngredient } from "./ingredientsTypes";
+
 export interface IRecipe {
   _id: string;
   title: string;
@@ -23,12 +25,15 @@ export interface IRecipeById {
   title: string;
   category: string;
   preview: string;
+  area?: string;
+  createdAt?: string;
+  updatedAt?: string;
   thumb?: string;
   instructions?: string;
   youtube?: string;
   description: string;
-  popularity?: string;
-  ingredients: IRecipeIngredient[];
+  popularity?: number;
+  ingredients: IRecipeIngredient[] | IIngredient[];
   time: string;
   point?: string;
   favorites: string[] | [];
