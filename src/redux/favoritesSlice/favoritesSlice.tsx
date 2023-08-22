@@ -1,13 +1,20 @@
 import { createSlice, Action, PayloadAction } from "@reduxjs/toolkit";
-import { fetchFavoriteRecipes } from "./favoritesThunk";
+import {
+  fetchFavoriteRecipes,
+  fetchToggleFavoriteRecipe,
+} from "./favoritesThunk";
 
-import { IFavoritesState } from "../../types/favoritesTypes";
+import { IRecipeListState } from "../../types/recipeListTypes";
 
 const FAVORITES_REDUCER = "FAVORITES_REDUCER";
 
-const favoritesInitState: IFavoritesState = {
-  totalPages: 0,
-  favoriteRecipes: [],
+const favoritesInitState: IRecipeListState = {
+  metaData: {
+    totalHits: 0,
+    currentPage: 1,
+    totalPages: 1,
+  },
+  recipeList: [],
   isLoading: false,
   error: null,
 };
@@ -19,8 +26,11 @@ const favoriteRecipesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchFavoriteRecipes.fulfilled, (state, action) => {
-        state.favoriteRecipes = action.payload.data;
-        state.totalPages = action.payload.totalPages;
+        state.recipeList = action.payload.data;
+        state.metaData = action.payload.metaData;
+      })
+      .addCase(fetchToggleFavoriteRecipe.fulfilled, (state, action) => {
+        state.recipeList.filter(({ _id }) => _id !== action.payload._id);
       })
       .addMatcher(
         (action: Action<string>) =>

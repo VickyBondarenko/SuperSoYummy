@@ -6,18 +6,12 @@ import { AsimetricRoundedBtn } from "../Buttons/AsimetricRoundedBtn";
 import { HiOutlineTrash } from "react-icons/hi";
 import { Pagination } from "../Pagination/Pagination";
 
-interface IRecipeListData {
-  preview: string;
-  title: string;
-  time: string;
-  description: string;
-  _id: string;
-}
+import { IRecipeList, IMetaRecipeList } from "../../types/recipeListTypes";
 
 interface IRecipeListProps {
-  recipeData: IRecipeListData[];
+  recipeData: IRecipeList[];
   deleteFunc: (_id: string) => void;
-  totalPages: number;
+  metaData: IMetaRecipeList;
   currentPage: number;
   onChangePage: (curPage: number) => void;
 }
@@ -25,7 +19,7 @@ interface IRecipeListProps {
 export const RecipeList: React.FC<IRecipeListProps> = ({
   recipeData,
   deleteFunc,
-  totalPages,
+  metaData,
   currentPage,
   onChangePage,
 }) => {
@@ -82,11 +76,11 @@ export const RecipeList: React.FC<IRecipeListProps> = ({
           </li>
         ))}
       </ul>
-      {totalPages !== 1 && (
+      {metaData.totalPages !== 1 && (
         <Pagination
           onChangePage={onChangePage}
           currentpage={currentPage}
-          totalPages={totalPages}
+          totalPages={metaData.totalPages}
         />
       )}
     </div>

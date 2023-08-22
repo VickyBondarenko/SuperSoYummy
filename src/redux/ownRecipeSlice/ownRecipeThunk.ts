@@ -3,9 +3,9 @@ import axios from "axios";
 
 import {
   IAddOwnRecipeForm,
-  IOwnRecipeRequest,
-  IOwnRecipeResponse,
-} from "../../types/ownRecipeTypes";
+  IRecipeListRequest,
+  IRecipeListResponse,
+} from "../../types/recipeListTypes";
 
 import { IRecipeById } from "../../types/RecipeType";
 
@@ -31,12 +31,12 @@ export const fetchAddOwnRecipe = createAsyncThunk<
 });
 
 export const fetchOwnRecipes = createAsyncThunk<
-  IOwnRecipeResponse,
-  IOwnRecipeRequest,
+  IRecipeListResponse,
+  IRecipeListRequest,
   { rejectValue: string }
 >("ownRecipe/fetchOwnRecipes", async ({ page, limit }, { rejectWithValue }) => {
   try {
-    const response = await axios.get<IOwnRecipeResponse>("/api/ownRecipes", {
+    const response = await axios.get<IRecipeListResponse>("/api/ownRecipes", {
       params: { page, limit },
     });
     return response.data;
@@ -55,7 +55,7 @@ export const fetchDeleteOwnRecipe = createAsyncThunk<
   { rejectValue: string }
 >("ownRecipe/fetchDeleteOwnRecipe", async (id, { rejectWithValue }) => {
   try {
-    await axios.delete<IOwnRecipeResponse>(`/api/ownRecipes/${id}`);
+    await axios.delete<IRecipeListResponse>(`/api/ownRecipes/${id}`);
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.log(error);

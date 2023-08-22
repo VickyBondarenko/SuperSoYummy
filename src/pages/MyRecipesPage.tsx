@@ -8,7 +8,7 @@ import {
 import {
   selectIsLoading,
   selectOwnRecipes,
-  selectOwnRecipesTotalPages,
+  selectOwnRecipesMetaData,
 } from "../redux/ownRecipeSlice/ownRecipeSelector";
 
 import { PageTitle } from "../components/PageTitle/PageTitle";
@@ -22,7 +22,7 @@ export const MyRecipesPage: React.FC = () => {
 
   const dispatch = useAppDispatch();
   const ownRecipes = useAppSelector(selectOwnRecipes);
-  const totalPages = useAppSelector(selectOwnRecipesTotalPages);
+  const metaData = useAppSelector(selectOwnRecipesMetaData);
   const isLoading = useAppSelector(selectIsLoading);
 
   const handleDeleteRecipe = (_id: string): void => {
@@ -56,7 +56,7 @@ export const MyRecipesPage: React.FC = () => {
         <RecipeList
           recipeData={ownRecipes}
           deleteFunc={handleDeleteRecipe}
-          totalPages={totalPages}
+          metaData={metaData}
           currentPage={currentPage}
           onChangePage={onChangePage}
         />

@@ -8,7 +8,7 @@ import { IngredientFieldDropdown } from "./IngredientFieldDropdown/IngredientFie
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { MdOutlineClose } from "react-icons/md";
 
-import { IAddOwnRecipeForm, IIngredient } from "../../../types/ownRecipeTypes";
+import { IAddOwnRecipeForm, IIngredient } from "../../../types/recipeListTypes";
 
 export interface IIngredientOption {
   _id: string;

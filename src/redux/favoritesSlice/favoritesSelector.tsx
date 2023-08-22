@@ -2,7 +2,7 @@ import { RootState } from "../store";
 export const selectIsLoading = (state: RootState) => state.favorites.isLoading;
 
 export const selectFavoriteRecipes = (state: RootState) =>
-  state.favorites.favoriteRecipes;
+  state.favorites.recipeList;
 
-export const selectFavoriteRecipesTotalPages = (state: RootState) =>
-  state.favorites.totalPages;
+export const selectFavoriteRecipesMetaData = (state: RootState) =>
+  state.favorites.metaData;

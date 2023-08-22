@@ -2,17 +2,14 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import {
-  IAddOwnRecipeForm,
-  IOwnRecipeResponse,
-} from "../../types/ownRecipeTypes";
+  IRecipeListRequest,
+  IRecipeListResponse,
+} from "../../types/recipeListTypes";
 
-import {
-  IFavoritesRequest,
-  IFavoritesResponse,
-} from "../../types/favoritesTypes";
+import { IRecipeById } from "../../types/RecipeType";
 
-export const fetcToggleFavoriteRecipe = createAsyncThunk<
-  IAddOwnRecipeForm,
+export const fetchToggleFavoriteRecipe = createAsyncThunk<
+  IRecipeById,
   string,
   { rejectValue: string }
 >("favorites/fetchAddFavoriteRecipe", async (id, { rejectWithValue }) => {
@@ -29,14 +26,14 @@ export const fetcToggleFavoriteRecipe = createAsyncThunk<
 });
 
 export const fetchFavoriteRecipes = createAsyncThunk<
-  IFavoritesResponse,
-  IFavoritesRequest,
+  IRecipeListResponse,
+  IRecipeListRequest,
   { rejectValue: string }
 >(
   "favorites/fetchFavoriteRecipes",
   async ({ page, limit }, { rejectWithValue }) => {
     try {
-      const response = await axios.get<IFavoritesResponse>("/api/favorites", {
+      const response = await axios.get<IRecipeListResponse>("/api/favorites", {
         params: { page, limit },
       });
       return response.data;
@@ -49,19 +46,3 @@ export const fetchFavoriteRecipes = createAsyncThunk<
     }
   }
 );
-
-export const fetchDeleteOwnRecipe = createAsyncThunk<
-  void,
-  string,
-  { rejectValue: string }
->("favorites/fetchDeleteFavoriteRecipe", async (id, { rejectWithValue }) => {
-  try {
-    await axios.delete<IOwnRecipeResponse>(`/api/ownRecipes/${id}`);
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.log(error);
-      console.log(error.response?.data);
-    } else if (error instanceof Error) console.log(error.message);
-    return rejectWithValue("Error");
-  }
-});

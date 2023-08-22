@@ -4,13 +4,13 @@ import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
 
 import {
   fetchFavoriteRecipes,
-  fetcToggleFavoriteRecipe,
+  fetchToggleFavoriteRecipe,
 } from "../redux/favoritesSlice/favoritesThunk";
 
 import {
   selectFavoriteRecipes,
   selectIsLoading,
-  selectFavoriteRecipesTotalPages,
+  selectFavoriteRecipesMetaData,
 } from "../redux/favoritesSlice/favoritesSelector";
 
 import { PageTitle } from "../components/PageTitle/PageTitle";
@@ -20,24 +20,23 @@ import { Loader } from "../components/Preloader/Loader";
 
 export const FavoritePage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [toggleEffect, setToggleEffect] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
   const ownRecipes = useAppSelector(selectFavoriteRecipes);
-  const totalPages = useAppSelector(selectFavoriteRecipesTotalPages);
+  const metaData = useAppSelector(selectFavoriteRecipesMetaData);
   const isLoading = useAppSelector(selectIsLoading);
 
   const handleDeleteRecipe = (_id: string): void => {
-    dispatch(fetcToggleFavoriteRecipe(_id));
+    dispatch(fetchToggleFavoriteRecipe(_id));
     if (ownRecipes.length === 1 && currentPage !== 1) {
       setCurrentPage((prevPage) => prevPage - 1);
     }
-    setToggleEffect(!toggleEffect);
+    dispatch(fetchFavoriteRecipes({ page: currentPage, limit: 4 }));
   };
 
   useEffect(() => {
     dispatch(fetchFavoriteRecipes({ page: currentPage, limit: 4 }));
-  }, [currentPage, toggleEffect]);
+  }, [currentPage]);
 
   const onChangePage = (curPage: number) => {
     const element = document.getElementById("ahcnor1");
@@ -58,7 +57,7 @@ export const FavoritePage: React.FC = () => {
         <RecipeList
           recipeData={ownRecipes}
           deleteFunc={handleDeleteRecipe}
-          totalPages={totalPages}
+          metaData={metaData}
           currentPage={currentPage}
           onChangePage={onChangePage}
         />
