@@ -11,7 +11,7 @@ import { selectTheme } from "../../redux/themeSlice/themeSelector";
 
 import { AddRecipeSchema } from "../../schemas/yupAddRecipeSchema";
 import { Formik, Form, Field, FormikHelpers, FieldArray } from "formik";
-import { IAddOwnRecipeForm, IIngredient } from "../../types/ownRecipeTypes";
+import { IAddOwnRecipeForm, IIngredient } from "../../types/recipeListTypes";
 
 import { AddRecipeDropdown } from "./AddRecipeDropdown/AddRecipeDropdown";
 import { AddIngredient } from "./AddIngedient/AddIngredient";

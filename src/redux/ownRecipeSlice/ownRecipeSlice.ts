@@ -1,14 +1,18 @@
 import { createSlice, Action, PayloadAction } from "@reduxjs/toolkit";
-import { fetchOwnRecipes, fetchOwnRecipeById } from "./ownRecipeThunk";
+import { fetchOwnRecipes } from "./ownRecipeThunk";
 
-import { IOwnRecipesState } from "../../types/ownRecipeTypes";
+import { IRecipeListState } from "../../types/recipeListTypes";
 
 const OWN_RECIPE_REDUCER = "OWN_RECIPE_REDUCER";
 
-const ownRecipeInitState: IOwnRecipesState = {
-  totalPages: 0,
+const ownRecipeInitState: IRecipeListState = {
+  metaData: {
+    totalHits: 0,
+    currentPage: 1,
+    totalPages: 1,
+  },
   ownRecipe: null,
-  ownRecipes: [],
+  recipeList: [],
   isLoading: false,
   error: null,
 };
@@ -20,17 +24,14 @@ const ownRecipeSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchOwnRecipes.fulfilled, (state, action) => {
-        state.ownRecipes = action.payload.data;
-        state.totalPages = action.payload.totalPages;
-      })
-      .addCase(fetchOwnRecipeById.fulfilled, (state, action) => {
-        state.ownRecipe = action.payload;
+        state.recipeList = action.payload.data;
+        state.metaData = action.payload.metaData;
+        state.isLoading = true;
       })
       .addMatcher(
         (action: Action<string>) =>
           typeof action.type === "string" && action.type.endsWith("/pending"),
         (state) => {
-          state.isLoading = true;
           state.error = null;
         }
       )
