@@ -21,7 +21,7 @@ export const Pagination: React.FC<IPaginationProps> = ({
 
   useEffect(() => {
     setIsActive(currentpage);
-  }, [currentpage]);
+  }, [currentpage, totalPages]);
 
   const onClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>) => {
     if (e.target instanceof HTMLElement && e.target.innerText !== undefined) {

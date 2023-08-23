@@ -1,8 +1,5 @@
 import { createSlice, Action, PayloadAction } from "@reduxjs/toolkit";
-import {
-  fetchFavoriteRecipes,
-  fetchToggleFavoriteRecipe,
-} from "./favoritesThunk";
+import { fetchFavoriteRecipes } from "./favoritesThunk";
 
 import { IRecipeListState } from "../../types/recipeListTypes";
 
@@ -28,15 +25,12 @@ const favoriteRecipesSlice = createSlice({
       .addCase(fetchFavoriteRecipes.fulfilled, (state, action) => {
         state.recipeList = action.payload.data;
         state.metaData = action.payload.metaData;
-      })
-      .addCase(fetchToggleFavoriteRecipe.fulfilled, (state, action) => {
-        state.recipeList.filter(({ _id }) => _id !== action.payload._id);
+        state.isLoading = true;
       })
       .addMatcher(
         (action: Action<string>) =>
           typeof action.type === "string" && action.type.endsWith("/pending"),
         (state) => {
-          state.isLoading = true;
           state.error = null;
         }
       )

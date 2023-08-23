@@ -26,15 +26,12 @@ const ownRecipeSlice = createSlice({
       .addCase(fetchOwnRecipes.fulfilled, (state, action) => {
         state.recipeList = action.payload.data;
         state.metaData = action.payload.metaData;
+        state.isLoading = true;
       })
-      // .addCase(fetchOwnRecipeById.fulfilled, (state, action) => {
-      //   state.ownRecipe = action.payload;
-      // })
       .addMatcher(
         (action: Action<string>) =>
           typeof action.type === "string" && action.type.endsWith("/pending"),
         (state) => {
-          state.isLoading = true;
           state.error = null;
         }
       )

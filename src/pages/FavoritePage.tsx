@@ -20,23 +20,24 @@ import { Loader } from "../components/Preloader/Loader";
 
 export const FavoritePage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [toggleEffect, setToggleEffect] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
-  const ownRecipes = useAppSelector(selectFavoriteRecipes);
+  const favoriteRecipes = useAppSelector(selectFavoriteRecipes);
   const metaData = useAppSelector(selectFavoriteRecipesMetaData);
   const isLoading = useAppSelector(selectIsLoading);
 
-  const handleDeleteRecipe = (_id: string): void => {
-    dispatch(fetchToggleFavoriteRecipe(_id));
-    if (ownRecipes.length === 1 && currentPage !== 1) {
+  const handleDeleteRecipe = async (_id: string): Promise<void> => {
+    await dispatch(fetchToggleFavoriteRecipe(_id));
+    if (favoriteRecipes.length === 1 && currentPage !== 1) {
       setCurrentPage((prevPage) => prevPage - 1);
     }
-    dispatch(fetchFavoriteRecipes({ page: currentPage, limit: 4 }));
+    setToggleEffect(!toggleEffect);
   };
 
   useEffect(() => {
     dispatch(fetchFavoriteRecipes({ page: currentPage, limit: 4 }));
-  }, [currentPage]);
+  }, [currentPage, toggleEffect]);
 
   const onChangePage = (curPage: number) => {
     const element = document.getElementById("ahcnor1");
@@ -50,12 +51,12 @@ export const FavoritePage: React.FC = () => {
     <section className="px-4 pb-[100px] pt-[50px] md:px-8 md:pb-[200px] xl:px-[99px]">
       <PageTitle title="Favorites" />
       {isLoading && <Loader />}
-      {!isLoading && ownRecipes.length === 0 && (
+      {!isLoading && favoriteRecipes.length === 0 && (
         <SearchNothingFound text="You have not add any favorite recipe yet..." />
       )}
-      {!isLoading && ownRecipes.length !== 0 && (
+      {!isLoading && favoriteRecipes.length !== 0 && (
         <RecipeList
-          recipeData={ownRecipes}
+          recipeData={favoriteRecipes}
           deleteFunc={handleDeleteRecipe}
           metaData={metaData}
           currentPage={currentPage}

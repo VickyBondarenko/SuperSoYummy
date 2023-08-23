@@ -25,8 +25,8 @@ export const MyRecipesPage: React.FC = () => {
   const metaData = useAppSelector(selectOwnRecipesMetaData);
   const isLoading = useAppSelector(selectIsLoading);
 
-  const handleDeleteRecipe = (_id: string): void => {
-    dispatch(fetchDeleteOwnRecipe(_id));
+  const handleDeleteRecipe = async (_id: string): Promise<void> => {
+    await dispatch(fetchDeleteOwnRecipe(_id));
     if (ownRecipes.length === 1 && currentPage !== 1) {
       setCurrentPage((prevPage) => prevPage - 1);
     }
