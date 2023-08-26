@@ -47,9 +47,15 @@ export interface IRouteProps {
   children: ReactNode | any;
 }
 
-export type IAsyncThunkCurrentUserReturn = IUserResponsData | { to: string };
+export interface IAsyncThunkCurrentUserReturn {
+  user: {
+    _id: string;
+    name: string;
+    avatarURL: string;
+    email: string;
+  };
+}
 
 export interface IUserEdition {
-  name: string;
-  avatarURL: string;
+  data: { name: string; avatarURL: string };
 }

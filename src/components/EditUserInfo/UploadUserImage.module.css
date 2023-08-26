@@ -1,0 +1,17 @@
+.image_placeholder {
+  @apply relative w-[88px] h-[88px] md:w-[103px] md:h-[103px]  rounded-full mb-11 md:mb-10 xl:mb-[52px] mx-auto;
+}
+
+.image_svg {
+  @apply absolute z-10  bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 w-10 h-10 md:w-[47px] md:h-[47px] pointer-events-none fill-gray-400 dark:fill-whiteText;
+}
+.image_plus_svg {
+  @apply absolute z-10  bottom-[2px] right-[2px]  w-6 h-6 pointer-events-none;
+}
+.image_preview {
+  @apply absolute bottom-0 top-0 right-0 left-0 w-full h-full pointer-events-none rounded-full;
+}
+.image_warning {
+  @apply absolute text-[12px] w-full text-red-700
+    md:text-[14px];
+}

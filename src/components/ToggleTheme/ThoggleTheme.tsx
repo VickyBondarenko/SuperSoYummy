@@ -3,7 +3,11 @@ import { selectTheme } from "../../redux/themeSlice/themeSelector";
 import { useAppSelector, useAppDispatch } from "../../hooks/reduxHooks";
 import styles from "./ThoggleTheme.module.css";
 
-const ToggleTheme = () => {
+interface IToggleTheme {
+  style?: string;
+}
+
+const ToggleTheme: React.FC<IToggleTheme> = ({ style }) => {
   const darkMode = useAppSelector(selectTheme);
   const dispatch = useAppDispatch();
   const handleThemeToggle = () => {
@@ -11,7 +15,7 @@ const ToggleTheme = () => {
   };
 
   return (
-    <div className={`${styles.container} `}>
+    <div className={`${styles.container} ${style}`}>
       <label className={styles.switch}>
         <input
           type="checkbox"
