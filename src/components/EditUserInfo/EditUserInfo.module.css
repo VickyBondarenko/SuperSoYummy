@@ -1,29 +1,12 @@
 .add_form {
-  @apply flex flex-col items-center gap-y-8
-  xl:flex-grow xl:items-start xl:gap-y-[100px] xl:[&>*:last-child]:-mt-20;
+  @apply flex flex-col items-center;
 }
 .form_container {
-  @apply w-full flex flex-col gap-5 justify-center items-center;
+  @apply w-full flex flex-col  justify-center items-center;
 }
 
 .form_subcontainer {
-  @apply flex flex-col gap-6
-  md:flex-grow md:gap-8;
-}
-
-.title_input {
-  @apply w-full h-10 bg-transparent border-b-2 px-2 text-black text-[14px] tracking-[-0.28px]
-  md:text-[16px] md:tracking-[-0.32px];
-}
-
-.instructions_title {
-  @apply text-[24px] tracking-[-0.48px] font-semibold text-secondaryText mb-6
-  md:tracking-[-0.24px];
-}
-
-.instructions_input {
-  @apply w-full min-h-[154px] bg-transparent border-2 text-start py-2 px-4 resize-y overflow-auto max-h-[300px] rounded-lg
-    md:text-[16px] md:tracking-[-0.32px];
+  @apply mb-6 md:mb-8;
 }
 
 .error_message {
@@ -31,39 +14,18 @@
   md:text-[14px];
 }
 
-.custom_checkbox input[type="checkbox"] {
-  /* Скрыть оригинальный чекбокс */
-  display: none;
-}
-
-.custom_checkbox:before {
-  /* Отображаем стилизованную галочку */
-  content: "\2713"; /* Знак галочки */
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid green; /* Цвет рамки */
-  background-color: white; /* Цвет фона */
-  text-align: center;
-  line-height: 20px;
-  font-size: 16px;
-  color: green; /* Цвет галочки */
-}
-
-.custom_checkbox input[type="checkbox"]:checked + .custom_checkbox:before {
-  /* Изменяем стиль галочки при выборе чекбокса */
-  background-color: green; /* Цвет фона изменяется на зеленый */
-  color: white; /* Цвет галочки изменяется на белый */
-}
-
 .form_input {
-  @apply bg-inherit pl-10 md:pl-[50px] py-3 md:py-4 border-[1px] border-gray-500 rounded-[6px] text-accentDark placeholder:text-gray-500 placeholder:text-customXs md:placeholder:text-[18px] md:placeholder:leading-[27px] w-[279px] md:w-[400px];
-}
-
-.form_errorMsg {
-  @apply text-red-600 text-customRecipesTime md:text-customXxs pt-1 pl-1;
+  @apply bg-inherit pl-10 md:pl-[50px] py-3 md:py-4 border-[1px] border-gray-500 rounded-[6px] text-accentDark placeholder:text-gray-500 placeholder:text-customXs md:placeholder:text-[18px] md:placeholder:leading-[27px] w-[279px] md:w-[400px] cursor-pointer hover:fill-accentMain;
 }
 
 .form_svg {
-  @apply absolute top-[2px]   left-[14px] md:left-[18px] fill-accentDark;
+  @apply absolute top-[2px]   left-[14px] md:left-[18px] fill-accentDark cursor-pointer;
+}
+
+.form_editSvg {
+  @apply absolute z-[-1] w-[17px] md:w-[19px] h-[17px] md:h-[19px] top-[2px]   right-[14px] md:right-[18px] fill-accentDark cursor-pointer;
+}
+
+.form_btn {
+  @apply w-[282px] md:w-[400px] text-center py-[21px] rounded-md border  font-main text-[14px] md:text-[16px] leading-[18px];
 }

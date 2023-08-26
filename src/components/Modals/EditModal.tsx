@@ -23,11 +23,11 @@ const EditModal: React.FC<IModalProps> = ({ isOpen, setIsOpen }) => {
         contentLabel="Модальное окно"
         overlayClassName={styles.modalOverlay}
         shouldCloseOnOverlayClick={false}
-        className={styles.modalContent}
+        className={`${styles.modalContent} dark:bg-accentHalfDark `}
       >
         <div className="flex flex-col gap-6 md:gap-8 justify-center items-center ">
           <CloseSvg
-            className="absolute top-[18px] right-[18px] w-5 md:w-6 h-5 md:h-6 stroke-accentDark cursor-pointer"
+            className="absolute top-[18px] right-[18px] w-5 md:w-6 h-5 md:h-6 stroke-accentDark dark:stroke-whiteText hover:stroke-accentMain dark:hover:stroke-accentMain cursor-pointer"
             onClick={handleCloseModal}
           />
 
