@@ -3,6 +3,12 @@ import axios, { AxiosError } from "axios";
 import { setAuthHeader, clearAuthHeader } from "../../api/apiHelpers";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
+import {
+  setTokenToCookies,
+  getTokenFromCookies,
+  removeTokenFromCookies,
+} from "../../services/setCookies";
+
 const VITE_BACKEND_BASE_URL: string = import.meta.env.VITE_BACKEND_BASE_URL;
 
 axios.defaults.baseURL = VITE_BACKEND_BASE_URL;
@@ -26,7 +32,7 @@ export const registerUser = createAsyncThunk<
       data: { user, accessToken, refreshToken },
     } = await axios.post<IAuthRespons>(`/api/auth/register`, userData);
     setAuthHeader(accessToken);
-    localStorage.setItem("refreshToken", refreshToken);
+    setTokenToCookies(accessToken, refreshToken);
     return { user, accessToken, refreshToken };
   } catch (error) {
     const axiosError = error as AxiosError<SerializedError>;
@@ -47,7 +53,7 @@ export const loginUser = createAsyncThunk<
       data: { user, accessToken, refreshToken },
     } = await axios.post(`/api/auth/login`, userData);
     setAuthHeader(accessToken);
-    localStorage.setItem("refreshToken", refreshToken);
+    setTokenToCookies(accessToken, refreshToken);
     return { user, accessToken, refreshToken };
   } catch (error) {
     Notify.failure("Incorect email or password");
@@ -59,8 +65,8 @@ export const getCurrentUser = createAsyncThunk<
   IAsyncThunkCurrentUserReturn,
   void,
   { rejectValue: string; state: IAppState }
->("auth/current", async (_, { rejectWithValue, getState }) => {
-  const { accessToken } = getState().auth;
+>("auth/current", async (_, { rejectWithValue }) => {
+  const { accessToken } = getTokenFromCookies(document.cookie);
 
   if (!accessToken) {
     return rejectWithValue("Unable to fetch user");
@@ -90,14 +96,10 @@ export const logoutUser = createAsyncThunk<
   string,
   { rejectValue: string; state: IAppState }
 >("auth/logout", async (_id, { rejectWithValue }) => {
-  // const { accessToken } = getState().auth;
-  // if (!accessToken) {
-  //   return rejectWithValue("Token is null");
-  // }
   try {
-    // setAuthHeader(accessToken);
     const { data } = await axios.post(`/api/auth/logout`, { _id });
     clearAuthHeader();
+    removeTokenFromCookies();
     return data;
   } catch (error: any) {
     return rejectWithValue(error.message);

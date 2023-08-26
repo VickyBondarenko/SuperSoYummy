@@ -1,6 +1,10 @@
 import { SerializedError } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
-// import { Notify } from "notiflix";
+import {
+  getTokenFromCookies,
+  setTokenToCookies,
+  removeTokenFromCookies,
+} from "../services/setCookies";
 
 const VITE_BACKEND_BASE_URL: string = import.meta.env.VITE_BACKEND_BASE_URL;
 
@@ -46,12 +50,14 @@ axios.interceptors.response.use(
       }
 
       isRefreshing = true;
+      const { refreshToken } = getTokenFromCookies(document.cookie);
 
+      console.log("refreshToken", refreshToken);
       try {
         const { data } = await axios.post(
           "api/auth/refresh",
           {
-            refreshToken: localStorage.getItem("refreshToken"),
+            refreshToken: refreshToken,
           },
           {
             signal: signal,
@@ -59,8 +65,8 @@ axios.interceptors.response.use(
         );
 
         setAuthHeader(data.accessToken);
-        localStorage.removeItem("refreshToken");
-        localStorage.setItem("refreshToken", data.refreshToken);
+        removeTokenFromCookies();
+        setTokenToCookies(data.accessToken, data.refreshToken);
 
         refreshQueue.forEach((resolve: () => void) => {
           abortController.abort();
@@ -76,7 +82,6 @@ axios.interceptors.response.use(
         const axiosError = error as AxiosError<SerializedError>;
         if (axiosError.response?.status === 403) {
           handleLogOut();
-          // Notify.failure("Session timeout. Login again");
         }
         return Promise.reject(error);
       }
@@ -85,40 +90,3 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-// axios.interceptors.response.use(
-//   (response) => response,
-//   async (error) => {
-//     if (
-//       error.response.status === 401 &&
-//       error.config &&
-//       !error.config._isRetry
-//     ) {
-//       error.config._isRetry = true;
-//       const refreshToken = localStorage.getItem("refreshToken");
-//       // console.log("refreshToken on reload:", refreshToken);
-//       if (refreshToken) {
-//         try {
-//           const { data } = await axios.post("api/auth/refresh", {
-//             refreshToken,
-//           });
-
-//           setAuthHeader(data.accessToken);
-//           // console.log("dataInterceptor", data);
-//           // error.config.headers.common.authorization = `Bearer ${data.accessToken}`;
-//           localStorage.removeItem("refreshToken");
-//           localStorage.setItem("refreshToken", data.refreshToken);
-//           return axios(error.config);
-//         } catch (error) {
-//           const axiosError = error as AxiosError<SerializedError>;
-//           if (axiosError.response?.status === 403) {
-//             handleLogOut();
-//             Notify.failure("Session timeout. Login again");
-//           }
-//           return Promise.reject(error);
-//         }
-//       }
-//     }
-//     return Promise.reject(error);
-//   }
-// );
