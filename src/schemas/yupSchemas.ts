@@ -44,3 +44,12 @@ export const LoginSchema = Yup.object().shape({
     .min(6, "Your password is too short")
     .max(16, "Password cannot be longer than 16 characters"),
 });
+
+export const EditUserSchema = Yup.object().shape({
+  userName: Yup.string()
+    .typeError("Must be string")
+    .required("Please enter your name")
+    .matches(/^[a-zA-Z0-9а-яА-ЯІіЇї]+$/, "Special symbols are not allowed")
+    .min(1, "Your username is too short")
+    .max(40, "Username cannot be longer than 40 characters"),
+});
