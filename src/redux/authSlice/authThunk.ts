@@ -1,11 +1,10 @@
 import { createAsyncThunk, SerializedError } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
-import { setAuthHeader, clearAuthHeader } from "../../api/apiHelpers";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 const VITE_BACKEND_BASE_URL: string = import.meta.env.VITE_BACKEND_BASE_URL;
-
-axios.defaults.baseURL = VITE_BACKEND_BASE_URL;
+(axios.defaults.baseURL = VITE_BACKEND_BASE_URL),
+  (axios.defaults.withCredentials = true);
 
 import {
   IAuthRespons,
@@ -22,11 +21,12 @@ export const registerUser = createAsyncThunk<
 >(`/api/auth/register`, async (userData, { rejectWithValue }) => {
   try {
     const {
-      data: { user, accessToken, refreshToken },
+      headers,
+      data: { user },
     } = await axios.post<IAuthRespons>(`/api/auth/register`, userData);
-    setAuthHeader(accessToken);
-    localStorage.setItem("refreshToken", refreshToken);
-    return { user, accessToken, refreshToken };
+
+    const accessToken = headers["x-has-accesstoken"] === "true";
+    return { user, accessToken };
   } catch (error) {
     const axiosError = error as AxiosError<SerializedError>;
     if (axiosError.response?.status === 409) {
@@ -43,11 +43,13 @@ export const loginUser = createAsyncThunk<
 >(`/api/auth/login`, async (userData, { rejectWithValue }) => {
   try {
     const {
-      data: { user, accessToken, refreshToken },
+      headers,
+      data: { user },
     } = await axios.post(`/api/auth/login`, userData);
-    setAuthHeader(accessToken);
-    localStorage.setItem("refreshToken", refreshToken);
-    return { user, accessToken, refreshToken };
+
+    const accessToken = headers["x-has-accesstoken"] === "true";
+
+    return { user, accessToken };
   } catch (error) {
     Notify.failure("Incorect email or password");
     return rejectWithValue("Error");
@@ -58,24 +60,12 @@ export const getCurrentUser = createAsyncThunk<
   IAsyncThunkCurrentUserReturn,
   void,
   { rejectValue: string; state: IAppState }
->("auth/current", async (_, { rejectWithValue, getState }) => {
-  const { accessToken } = getState().auth;
-
-  if (!accessToken) {
-    return rejectWithValue("Unable to fetch user");
-  }
-
+>("auth/current", async (_, { rejectWithValue }) => {
   try {
-    setAuthHeader(accessToken);
-    const { data } = await axios.get("/api/auth/current", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+    const { data } = await axios.get("/api/auth/current");
     return data;
   } catch (error: any) {
     if (error.response && error.response.status === 401) {
-      clearAuthHeader();
       Notify.warning("Unauthorized");
       return { to: "/signin" };
     } else {
@@ -89,14 +79,8 @@ export const logoutUser = createAsyncThunk<
   string,
   { rejectValue: string; state: IAppState }
 >("auth/logout", async (_id, { rejectWithValue }) => {
-  // const { accessToken } = getState().auth;
-  // if (!accessToken) {
-  //   return rejectWithValue("Token is null");
-  // }
   try {
-    // setAuthHeader(accessToken);
     const { data } = await axios.post(`/api/auth/logout`, { _id });
-    clearAuthHeader();
     return data;
   } catch (error: any) {
     return rejectWithValue(error.message);
