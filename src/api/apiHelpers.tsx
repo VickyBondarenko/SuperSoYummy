@@ -1,10 +1,5 @@
 import { SerializedError } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
-import {
-  getTokenFromCookies,
-  setTokenToCookies,
-  removeTokenFromCookies,
-} from "../services/setCookies";
 
 const VITE_BACKEND_BASE_URL: string = import.meta.env.VITE_BACKEND_BASE_URL;
 
@@ -50,23 +45,11 @@ axios.interceptors.response.use(
       }
 
       isRefreshing = true;
-      const { refreshToken } = getTokenFromCookies(document.cookie);
 
-      console.log("refreshToken", refreshToken);
       try {
-        const { data } = await axios.post(
-          "api/auth/refresh",
-          {
-            refreshToken: refreshToken,
-          },
-          {
-            signal: signal,
-          }
-        );
-
-        setAuthHeader(data.accessToken);
-        removeTokenFromCookies();
-        setTokenToCookies(data.accessToken, data.refreshToken);
+        await axios.post("api/auth/refresh", {
+          signal: signal,
+        });
 
         refreshQueue.forEach((resolve: () => void) => {
           abortController.abort();

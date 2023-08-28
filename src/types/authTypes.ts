@@ -19,8 +19,7 @@ export interface IUserResponsData {
 }
 
 export interface IAuthRespons {
-  accessToken: string;
-  refreshToken: string;
+  accessToken: boolean;
   user: IUserResponsData;
 }
 
@@ -31,8 +30,7 @@ export interface IAuthState {
     avatarURL: string;
     email: string;
   };
-  refreshToken: string | null;
-  accessToken: string | null;
+  accessToken: boolean | null;
   isLoading: boolean;
   isRefreshing: boolean;
   isEditModalOpen: boolean;
