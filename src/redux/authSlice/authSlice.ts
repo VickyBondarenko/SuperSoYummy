@@ -1,6 +1,12 @@
 import { createSlice, Action, PayloadAction } from "@reduxjs/toolkit";
 import { IAuthState } from "../../types/authTypes";
-import { registerUser, loginUser, logoutUser } from "./authThunk";
+import {
+  registerUser,
+  loginUser,
+  logoutUser,
+  getCurrentUser,
+  editUser,
+} from "./authThunk";
 
 const AUTH_REDUCER = "AUTH_REDUCER";
 
@@ -40,6 +46,13 @@ const authSlice = createSlice({
           email: "",
         };
         state.accessToken = null;
+      })
+      .addCase(getCurrentUser.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+      })
+      .addCase(editUser.fulfilled, (state, action) => {
+        state.user.name = action.payload.data.name;
+        state.user.avatarURL = action.payload.data.avatarURL;
       })
       .addMatcher(
         (action: Action<string>) =>

@@ -9,7 +9,6 @@ const VITE_BACKEND_BASE_URL: string = import.meta.env.VITE_BACKEND_BASE_URL;
 import {
   IAuthRespons,
   IFormValues,
-  IUserResponsData,
   IAppState,
   IAsyncThunkCurrentUserReturn,
   IUserEdition,
@@ -63,7 +62,7 @@ export const getCurrentUser = createAsyncThunk<
   { rejectValue: string; state: IAppState }
 >("auth/current", async (_, { rejectWithValue }) => {
   try {
-    const { data } = await axios.get<IUserResponsData>("/api/auth/current");
+    const { data } = await axios.get("/api/auth/current");
     return data;
   } catch (error: any) {
     if (error.response && error.response.status === 401) {
@@ -90,7 +89,7 @@ export const logoutUser = createAsyncThunk<
 
 export const editUser = createAsyncThunk<
   IUserEdition,
-  IUserEdition,
+  FormData,
   { rejectValue: string }
 >("auth/edit", async (userData, { rejectWithValue }) => {
   try {
@@ -99,6 +98,8 @@ export const editUser = createAsyncThunk<
         "Content-Type": "multipart/form-data",
       },
     });
+    console.log("hello");
+
     return data;
   } catch (error: any) {
     if (error.response.data.message === '"name" is not allowed to be empty') {

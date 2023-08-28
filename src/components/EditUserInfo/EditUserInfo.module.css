@@ -1,0 +1,31 @@
+.add_form {
+  @apply flex flex-col items-center;
+}
+.form_container {
+  @apply w-full flex flex-col  justify-center items-center;
+}
+
+.form_subcontainer {
+  @apply mb-6 md:mb-8;
+}
+
+.error_message {
+  @apply absolute text-red-700 text-[12px] -right-0
+  md:text-[14px];
+}
+
+.form_input {
+  @apply bg-inherit pl-10 md:pl-[50px] py-3 md:py-4 border-[1px] border-gray-500 rounded-[6px] text-accentDark placeholder:text-gray-500 placeholder:text-customXs md:placeholder:text-[18px] md:placeholder:leading-[27px] w-[279px] md:w-[400px] cursor-pointer hover:fill-accentMain;
+}
+
+.form_svg {
+  @apply absolute top-[2px]   left-[14px] md:left-[18px] fill-accentDark cursor-pointer;
+}
+
+.form_editSvg {
+  @apply absolute z-[-1] w-[17px] md:w-[19px] h-[17px] md:h-[19px] top-[2px]   right-[14px] md:right-[18px] fill-accentDark cursor-pointer;
+}
+
+.form_btn {
+  @apply w-[282px] md:w-[400px] text-center py-[21px] rounded-md border  font-main text-[14px] md:text-[16px] leading-[18px];
+}
