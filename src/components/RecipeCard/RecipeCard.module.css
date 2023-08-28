@@ -1,5 +1,5 @@
 .recipe_image {
-  @apply rounded-lg w-full;
+  @apply rounded-lg w-full h-full;
 }
 
 .recipe_title {

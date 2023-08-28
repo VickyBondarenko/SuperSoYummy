@@ -31,3 +31,28 @@
   @apply absolute text-red-700 text-[12px] -right-0
   md:text-[14px];
 }
+
+.custom_checkbox input[type="checkbox"] {
+  /* Скрыть оригинальный чекбокс */
+  display: none;
+}
+
+.custom_checkbox:before {
+  /* Отображаем стилизованную галочку */
+  content: "\2713"; /* Знак галочки */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid green; /* Цвет рамки */
+  background-color: white; /* Цвет фона */
+  text-align: center;
+  line-height: 20px;
+  font-size: 16px;
+  color: green; /* Цвет галочки */
+}
+
+.custom_checkbox input[type="checkbox"]:checked + .custom_checkbox:before {
+  /* Изменяем стиль галочки при выборе чекбокса */
+  background-color: green; /* Цвет фона изменяется на зеленый */
+  color: white; /* Цвет галочки изменяется на белый */
+}

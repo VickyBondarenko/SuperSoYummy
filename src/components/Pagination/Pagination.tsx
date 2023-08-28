@@ -21,17 +21,15 @@ export const Pagination: React.FC<IPaginationProps> = ({
 
   useEffect(() => {
     setIsActive(currentpage);
-  }, [currentpage]);
+  }, [currentpage, totalPages]);
 
   const onClick = (e: React.MouseEvent<HTMLParagraphElement, MouseEvent>) => {
     if (e.target instanceof HTMLElement && e.target.innerText !== undefined) {
       const text: string = e.target.innerText;
 
       if (text === "...") {
-        // Ничего не делать для "..."
         return;
       } else {
-        // Выполнить onChangePage для чисел
         setIsActive(Number(text));
         onChangePage(Number(text));
       }

@@ -17,6 +17,8 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import mainPageReducer from "./mainPageSlice/mainPageSlice";
+import ownRecipeReducer from "./ownRecipeSlice/ownRecipeSlice";
+import favoritesReducer from "./favoritesSlice/favoritesSlice";
 import searchReducer from "./searchSlice/searchSlice";
 import popularReducer from "./popularSlice/popularSlice";
 import themeReducer from "./themeSlice/themeSlise";
@@ -44,6 +46,8 @@ export const store = configureStore({
     ingredients: ingredientsReducer,
     popular: popularReducer,
     mainPage: mainPageReducer,
+    ownRecipe: ownRecipeReducer,
+    favorites: favoritesReducer,
     search: searchReducer,
     subsbcribe: subscribeReducer,
     theme: persistReducer(themePersistConfig, themeReducer),
