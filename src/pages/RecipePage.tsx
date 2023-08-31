@@ -2,6 +2,12 @@
 
 export const RecipePage = () => {
   return (
-    <div>RecipePage</div>
-  )
-}
+    <div>
+      RecipePage
+      <div></div>
+      <div></div>
+      <div></div>
+      <img src="" alt="" />
+    </div>
+  );
+};
