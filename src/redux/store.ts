@@ -18,9 +18,11 @@ import {
 import storage from "redux-persist/lib/storage";
 import mainPageReducer from "./mainPageSlice/mainPageSlice";
 import ownRecipeReducer from "./ownRecipeSlice/ownRecipeSlice";
+import recipeReducer from "./recipeSlice/recipeSlice";
 import favoritesReducer from "./favoritesSlice/favoritesSlice";
 import searchReducer from "./searchSlice/searchSlice";
 import popularReducer from "./popularSlice/popularSlice";
+
 import themeReducer from "./themeSlice/themeSlise";
 
 const authPersistConfig = {
@@ -44,6 +46,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     categories: categoriesReducer,
     ingredients: ingredientsReducer,
+    recipe: recipeReducer,
     popular: popularReducer,
     mainPage: mainPageReducer,
     ownRecipe: ownRecipeReducer,

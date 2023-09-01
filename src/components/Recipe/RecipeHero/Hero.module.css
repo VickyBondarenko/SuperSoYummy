@@ -1,0 +1,19 @@
+.hero_wrapper {
+  @apply px-[38px] md:px-[131px] xl:px-[392px] pt-[120px] md:pt-[136px] xl:pt-[164px]   text-center bg-m_recipe_hero bg-no-repeat bg-center bg-cover mt-[-87px] md:bg-t_recipe_hero xl:bg-d_recipe_hero h-[455px] md:h-[495px] xl:h-[493px];
+}
+
+.hero_title {
+  @apply mb-[18px] md:mb-6 text-customBase md:text-customXxl font-semibold font-main text-accentMain;
+}
+
+.hero_text {
+  @apply mb-6 xl:mb-[30px] text-[12px] md:text-[18px] leading-[16px] md:leading-[24px] font-main tracking-[-0.24px] md:tracking-[-0.36px];
+}
+
+.hero_button {
+  @apply mb-[42px] md:mb-[60px] xl:mb-[48px] text-customRecipesTime md:text-[16px] md:leading-[24px] px-[18px] md:px-[44px]  py-[10px] md:py-[18px]  font-main  border-accentMain border-2 rounded-tl-[24px] rounded-br-[24px] rounded-bl-[44px] rounded-tr-[44px] hover:text-whiteText hover:bg-accentMain;
+}
+
+.hero_time {
+  @apply flex justify-center gap-[5px] font-medium text-customRecipesTime md:text-customXs tracking-[-0.24px];
+}

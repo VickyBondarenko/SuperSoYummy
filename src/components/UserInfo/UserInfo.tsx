@@ -15,6 +15,7 @@ export const UserInfo = () => {
     useAppSelector(selectUserInfo);
 
   const location = useLocation();
+
   return (
     <div className={styles.userInfo_conteiner}>
       <img
@@ -25,7 +26,9 @@ export const UserInfo = () => {
 
       <p
         className={`${styles.userInfo_userName} ${
-          "/" === location.pathname ? " " : "dark:text-whiteText"
+          "/" === location.pathname || location.pathname.includes("/recipe")
+            ? " "
+            : "dark:text-whiteText"
         }`}
       >
         {userName}

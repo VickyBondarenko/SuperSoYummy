@@ -41,3 +41,13 @@ export interface IRecipeById {
   tags: string[] | [];
   isPublic: boolean;
 }
+
+export interface IRecipeState {
+  recipe: IRecipeById[];
+  isLoading: boolean;
+  error: string | null;
+}
+
+export interface IHeroProps {
+  id: string;
+}

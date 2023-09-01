@@ -62,7 +62,7 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
   // const handleLogOut = () => {
   //   dispatch(logoutUser(userId));
   // };
-
+  console.log("first", location.pathname.includes("/recipe"));
   return (
     <header ref={ref} className="relative   w-full z-10  ">
       <div className="container mx-auto flex justify-between items-center w-full bg-transparent px-4 py-[21px] xl:px-[100px]">
@@ -76,6 +76,10 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
                 <li
                   key={index}
                   className={`font-main font-medium text-customXs text-[#23262A] transition focus:text-accentMain dark:focus:text-accentMain dark:text-whiteText  ${
+                    location.pathname.includes("/recipe")
+                      ? "dark:text-[#23262A] "
+                      : "dark:text-whiteText"
+                  }  ${
                     item.route === location.pathname
                       ? "text-accentMain dark:text-accentMain"
                       : "hover:text-accentMain dark:hover:text-accentMain"
@@ -87,7 +91,11 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
               <li>
                 <Link to="/search">
                   <SearchSvg
-                    className={`w-6 h-6 transition stroke-accentDark dark:stroke-whiteText focus:stroke-accentMain dark:focus:stroke-accentMain  ${
+                    className={`w-6 h-6 transition stroke-accentDark dark:stroke-whiteText focus:stroke-accentMain dark:focus:stroke-accentMain ${
+                      location.pathname.includes("/recipe")
+                        ? "dark:stroke-accentDark "
+                        : "dark:stroke-whiteText"
+                    }   ${
                       "/search" === location.pathname
                         ? "stroke-accentMain dark:stroke-accentMain"
                         : "hover:stroke-accentMain dark:hover:stroke-accentMain"
