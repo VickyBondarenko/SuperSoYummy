@@ -7,4 +7,10 @@ export const selectOneRecipeImg = (state: RootState) => {
     return oneRecipe.preview;
   }
 };
+export const selectOneRecipePreparation = (state: RootState) => {
+  const [oneRecipe] = state.recipe.recipe;
+  if (oneRecipe) {
+    return oneRecipe.instructions;
+  }
+};
 export const selectIsLoading = (state: RootState) => state.recipe.isLoading;

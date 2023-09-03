@@ -7,10 +7,8 @@ import { selectUserId } from "../../../redux/authSlice/authSelectors";
 import { ReactComponent as TimeSvg } from "../../../images/svg/time.svg";
 import { IHeroProps } from "../../../types/RecipeType";
 import { fetchToggleFavoriteRecipe } from "../../../redux/favoritesSlice/favoritesThunk";
-// import { fetchOneRecipe } from "../../../redux/recipeSlice/recipeThunk";
 
 export const Hero: React.FC<IHeroProps> = ({ id }) => {
-  //   const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
   const [isFavorite, setIsFavorite] = useState(false);
 
   const dispatch = useAppDispatch();

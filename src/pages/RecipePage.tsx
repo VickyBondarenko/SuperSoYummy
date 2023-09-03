@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
+import { useAppDispatch } from "../hooks/reduxHooks";
 import { fetchOneRecipe } from "../redux/recipeSlice/recipeThunk";
-import { selectOneRecipeImg } from "../redux/recipeSlice/recipeSelect";
+
 import { Hero } from "../components/Recipe/RecipeHero/Hero";
+import { Preparation } from "../components/Recipe/Preparetion/Preparation";
 
 export const RecipePage = () => {
   const { id } = useParams();
 
   const dispatch = useAppDispatch();
-  const recipeImg = useAppSelector(selectOneRecipeImg);
 
   useEffect(() => {
     if (id) {
@@ -23,10 +23,9 @@ export const RecipePage = () => {
       {/* <div>
         <Ingredients />
       </div> */}
-      {/* <div>
+      <div className="px-4 md:px-8 xl:px-[100px] pt-8 md:pt-[50px] xl:pt-[100px] pb-[100px] md:pb-[200px] gap-[50px] md:gap-[96px] xl:gap-[50px]">
         <Preparation />
-      </div> */}
-      <img src={recipeImg} alt="recipe foto" />
+      </div>
     </div>
   );
 };
