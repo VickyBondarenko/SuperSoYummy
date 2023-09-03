@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Preparation.module.css";
-// import { useMediaQuery } from "react-responsive";
 import { useAppSelector } from "../../../hooks/reduxHooks";
 
 import {
@@ -9,8 +8,6 @@ import {
 } from "../../../redux/recipeSlice/recipeSelect";
 
 export const Preparation: React.FC = () => {
-  //   const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
-
   const recipeImg = useAppSelector(selectOneRecipeImg);
   const recipePreparation = useAppSelector(selectOneRecipePreparation);
   let preparationArr: string[] = [];
@@ -24,7 +21,6 @@ export const Preparation: React.FC = () => {
   return (
     <div className={styles.prep_wrapper}>
       <div>
-        {" "}
         <h2 className={styles.prep_title}>Recipe Preparation</h2>
         <ul className={styles.prep_list}>
           {preparationArr.map((item: string, index: number) => (

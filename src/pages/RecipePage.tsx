@@ -5,6 +5,7 @@ import { fetchOneRecipe } from "../redux/recipeSlice/recipeThunk";
 
 import { Hero } from "../components/Recipe/RecipeHero/Hero";
 import { Preparation } from "../components/Recipe/Preparetion/Preparation";
+import { Ingredients } from "../components/Recipe/Ingredients/Ingredients";
 
 export const RecipePage = () => {
   const { id } = useParams();
@@ -20,10 +21,9 @@ export const RecipePage = () => {
   return (
     <div>
       <div>{id && <Hero id={id} />}</div>
-      {/* <div>
+
+      <div className="flex flex-col px-4 md:px-8 xl:px-[100px] pt-8 md:pt-[50px] xl:pt-[100px] pb-[100px] md:pb-[200px] gap-[50px] md:gap-[96px] xl:gap-[50px]">
         <Ingredients />
-      </div> */}
-      <div className="px-4 md:px-8 xl:px-[100px] pt-8 md:pt-[50px] xl:pt-[100px] pb-[100px] md:pb-[200px] gap-[50px] md:gap-[96px] xl:gap-[50px]">
         <Preparation />
       </div>
     </div>

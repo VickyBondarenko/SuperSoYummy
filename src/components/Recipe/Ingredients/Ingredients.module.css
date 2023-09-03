@@ -1,0 +1,3 @@
+.ingred_wrapper {
+  @apply flex flex-col w-full gap-6 md:gap-8 xl:gap-[50px];
+}

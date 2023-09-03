@@ -62,7 +62,7 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
   // const handleLogOut = () => {
   //   dispatch(logoutUser(userId));
   // };
-  console.log("first", location.pathname.includes("/recipe"));
+
   return (
     <header ref={ref} className="relative   w-full z-10  ">
       <div className="container mx-auto flex justify-between items-center w-full bg-transparent px-4 py-[21px] xl:px-[100px]">
