@@ -2,7 +2,7 @@ import { createSlice, Action, PayloadAction } from "@reduxjs/toolkit";
 import { IRecipeState } from "../../types/RecipeType";
 import { fetchOneRecipe } from "./recipeThunk";
 
-const RECIPE_REDUCER = "POPULAR_REDUCER";
+const RECIPE_REDUCER = "RECIPE_REDUCER";
 
 const recipeInitialState: IRecipeState = {
   recipe: [],

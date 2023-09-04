@@ -22,6 +22,7 @@ import recipeReducer from "./recipeSlice/recipeSlice";
 import favoritesReducer from "./favoritesSlice/favoritesSlice";
 import searchReducer from "./searchSlice/searchSlice";
 import popularReducer from "./popularSlice/popularSlice";
+import shoppingListReducer from "./shoppingListSlice/shoppingListSlice";
 
 import themeReducer from "./themeSlice/themeSlise";
 
@@ -52,6 +53,7 @@ export const store = configureStore({
     ownRecipe: ownRecipeReducer,
     favorites: favoritesReducer,
     search: searchReducer,
+    shoppingList: shoppingListReducer,
     subsbcribe: subscribeReducer,
     theme: persistReducer(themePersistConfig, themeReducer),
   },
