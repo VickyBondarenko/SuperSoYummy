@@ -62,6 +62,7 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
   // const handleLogOut = () => {
   //   dispatch(logoutUser(userId));
   // };
+  console.log("first", location.pathname.includes("/recipe"));
 
   return (
     <header ref={ref} className="relative   w-full z-10  ">
@@ -75,7 +76,7 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
               {navList.map((item, index: number) => (
                 <li
                   key={index}
-                  className={`font-main font-medium text-customXs text-[#23262A] transition focus:text-accentMain dark:focus:text-accentMain dark:text-whiteText  ${
+                  className={`font-main font-medium text-customXs text-[#23262A] transition focus:text-accentMain dark:focus:text-accentMain dark:text-whiteText ${
                     location.pathname.includes("/recipe")
                       ? "dark:text-[#23262A] "
                       : "dark:text-whiteText"
@@ -130,7 +131,11 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
             <>
               <MenuSvg
                 onClick={handleOpenBurgerMenu}
-                className="stroke-accentDark dark:stroke-whiteText w-7 md:w-8 h-7 md:h-8 "
+                className={`stroke-accentDark dark:stroke-whiteText w-7 md:w-8 h-7 md:h-8 ${
+                  location.pathname.includes("/recipe")
+                    ? "dark:stroke-accentDark "
+                    : "dark:stroke-whiteText"
+                }`}
               />
               <BurgerMenu
                 isOpen={isBurgerMenuOpen}

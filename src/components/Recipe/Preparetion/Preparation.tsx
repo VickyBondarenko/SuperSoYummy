@@ -19,7 +19,7 @@ export const Preparation: React.FC = () => {
   }
 
   return (
-    <div className={styles.prep_wrapper}>
+    <div className={`${styles.prep_wrapper} dark:text-whiteText`}>
       <div>
         <h2 className={styles.prep_title}>Recipe Preparation</h2>
         <ul className={styles.prep_list}>

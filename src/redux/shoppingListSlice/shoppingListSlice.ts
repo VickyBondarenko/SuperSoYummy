@@ -2,7 +2,6 @@ import { createSlice, Action, PayloadAction } from "@reduxjs/toolkit";
 import { IShoppingListState } from "../../types/shoppingListTypes";
 import {
   fetchAllShoppingIngredients,
-  fetchPostShoppingIngredient,
   fetchDeleteShoppingIngredient,
 } from "./shoppingListThunk";
 
@@ -25,12 +24,7 @@ const shoppingListSlice = createSlice({
         state.totalPages = action.payload.totalPages;
         state.shoppingIngredients = action.payload.data.shoppingList;
       })
-      .addCase(fetchPostShoppingIngredient.fulfilled, (state, action) => {
-        state.shoppingIngredients = [
-          ...state.shoppingIngredients,
-          action.payload,
-        ];
-      })
+
       .addCase(fetchDeleteShoppingIngredient.fulfilled, (state, action) => {
         const index = state.shoppingIngredients.findIndex(
           (shoppingIngredient) => shoppingIngredient._id === action.payload

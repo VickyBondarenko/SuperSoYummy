@@ -21,7 +21,6 @@ export const RecipePage = () => {
   return (
     <div>
       <div>{id && <Hero id={id} />}</div>
-
       <div className="flex flex-col px-4 md:px-8 xl:px-[100px] pt-8 md:pt-[50px] xl:pt-[100px] pb-[100px] md:pb-[200px] gap-[50px] md:gap-[96px] xl:gap-[50px]">
         <Ingredients />
         <Preparation />

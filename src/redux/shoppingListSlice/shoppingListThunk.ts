@@ -2,10 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import {
   IShoppingItem,
-  IShoppingListDeleteRequest,
   IShoppingListRespons,
   IShoppingListState,
-} from "../../types/shoppingListtypes";
+} from "../../types/shoppingListTypes";
 
 export const fetchAllShoppingIngredients = createAsyncThunk<
   IShoppingListRespons,
@@ -39,17 +38,17 @@ export const fetchPostShoppingIngredient = createAsyncThunk<
 
 export const fetchDeleteShoppingIngredient = createAsyncThunk<
   string | undefined,
-  IShoppingListDeleteRequest,
+  string,
   { rejectValue: string; state: IShoppingListState }
 >(
   "shoppingList/fetchDelete",
-  async ({ _id }, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
       const response = await axios.delete("/api/shopping-list", {
-        data: { _id },
+        data: { _id: id },
       });
       if (response.status === 204) {
-        return _id;
+        return id;
       } else {
         return;
       }
