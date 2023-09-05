@@ -79,12 +79,12 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
                   className={`font-main font-medium text-customXs  transition focus:text-accentMain dark:focus:text-accentMain  ${
                     location.pathname.includes("/recipe")
                       ? "dark:text-[#23262A] "
-                      : ""
-                  }  ${
-                    item.route === location.pathname
-                      ? "text-accentMain dark:text-accentMain"
-                      : "text-[#23262A] dark:text-whiteText hover:text-accentMain dark:hover:text-accentMain"
-                  }`}
+                      : `${
+                          item.route === location.pathname
+                            ? "text-accentMain dark:text-accentMain"
+                            : "text-[#23262A] dark:text-whiteText hover:text-accentMain dark:hover:text-accentMain"
+                        }`
+                  }  `}
                 >
                   <Link to={`${item.route}`}>{item.name}</Link>
                 </li>
@@ -95,12 +95,12 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
                     className={`w-6 h-6 transition   focus:stroke-accentMain dark:focus:stroke-accentMain ${
                       location.pathname.includes("/recipe")
                         ? "dark:stroke-accentDark "
-                        : ""
-                    }   ${
-                      "/search" === location.pathname
-                        ? "stroke-accentMain dark:stroke-accentMain"
-                        : "stroke-accentDark dark:stroke-whiteText hover:stroke-accentMain dark:hover:stroke-accentMain"
-                    }`}
+                        : `${
+                            "/search" === location.pathname
+                              ? "stroke-accentMain dark:stroke-accentMain"
+                              : "stroke-accentDark dark:stroke-whiteText hover:stroke-accentMain dark:hover:stroke-accentMain"
+                          }`
+                    }   `}
                   />
                 </Link>
               </li>
