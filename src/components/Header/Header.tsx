@@ -62,6 +62,7 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
   // const handleLogOut = () => {
   //   dispatch(logoutUser(userId));
   // };
+  console.log("first", location.pathname.includes("/recipe"));
 
   return (
     <header ref={ref} className="relative   w-full z-10  ">
@@ -75,11 +76,15 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
               {navList.map((item, index: number) => (
                 <li
                   key={index}
-                  className={`font-main font-medium text-customXs text-[#23262A] transition focus:text-accentMain dark:focus:text-accentMain dark:text-whiteText  ${
-                    item.route === location.pathname
-                      ? "text-accentMain dark:text-accentMain"
-                      : "hover:text-accentMain dark:hover:text-accentMain"
-                  }`}
+                  className={`font-main font-medium text-customXs  transition focus:text-accentMain dark:focus:text-accentMain  ${
+                    location.pathname.includes("/recipe")
+                      ? "dark:text-[#23262A] "
+                      : `${
+                          item.route === location.pathname
+                            ? "text-accentMain dark:text-accentMain"
+                            : "text-[#23262A] dark:text-whiteText hover:text-accentMain dark:hover:text-accentMain"
+                        }`
+                  }  `}
                 >
                   <Link to={`${item.route}`}>{item.name}</Link>
                 </li>
@@ -87,11 +92,15 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
               <li>
                 <Link to="/search">
                   <SearchSvg
-                    className={`w-6 h-6 transition stroke-accentDark dark:stroke-whiteText focus:stroke-accentMain dark:focus:stroke-accentMain  ${
-                      "/search" === location.pathname
-                        ? "stroke-accentMain dark:stroke-accentMain"
-                        : "hover:stroke-accentMain dark:hover:stroke-accentMain"
-                    }`}
+                    className={`w-6 h-6 transition   focus:stroke-accentMain dark:focus:stroke-accentMain ${
+                      location.pathname.includes("/recipe")
+                        ? "dark:stroke-accentDark "
+                        : `${
+                            "/search" === location.pathname
+                              ? "stroke-accentMain dark:stroke-accentMain"
+                              : "stroke-accentDark dark:stroke-whiteText hover:stroke-accentMain dark:hover:stroke-accentMain"
+                          }`
+                    }   `}
                   />
                 </Link>
               </li>
@@ -122,7 +131,11 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
             <>
               <MenuSvg
                 onClick={handleOpenBurgerMenu}
-                className="stroke-accentDark dark:stroke-whiteText w-7 md:w-8 h-7 md:h-8 "
+                className={`stroke-accentDark  w-7 md:w-8 h-7 md:h-8 ${
+                  location.pathname.includes("/recipe")
+                    ? "dark:stroke-accentDark "
+                    : "dark:stroke-whiteText"
+                }`}
               />
               <BurgerMenu
                 isOpen={isBurgerMenuOpen}

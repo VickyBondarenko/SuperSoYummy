@@ -31,7 +31,7 @@ export const CategoriesGallery: React.FC = () => {
       ) : (
         <ul className={styles.category_gallery_list}>
           {categoryRecipes.map((item: IRecipeInfo) => (
-            <Link to="/recipe" key={item._id}>
+            <Link to={`/recipe/${item._id}`} key={item._id}>
               <RecipeCard
                 _id={item._id}
                 preview={item.preview}

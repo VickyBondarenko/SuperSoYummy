@@ -52,6 +52,9 @@ export default {
         m_bottom_leaf: "url('./src/images/HeroBg/m-spinach-bottom.png')",
         t_bottom_leaf: "url('./src/images/HeroBg/t-spinach-bottom.png')",
         d_bottom_leaf: "url('./src/images/HeroBg/d-spinach-bottom.png')",
+        m_recipe_hero: "url('/src/images/RecipeHero/m-recipeHero-bg.png')",
+        t_recipe_hero: "url('/src/images/RecipeHero/t-recipeHero-bg.png')",
+        d_recipe_hero: "url('/src/images/RecipeHero/d-recipeHero-bg.png')",
       },
       backgroundSize: {
         auto: "auto",

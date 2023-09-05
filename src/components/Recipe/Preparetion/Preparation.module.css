@@ -1,0 +1,26 @@
+.prep_wrapper {
+  @apply flex flex-col xl:flex-row dark:text-whiteText xl:gap-[50px];
+}
+
+.prep_title {
+  @apply mb-7 md:mb-8 font-main font-semibold text-customBase;
+}
+
+.prep_list {
+  @apply flex flex-col gap-[14px] md:gap-[18px] mb-10 md:mb-[50px];
+}
+
+.prep_item {
+  @apply flex gap-[14px] items-baseline font-main;
+}
+.prep_item_number {
+  @apply h-[21px] w-[21px] flex items-center justify-center  font-semibold text-customShoppingList md:text-customXs text-whiteText bg-accentMain rounded-full px-[7px] pt-[1px];
+}
+
+.prep_item_text {
+  @apply text-[12px] md:text-[14px] leading-[14px] md:leading-[18px];
+}
+
+.prep_img {
+  @apply w-[343px] h-[250px] md:w-[433px] md:h-[332px] rounded-lg;
+}

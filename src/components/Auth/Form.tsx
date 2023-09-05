@@ -37,7 +37,6 @@ const AuthForm: React.FC<IFormProps> = ({ page, title }) => {
   const initialValues: IFormValues = { ...userValues };
 
   const handleOnSubmit = (values: IFormValues) => {
-    console.log(values);
     page === "signin"
       ? dispatch(loginUser(values))
       : dispatch(registerUser(values));
