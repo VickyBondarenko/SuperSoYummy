@@ -25,18 +25,18 @@ const LogOutModal: React.FC<IModalProps> = ({ isOpen, setIsOpen }) => {
   };
 
   return (
-    <div className="relative z-[1000] border-accentMain">
+    <div className="relative z-[1000] border-accentMain ">
       <Modal
         isOpen={isOpen}
         onRequestClose={handleCloseModal}
         contentLabel="Модальное окно"
         overlayClassName={styles.modalOverlay}
         shouldCloseOnOverlayClick={false}
-        className={styles.modalContent}
+        className={`${styles.modalContent} dark:bg-accentDark`}
       >
-        <div className="flex flex-col gap-6 md:gap-8 justify-center items-center">
+        <div className="flex flex-col gap-6 md:gap-8 justify-center items-center ">
           <CloseSvg
-            className="absolute top-[18px] right-[18px] w-5 md:w-6 h-5 md:h-6 stroke-accentDark hover:stroke-accentMain transition dark:hover:stroke-accentMain cursor-pointer"
+            className="absolute top-[18px] right-[18px] w-5 md:w-6 h-5 md:h-6 stroke-accentDark hover:stroke-accentMain dark:stroke-whiteText transition dark:hover:stroke-accentMain cursor-pointer"
             onClick={handleCloseModal}
           />
           <h2 className="font-main text-[14px] md:text-[18px] leading-[18px] md:leading-[24px] dark:text-whiteText">
