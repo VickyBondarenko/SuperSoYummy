@@ -54,6 +54,9 @@ export interface IHeroProps {
 
 export interface IIngrTabHeaderProps {
   action: string;
+  actionStyle: string;
+  wrapperStyle: string;
+  itemName: string;
 }
 
 export interface IIngrTabRowProps {

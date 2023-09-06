@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { IRecipeListRequest } from "../../types/recipeListTypes";
 import {
   IShoppingItem,
   IShoppingListRespons,
@@ -8,11 +9,13 @@ import {
 
 export const fetchAllShoppingIngredients = createAsyncThunk<
   IShoppingListRespons,
-  undefined,
+  IRecipeListRequest,
   { rejectValue: string }
->("shoppingList/fetchAll", async (_, { rejectWithValue }) => {
+>("shoppingList/fetchAll", async ({ page, limit }, { rejectWithValue }) => {
   try {
-    const response = await axios.get("/api/shopping-list");
+    const response = await axios.get("/api/shopping-list", {
+      params: { page, limit },
+    });
 
     return response.data;
   } catch (error: any) {
