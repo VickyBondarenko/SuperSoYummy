@@ -77,7 +77,7 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
                   key={index}
                   className={`font-main font-medium text-customXs  transition focus:text-accentMain dark:focus:text-accentMain  ${
                     location.pathname.includes("/recipe")
-                      ? "dark:text-[#23262A] "
+                      ? "dark:text-[#23262A] hover:text-accentMain dark:hover:text-accentMain"
                       : `${
                           item.route === location.pathname
                             ? "text-accentMain dark:text-accentMain"
@@ -93,7 +93,7 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
                   <SearchSvg
                     className={`w-6 h-6 transition   focus:stroke-accentMain dark:focus:stroke-accentMain ${
                       location.pathname.includes("/recipe")
-                        ? "dark:stroke-accentDark "
+                        ? "stroke-accentDark dark:stroke-accentDark hover:stroke-accentMain dark:hover:stroke-accentMain"
                         : `${
                             "/search" === location.pathname
                               ? "stroke-accentMain dark:stroke-accentMain"

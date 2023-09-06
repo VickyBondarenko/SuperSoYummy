@@ -33,7 +33,6 @@ export const ShoppingListPage: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log("currentPage", currentPage);
     dispatch(fetchAllShoppingIngredients({ page: currentPage, limit: 8 }));
   }, [currentPage, toggleEffect]);
 

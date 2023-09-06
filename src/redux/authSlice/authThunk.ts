@@ -114,7 +114,6 @@ export const editUser = createAsyncThunk<
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log("hello");
 
     return data;
   } catch (error: any) {
