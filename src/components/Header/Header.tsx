@@ -62,7 +62,6 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
   // const handleLogOut = () => {
   //   dispatch(logoutUser(userId));
   // };
-  console.log("first", location.pathname.includes("/recipe"));
 
   return (
     <header ref={ref} className="relative   w-full z-10  ">

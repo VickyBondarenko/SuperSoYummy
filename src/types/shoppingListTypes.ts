@@ -1,16 +1,13 @@
 export interface IShoppingListRespons {
   totalPages: number;
-  data: {
-    _id: string;
-    shoppingList: [
-      {
-        _id: string;
-        measure: string;
-        ttl: string;
-        thb: string;
-      }
-    ];
-  };
+  data: [
+    {
+      _id: string;
+      measure: string;
+      ttl: string;
+      thb: string;
+    }
+  ];
 }
 
 export interface IShoppingItem {
@@ -25,7 +22,7 @@ export interface IShoppingListDeleteRequest {
 }
 
 export interface IShoppingListState {
-  totalPages: null | number;
+  totalPages: number;
   shoppingIngredients: [] | IShoppingItem[];
   isLoading: boolean;
   error: null | string;

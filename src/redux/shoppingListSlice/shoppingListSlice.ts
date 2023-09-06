@@ -8,7 +8,7 @@ import {
 const SHOPPINGLIST_REDUCER = "SHOPPINGLIST_REDUCER";
 
 const recipeInitialState: IShoppingListState = {
-  totalPages: null,
+  totalPages: 1,
   shoppingIngredients: [],
   isLoading: false,
   error: null,
@@ -22,7 +22,7 @@ const shoppingListSlice = createSlice({
     builder
       .addCase(fetchAllShoppingIngredients.fulfilled, (state, action) => {
         state.totalPages = action.payload.totalPages;
-        state.shoppingIngredients = action.payload.data.shoppingList;
+        state.shoppingIngredients = action.payload.data;
       })
 
       .addCase(fetchDeleteShoppingIngredient.fulfilled, (state, action) => {
