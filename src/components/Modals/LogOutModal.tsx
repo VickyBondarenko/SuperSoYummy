@@ -36,7 +36,7 @@ const LogOutModal: React.FC<IModalProps> = ({ isOpen, setIsOpen }) => {
       >
         <div className="flex flex-col gap-6 md:gap-8 justify-center items-center">
           <CloseSvg
-            className="absolute top-[18px] right-[18px] w-5 md:w-6 h-5 md:h-6 stroke-accentDark cursor-pointer"
+            className="absolute top-[18px] right-[18px] w-5 md:w-6 h-5 md:h-6 stroke-accentDark hover:stroke-accentMain transition dark:hover:stroke-accentMain cursor-pointer"
             onClick={handleCloseModal}
           />
           <h2 className="font-main text-[14px] md:text-[18px] leading-[18px] md:leading-[24px] dark:text-whiteText">
@@ -45,14 +45,14 @@ const LogOutModal: React.FC<IModalProps> = ({ isOpen, setIsOpen }) => {
           <div className="flex gap-2 md:gap-4">
             <button
               type="button"
-              className="w-[137px] md:w-[192px] px-[18px] md:px-[39px] py-[21px] rounded-md border border-accentMain text-whiteText dark:hover:text-accentMain  bg-accentMain  hover:bg-accentDark dark:hover:bg-whiteText dark:hover:border-accentMain font-main text-[14px] md:text-[16px] leading-[18px]"
+              className="w-[137px] md:w-[192px] px-[18px] md:px-[39px] py-[21px] rounded-md border border-accentMain text-whiteText dark:hover:text-accentMain  bg-accentMain  hover:bg-accentDark dark:hover:bg-whiteText dark:hover:border-accentMain font-main text-[14px] md:text-[16px] leading-[18px] transition"
               onClick={handleLogOut}
             >
               Log out
             </button>
             <button
               type="button"
-              className="w-[137px] md:w-[192px] px-[18px] md:px-[39px] py-[21px] rounded-md border border-inherit hover:border-accentDark text-accentDark dark:hover:text-accentMain  bg-accentGray  hover:bg-whiteText dark:hover:bg-whiteText dark:hover:border-accentMain font-main text-[14px] md:text-[16px] leading-[18px]"
+              className="w-[137px] md:w-[192px] px-[18px] md:px-[39px] py-[21px] rounded-md border border-inherit hover:border-accentDark text-accentDark dark:hover:text-accentMain  bg-accentGray  hover:bg-whiteText dark:hover:bg-whiteText dark:hover:border-accentMain font-main text-[14px] md:text-[16px] leading-[18px] transition"
               onClick={handleCloseModal}
             >
               Cancel
