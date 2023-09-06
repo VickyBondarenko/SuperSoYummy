@@ -22,7 +22,7 @@ export const Hero: React.FC<IHeroProps> = ({ id }) => {
         setIsFavorite(true);
       }
     }
-  }, [recipe, userId]);
+  }, []);
 
   const handleClick = () => {
     dispatch(fetchToggleFavoriteRecipe(id));

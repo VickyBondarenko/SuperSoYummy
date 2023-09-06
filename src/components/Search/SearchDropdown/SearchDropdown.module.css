@@ -11,7 +11,7 @@
 }
 
 .dropdown_header {
-  @apply flex w-[146px] justify-between items-center px-4 py-2 rounded-md bg-[#D9D9D9] text-black bg-opacity-10 text-opacity-50 cursor-pointer
+  @apply flex w-[146px] justify-between items-center px-4 py-2 rounded-md bg-[#D9D9D9] text-black text-opacity-50 cursor-pointer
   md:w-[175px] md:py-[10px]
   xl:w-[198px] xl:py-4;
 }

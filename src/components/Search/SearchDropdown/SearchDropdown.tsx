@@ -26,7 +26,7 @@ export const SearchDropdown = () => {
         Search by:
       </p>
       <div
-        className={`${styles.dropdown_header} dark:text-[#8B919D] dark:border dark:border-whiteText dark: bg-inherit dark:border-opacity-[0.5]`}
+        className={`${styles.dropdown_header} bg-[#D9D9D9] bg-opacity-20   dark:text-[#8B919D] dark:border dark:border-whiteText dark:bg-inherit dark:border-opacity-[0.5]`}
         onClick={toggling}
       >
         {selectedOption}

@@ -18,13 +18,13 @@ const recipeSlice = createSlice({
     builder
       .addCase(fetchOneRecipe.fulfilled, (state, action) => {
         state.recipe = action.payload;
+        state.isLoading = true;
       })
       .addMatcher(
         (action: Action<string>) =>
           typeof action.type === "string" && action.type.endsWith("/pending"),
         (state) => {
           state.error = null;
-          state.isLoading = true;
         }
       )
       .addMatcher(
