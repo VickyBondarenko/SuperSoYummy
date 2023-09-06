@@ -51,9 +51,9 @@ export const IngredientsTableRow: React.FC<IIngrTabRowProps> = ({ item }) => {
         </div>
         <div onClick={handleToggle}>
           {isSelected ? (
-            <CheckSvg className="w-[18px] md:w-[35px] h-[18px] md:h-[35px]" />
+            <CheckSvg className="w-[18px] md:w-[35px] h-[18px] md:h-[35px] cursor-pointer" />
           ) : (
-            <div className="w-[18px] md:w-[35px] h-[18px] md:h-[35px] border-2 border-[#7E7E7E] border-opacity-[0.5] rounded-sm"></div>
+            <div className="w-[18px] md:w-[35px] h-[18px] md:h-[35px] border-2 border-[#7E7E7E] border-opacity-[0.5] rounded-sm cursor-pointer"></div>
           )}
         </div>
       </div>
