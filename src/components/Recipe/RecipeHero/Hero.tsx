@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Hero.module.css";
 // import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
@@ -16,16 +16,18 @@ export const Hero: React.FC<IHeroProps> = ({ id }) => {
   const [recipe] = useAppSelector(selectOneRecipe);
   const userId = useAppSelector(selectUserId);
 
-  if (recipe) {
-    const favoritesArr: string[] = recipe.favorites;
-    if (favoritesArr && userId && favoritesArr.includes(userId)) {
-      setIsFavorite(true);
+  useEffect(() => {
+    if (recipe) {
+      const favoritesArr: string[] = recipe.favorites;
+      if (favoritesArr && userId && favoritesArr.includes(userId)) {
+        setIsFavorite(true);
+      }
     }
-  }
+  }, [recipe, userId]);
 
   const handleClick = () => {
     dispatch(fetchToggleFavoriteRecipe(id));
-    setIsFavorite(!isFavorite);
+    setIsFavorite((prevIsFavorite) => !prevIsFavorite);
   };
 
   return (

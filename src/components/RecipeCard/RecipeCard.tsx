@@ -24,8 +24,8 @@ export const RecipeCard: React.FC<IRecipeInfo> = memo((props) => {
     description.trim() === "" ? "No description" : description;
   const defaultTime = time.trim() === "" ? "N/A" : `${time}`;
   return (
-    <li className="relative overflow-hidden group ">
-      <Link to={`/recipe/${_id}`} key={_id}>
+    <li key={_id} className="relative overflow-hidden group ">
+      <Link to={`/recipe/${_id}`}>
         <img src={preview} className={`${styles.recipe_image}`} />
         <p
           className={`${styles.recipe_title} ${
