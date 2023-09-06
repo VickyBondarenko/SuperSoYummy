@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks";
-// import { useAppDispatch } from "../hooks/reduxHooks";
 import { fetchOneRecipe } from "../redux/recipeSlice/recipeThunk";
 
 import { Hero } from "../components/Recipe/RecipeHero/Hero";

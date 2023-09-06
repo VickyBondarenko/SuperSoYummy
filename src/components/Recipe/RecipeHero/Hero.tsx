@@ -18,16 +18,21 @@ export const Hero: React.FC<IHeroProps> = ({ id }) => {
   useEffect(() => {
     if (recipe) {
       const favoritesArr: string[] = recipe.favorites;
+
       if (favoritesArr && userId && favoritesArr.includes(userId)) {
         setIsFavorite(true);
+      } else if (favoritesArr && userId && !favoritesArr.includes(userId)) {
+        setIsFavorite(false);
       }
     }
-  }, []);
+  }, [recipe]);
 
   const handleClick = () => {
     dispatch(fetchToggleFavoriteRecipe(id));
     setIsFavorite((prevIsFavorite) => !prevIsFavorite);
   };
+
+  console.log("isFavorite", isFavorite);
 
   return (
     <div className={styles.hero_wrapper}>
