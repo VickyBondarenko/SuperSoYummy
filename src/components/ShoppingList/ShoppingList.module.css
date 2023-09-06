@@ -14,7 +14,7 @@
 }
 
 .item_img {
-  @apply w-[48px] md:w-[81px] bg-accentLighter p-[6px] rounded-md;
+  @apply w-[60px] md:w-[93px] bg-accentLighter p-[6px] rounded-md;
 }
 
 .item_title {
@@ -30,5 +30,5 @@
 }
 
 .item_closeSvg {
-  @apply w-[14px] md:w-5 h-[14px] md:h-5 stroke-slate-900;
+  @apply w-[14px] md:w-5 h-[14px] md:h-5 stroke-slate-900 cursor-pointer hover:stroke-accentMain;
 }

@@ -32,13 +32,15 @@ export const ShoppingList: React.FC<IShoppingListProps> = ({
       />
       <ul className={styles.list_wrapper}>
         {shoppingListData.map(({ _id, measure, ttl, thb }) => (
-          <li className={` dark:bg-accentHalfDark`} key={_id}>
-            <div className={styles.item_wrapper}>
+          <li key={_id}>
+            <div
+              className={`${styles.item_wrapper} dark:border-whiteText dark:border-opacity-[0.3]`}
+            >
               <div className={styles.item_image_wrapper}>
                 <img
                   src={thb}
                   alt={ttl}
-                  className={styles.item_img}
+                  className={`${styles.item_img} dark:bg-accentHalfDark`}
                   style={{ aspectRatio: "1 / 1" }}
                 />
                 <h2 className={`${styles.item_title} dark:text-whiteText`}>
@@ -51,7 +53,7 @@ export const ShoppingList: React.FC<IShoppingListProps> = ({
                 </p>
                 <CloseSvg
                   onClick={() => deleteFunc(_id)}
-                  className={styles.item_closeSvg}
+                  className={`${styles.item_closeSvg} dark:stroke-whiteText dark:hover:stroke-accentMain`}
                 />
               </div>
             </div>
