@@ -25,7 +25,9 @@ export const UserInfo = () => {
       />
 
       <p
-        className={`${styles.userInfo_userName} ${
+        className={`${
+          styles.userInfo_userName
+        } hover:text-accentMain dark:hover:text-accentMain ${
           "/" === location.pathname || location.pathname.includes("/recipe")
             ? " "
             : "dark:text-whiteText"
