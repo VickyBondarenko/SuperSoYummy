@@ -22,13 +22,18 @@ export const SearchDropdown = () => {
 
   return (
     <div className={styles.dropdown_wrapper}>
-      <p className={styles.dropdown_title}>Search by:</p>
-      <div className={styles.dropdown_header} onClick={toggling}>
+      <p className={`${styles.dropdown_title} dark:text-whiteText`}>
+        Search by:
+      </p>
+      <div
+        className={`${styles.dropdown_header} dark:text-[#8B919D] dark:border dark:border-whiteText dark: bg-inherit dark:border-opacity-[0.5]`}
+        onClick={toggling}
+      >
         {selectedOption}
         <FiChevronDown stroke={"#8BAA36"} size={14} />
       </div>
       {isOpen && (
-        <div className={styles.dropdown_list_container}>
+        <div className={`${styles.dropdown_list_container} `}>
           <ul className={styles.dropdown_list}>
             {options.map((option) => (
               <li

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Hero.module.css";
-// import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { selectOneRecipe } from "../../../redux/recipeSlice/recipeSelect";
 import { selectUserId } from "../../../redux/authSlice/authSelectors";

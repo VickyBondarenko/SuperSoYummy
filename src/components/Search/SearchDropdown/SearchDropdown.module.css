@@ -5,7 +5,7 @@
 }
 
 .dropdown_title {
-  @apply font-medium text-mainText dark:text-whiteText text-[12px] leading-[16px] tracking-[-0.24px]
+  @apply font-medium text-mainText  text-[12px] leading-[16px] tracking-[-0.24px]
   md:text-customXs
   xl:text-[18px] xl:leading-6;
 }
