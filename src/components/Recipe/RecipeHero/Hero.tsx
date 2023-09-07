@@ -32,8 +32,6 @@ export const Hero: React.FC<IHeroProps> = ({ id }) => {
     setIsFavorite((prevIsFavorite) => !prevIsFavorite);
   };
 
-  console.log("isFavorite", isFavorite);
-
   return (
     <div className={styles.hero_wrapper}>
       {recipe && (

@@ -18,6 +18,7 @@ import { AddIngredient } from "./AddIngedient/AddIngredient";
 import { AsimetricRoundedBtn } from "../Buttons/AsimetricRoundedBtn";
 import { UploadImage } from "./UploadImage/UploadImage";
 import placeHolder from "../../images/best-gordon-ramsay-memes-10.jpg";
+import { useNavigate } from "react-router-dom";
 
 const timeForCook: string[] = [];
 for (let i = 15; i <= 300; i += 5) {
@@ -31,13 +32,14 @@ export const AddRecipe: React.FC = () => {
   const categories = useAppSelector(selectMemoCategoryList);
   const ingredientOptions = useAppSelector(selectMemoIngredientsList);
   const isDarkMode = useAppSelector(selectTheme);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchIngredients());
     dispatch(fetchCategories());
   }, []);
 
-  const handleSumbitForm = (
+  const handleSumbitForm = async (
     values: IAddOwnRecipeForm,
     formikHelpers: FormikHelpers<IAddOwnRecipeForm>
   ) => {
@@ -61,10 +63,12 @@ export const AddRecipe: React.FC = () => {
     formData.append("instructions", values.instructions);
     formData.append("isPublic", values.isPublic.toString());
 
-    dispatch(fetchAddOwnRecipe(formData));
+    const data = await dispatch(fetchAddOwnRecipe(formData));
+    console.log("data", data);
 
     formikHelpers.setSubmitting(false);
     formikHelpers.resetForm();
+    navigate("/myRecipes");
   };
 
   const initialValues: IAddOwnRecipeForm = {
