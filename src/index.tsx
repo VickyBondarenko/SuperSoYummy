@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "./redux/store";
 import { store } from "./redux/store";
+import { ScrollToTop } from "./components/ServiceComponents/ScrollToTop";
 
 Modal.setAppElement("#root");
 
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter>
         <App />
+        <ScrollToTop />
       </BrowserRouter>
     </PersistGate>
   </Provider>
