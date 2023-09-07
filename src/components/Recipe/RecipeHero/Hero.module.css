@@ -11,7 +11,7 @@
 }
 
 .hero_button {
-  @apply mb-[42px] md:mb-[60px] xl:mb-[48px] text-customRecipesTime md:text-[16px] md:leading-[24px] px-[18px] md:px-[44px]  py-[10px] md:py-[18px]  font-main  border-accentMain border-2 rounded-tl-[24px] rounded-br-[24px] rounded-bl-[44px] rounded-tr-[44px] hover:text-whiteText hover:bg-accentMain;
+  @apply mb-[42px] md:mb-[60px] xl:mb-[48px] text-customRecipesTime md:text-[16px] md:leading-[24px] px-[18px] md:px-[44px]  py-[10px] md:py-[18px]  font-main  border-accentMain border-2 rounded-tl-[24px] rounded-br-[24px] rounded-bl-[44px] rounded-tr-[44px] hover:text-whiteText hover:bg-accentMain transition;
 }
 
 .hero_time {
