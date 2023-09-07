@@ -56,7 +56,7 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
   const location = useLocation();
 
   const isDesktop = useMediaQuery({
-    query: "(min-width: 1024px)",
+    query: "(min-width: 1440px)",
   });
 
   const isTablet = useMediaQuery({
@@ -137,7 +137,7 @@ export const Header = forwardRef<HTMLHeadElement>((_, ref) => {
             <>
               <MenuSvg
                 onClick={handleOpenBurgerMenu}
-                className={`stroke-accentDark  w-7 md:w-8 h-7 md:h-8 ${
+                className={`stroke-accentDark  w-7 md:w-8 h-7 md:h-8 cursor-pointer ${
                   location.pathname.includes("/recipe") ||
                   ("/" === location.pathname && isTablet)
                     ? "dark:stroke-accentDark "
