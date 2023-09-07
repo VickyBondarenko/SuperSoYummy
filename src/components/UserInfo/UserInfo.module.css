@@ -1,5 +1,5 @@
 .userInfo_conteiner {
-  @apply flex items-center gap-[14px];
+  @apply flex items-center gap-[14px] cursor-pointer;
 }
 
 .userInfo_avatar {

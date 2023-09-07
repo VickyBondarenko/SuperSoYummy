@@ -16,7 +16,7 @@ export const SearchGallery: React.FC<ISearchGalleryProps> = ({
     <ul className="w-full flex justify-center items-center flex-wrap gap-7 md:gap-8 xl:gap-x-4 xl:gap-y-[78px]">
       {searchRecipes.map((item) => (
         <Link
-          to="/recipe"
+          to={`/recipe/${item._id}`}
           key={item._id}
           onClick={handleReset}
           className="md:w-[calc((100%_-_(2_-_1)_*_32px)_/_2)] xl:w-[calc(25%_-_16px)]"

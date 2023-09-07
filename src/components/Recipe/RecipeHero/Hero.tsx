@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Hero.module.css";
-// import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { selectOneRecipe } from "../../../redux/recipeSlice/recipeSelect";
 import { selectUserId } from "../../../redux/authSlice/authSelectors";
@@ -16,17 +15,24 @@ export const Hero: React.FC<IHeroProps> = ({ id }) => {
   const [recipe] = useAppSelector(selectOneRecipe);
   const userId = useAppSelector(selectUserId);
 
-  if (recipe) {
-    const favoritesArr: string[] = recipe.favorites;
-    if (favoritesArr && userId && favoritesArr.includes(userId)) {
-      setIsFavorite(true);
+  useEffect(() => {
+    if (recipe) {
+      const favoritesArr: string[] = recipe.favorites;
+
+      if (favoritesArr && userId && favoritesArr.includes(userId)) {
+        setIsFavorite(true);
+      } else if (favoritesArr && userId && !favoritesArr.includes(userId)) {
+        setIsFavorite(false);
+      }
     }
-  }
+  }, [recipe]);
 
   const handleClick = () => {
     dispatch(fetchToggleFavoriteRecipe(id));
-    setIsFavorite(!isFavorite);
+    setIsFavorite((prevIsFavorite) => !prevIsFavorite);
   };
+
+  console.log("isFavorite", isFavorite);
 
   return (
     <div className={styles.hero_wrapper}>
@@ -45,7 +51,10 @@ export const Hero: React.FC<IHeroProps> = ({ id }) => {
           </button>
           <p className={styles.hero_time}>
             <TimeSvg className=" w-[14px] md:w-[20px]  h-[14px] md:h-[20px]  stroke-accentDark hover:stroke-accentMain  dark:hover:stroke-accentMain " />
-            <span>{recipe.time} min</span>
+            <span>
+              {recipe.time}
+              {recipe.time.includes("min") ? "" : " min"}
+            </span>
           </p>
         </div>
       )}

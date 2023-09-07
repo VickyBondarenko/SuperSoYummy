@@ -53,7 +53,7 @@ export const AddRecipePage: React.FC = () => {
               {!isLoading ? (
                 popularRecipes.map(({ title, preview, _id, instructions }) => (
                   <Link
-                    to="/recipe"
+                    to={`/recipe/${_id}`}
                     key={_id}
                     className=" md:flex-grow xl:flex-grow-0"
                   >

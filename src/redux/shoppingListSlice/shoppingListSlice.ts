@@ -30,13 +30,13 @@ const shoppingListSlice = createSlice({
           (shoppingIngredient) => shoppingIngredient._id === action.payload
         );
         state.shoppingIngredients.splice(index, 1);
+        state.isLoading = true;
       })
       .addMatcher(
         (action: Action<string>) =>
           typeof action.type === "string" && action.type.endsWith("/pending"),
         (state) => {
           state.error = null;
-          state.isLoading = true;
         }
       )
       .addMatcher(

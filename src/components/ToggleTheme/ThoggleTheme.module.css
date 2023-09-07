@@ -11,7 +11,7 @@
 }
 
 .slider {
-  @apply absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-gray-200 transition rounded-[27px] before:absolute before:content-[''] before:h-[21px] before:w-[21px] before:left-[3px] before:bottom-[3px] before:bg-white before:transition before:duration-500 before:rounded-full before:drop-shadow-[2px_1px_6px_rgba(0,0,0,0.25)];
+  @apply absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-gray-200 transition rounded-[27px]  before:absolute before:content-[''] before:h-[21px] before:w-[21px] before:left-[3px] before:bottom-[3px] before:bg-white before:transition before:duration-500 before:rounded-full before:drop-shadow-[2px_1px_6px_rgba(0,0,0,0.25)];
 }
 
 input:checked + .slider {
