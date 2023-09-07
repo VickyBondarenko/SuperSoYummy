@@ -33,7 +33,7 @@ export const Auth: React.FC<IFormProps> = ({ page }) => {
         <AuthForm page={page} title={title} />
         <NavLink
           to={page === "signin" ? "/register" : "/login"}
-          className=" block text-center decoration-inherit underline text-whiteText font-main text-customXs md:text-customSm xl:text-"
+          className=" block text-center decoration-inherit underline text-whiteText font-main text-customXs  md:text-[16px] md:leading-[24px] cursor-pointer hover:text-accentMain transition"
         >
           {redirect}
         </NavLink>

@@ -51,7 +51,10 @@ export const Hero: React.FC<IHeroProps> = ({ id }) => {
           </button>
           <p className={styles.hero_time}>
             <TimeSvg className=" w-[14px] md:w-[20px]  h-[14px] md:h-[20px]  stroke-accentDark hover:stroke-accentMain  dark:hover:stroke-accentMain " />
-            <span>{recipe.time} min</span>
+            <span>
+              {recipe.time}
+              {recipe.time.includes("min") ? "" : " min"}
+            </span>
           </p>
         </div>
       )}

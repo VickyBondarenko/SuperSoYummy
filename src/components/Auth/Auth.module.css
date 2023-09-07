@@ -1,5 +1,5 @@
 .auth_wrapper {
-  @apply w-full min-h-screen h-full pb-[118px] md:pb-[59px] xl:pb-0 pt-[86px] md:pt-[96px] xl:pt-0 flex flex-col items-center justify-center bg-contain bg-no-repeat bg-[center_bottom_-90px] bg-authPage_mob md:bg-authPage_tab md:bg-[center_bottom_-140px]  xl:flex-row xl:justify-evenly xl:bg-authPage_desc xl:bg-[center_bottom_-80px];
+  @apply w-full bg-white min-h-screen h-full pb-[118px] md:pb-[59px] xl:pb-0 pt-[86px] md:pt-[96px] xl:pt-0 flex flex-col items-center justify-center bg-contain bg-no-repeat bg-[center_bottom_-90px] bg-authPage_mob md:bg-authPage_tab md:bg-[center_bottom_-140px]  xl:flex-row xl:justify-evenly xl:bg-authPage_desc xl:bg-[center_bottom_-80px];
 }
 .form_wrapper {
   @apply flex flex-col  -mt-8 md:-mt-[13px]  rounded-[30px] px-7 pt-8 pb-10 md:px-[50px] md:py-[44px] mb-[18px] bg-accentHalfDark;

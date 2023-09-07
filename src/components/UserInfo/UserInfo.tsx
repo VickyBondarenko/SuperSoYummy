@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import styles from "./UserInfo.module.css";
 import { useEffect } from "react";
 import { getCurrentUser } from "../../redux/authSlice/authThunk";
+import { useMediaQuery } from "react-responsive";
 
 export const UserInfo = () => {
   const dispatch = useAppDispatch();
@@ -15,6 +16,9 @@ export const UserInfo = () => {
     useAppSelector(selectUserInfo);
 
   const location = useLocation();
+  const isDesktop = useMediaQuery({
+    query: "(min-width: 1024px)",
+  });
 
   return (
     <div className={styles.userInfo_conteiner}>
@@ -28,7 +32,8 @@ export const UserInfo = () => {
         className={`${
           styles.userInfo_userName
         } hover:text-accentMain dark:hover:text-accentMain ${
-          "/" === location.pathname || location.pathname.includes("/recipe")
+          ("/" === location.pathname && isDesktop) ||
+          location.pathname.includes("/recipe")
             ? " "
             : "dark:text-whiteText"
         }`}

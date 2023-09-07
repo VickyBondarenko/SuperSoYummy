@@ -62,7 +62,8 @@ export const RecipeList: React.FC<IRecipeListProps> = ({
               </div>
               <div className={styles.card_bottom}>
                 <p className={`${styles.recipe_time} dark:text-whiteText`}>
-                  {time} min
+                  {time}
+                  {time.includes("min") ? "" : " min"}
                 </p>
 
                 <AsimetricRoundedBtn
