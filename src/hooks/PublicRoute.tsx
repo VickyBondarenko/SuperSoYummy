@@ -8,3 +8,5 @@ export const PublicRoute: React.FC<IRouteProps> = ({ children }) => {
   const isLoggedIn = useAppSelector(selectIsAuth);
   return isLoggedIn ? <Navigate to="/" /> : children;
 };
+
+export default PublicRoute;

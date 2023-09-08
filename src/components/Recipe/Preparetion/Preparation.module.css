@@ -1,5 +1,5 @@
 .prep_wrapper {
-  @apply flex flex-col xl:flex-row dark:text-whiteText xl:gap-[50px];
+  @apply flex flex-col xl:flex-row xl:justify-between dark:text-whiteText xl:gap-[50px];
 }
 
 .prep_title {

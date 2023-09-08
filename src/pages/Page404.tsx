@@ -22,3 +22,4 @@ export const Page404: React.FC = () => {
     </section>
   );
 };
+export default Page404;
