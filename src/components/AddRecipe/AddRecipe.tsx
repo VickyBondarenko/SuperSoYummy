@@ -64,11 +64,11 @@ export const AddRecipe: React.FC = () => {
     formData.append("isPublic", values.isPublic.toString());
 
     const data = await dispatch(fetchAddOwnRecipe(formData));
-    console.log("data", data);
+    const id = (data.payload as IAddOwnRecipeForm)._id;
 
     formikHelpers.setSubmitting(false);
     formikHelpers.resetForm();
-    navigate("/myRecipes");
+    navigate(`/recipe/${id}`);
   };
 
   const initialValues: IAddOwnRecipeForm = {

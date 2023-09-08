@@ -14,6 +14,7 @@ export interface IAddOwnRecipeForm {
   ingredients: IIngredient[];
   isPublic: boolean;
   preview?: string | File;
+  _id?: string;
 }
 
 export interface IMetaRecipeList {
