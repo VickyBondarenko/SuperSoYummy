@@ -31,7 +31,7 @@ export const AddRecipePage: React.FC = () => {
   }, [limit]);
 
   return (
-    <section className="px-4 pb-[100px] pt-3 md:px-8 md:pt-[70px] md:pb-[200px] xl:px-[100px]">
+    <section className="px-4 pb-[100px] pt-3 md:px-8  md:pt-[82px] md:pb-[200px] xl:px-[100px]">
       <PageTitle title="Add recipe" />
       <div className="xl:flex xl:gap-32">
         <AddRecipe />
@@ -74,3 +74,4 @@ export const AddRecipePage: React.FC = () => {
     </section>
   );
 };
+export default AddRecipePage;

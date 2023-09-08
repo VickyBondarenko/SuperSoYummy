@@ -46,7 +46,7 @@ export const MyRecipesPage: React.FC = () => {
   };
 
   return (
-    <section className="px-4 pb-[100px] pt-[50px] md:px-8 md:pb-[200px] xl:px-[99px]">
+    <section className="px-4 pb-[100px] pt-[50px]  md:pt-[82px] md:px-8 md:pb-[200px] xl:px-[99px]">
       <PageTitle title="My Recipes" />
       {isLoading && <Loader />}
       {!isLoading && ownRecipes.length === 0 && (
@@ -64,3 +64,4 @@ export const MyRecipesPage: React.FC = () => {
     </section>
   );
 };
+export default MyRecipesPage;

@@ -1,26 +1,25 @@
-import React, { useEffect } from "react";
+import React, { lazy, useEffect } from "react";
 import { useAppSelector } from "./hooks/reduxHooks";
 import { Routes, Route } from "react-router-dom";
-
 import { selectTheme } from "./redux/themeSlice/themeSelector";
 
-import { Layout } from "./components/Layout/Layout";
-import { Main } from "./components/Main/Main";
-import { WelcomePage } from "./pages/WelcomePage";
-import { AddRecipePage } from "./pages/AddRecipePage";
-import { FavoritePage } from "./pages/FavoritePage";
-import { ShoppingListPage } from "./pages/ShoppingListPage";
-import { MyRecipesPage } from "./pages/MyRecipesPage";
-import { SearchPage } from "./pages/SearchPage";
-import { RecipePage } from "./pages/RecipePage";
-import { CategoriesPage } from "./pages/CategoriesPage";
-import { UnSubscribePage } from "./pages/UnSubscribePage";
-import { Page404 } from "./pages/Page404";
-import LogInPage from "./pages/LogInPage";
-import RegisterPage from "./pages/RegisterPage";
+const Layout = lazy(() => import("./components/Layout/Layout"));
+const Main = lazy(() => import("./components/Main/Main"));
+const WelcomePage = lazy(() => import("./pages/WelcomePage"));
+const AddRecipePage = lazy(() => import("./pages/AddRecipePage"));
+const FavoritePage = lazy(() => import("./pages/FavoritePage"));
+const ShoppingListPage = lazy(() => import("./pages/ShoppingListPage"));
+const MyRecipesPage = lazy(() => import("./pages/MyRecipesPage"));
+const SearchPage = lazy(() => import("./pages/SearchPage"));
+const RecipePage = lazy(() => import("./pages/RecipePage"));
+const CategoriesPage = lazy(() => import("./pages/CategoriesPage"));
+const UnSubscribePage = lazy(() => import("./pages/UnSubscribePage"));
+const Page404 = lazy(() => import("./pages/Page404"));
+const LogInPage = lazy(() => import("./pages/LogInPage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage"));
 
-import { PrivateRoute } from "./hooks/PrivateRoute";
-import { PublicRoute } from "./hooks/PublicRoute";
+const PrivateRoute = lazy(() => import("./hooks/PrivateRoute"));
+const PublicRoute = lazy(() => import("./hooks/PublicRoute"));
 
 const App: React.FC = () => {
   const darkMode = useAppSelector(selectTheme);
@@ -31,6 +30,7 @@ const App: React.FC = () => {
       document.documentElement.classList.remove("dark");
     }
   }, [darkMode]);
+
   return (
     <>
       <Routes>
@@ -82,4 +82,5 @@ const App: React.FC = () => {
     </>
   );
 };
+
 export default App;

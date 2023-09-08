@@ -27,3 +27,4 @@ export const Main: React.FC = () => {
     </section>
   );
 };
+export default Main;

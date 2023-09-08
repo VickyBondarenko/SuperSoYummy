@@ -8,3 +8,4 @@ export const PrivateRoute: React.FC<IRouteProps> = ({ children }) => {
   const isLoggedIn = useAppSelector(selectIsAuth);
   return !isLoggedIn ? <Navigate to="/welcome" /> : children;
 };
+export default PrivateRoute;

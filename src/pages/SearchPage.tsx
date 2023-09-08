@@ -62,7 +62,7 @@ export const SearchPage: React.FC = () => {
   };
 
   return (
-    <section className="px-4 pb-[100px] pt-[50px] md:px-8 md:pb-[200px] xl:px-[99px]">
+    <section className="px-4 pb-[100px] pt-[50px]  md:pt-[82px] md:px-8 md:pb-[200px] xl:px-[99px]">
       <PageTitle title="Search" />
       <SearchForm page={currentPage} limit={limit} />
       <SearchDropdown />
@@ -95,3 +95,4 @@ export const SearchPage: React.FC = () => {
     </section>
   );
 };
+export default SearchPage;

@@ -4,3 +4,5 @@ import { UnSubscribe } from "../components/UnSubscribe/UnSubsbribe";
 export const UnSubscribePage: React.FC = () => {
   return <UnSubscribe />;
 };
+
+export default UnSubscribePage;

@@ -55,6 +55,7 @@ export const MainGallery: React.FC = () => {
                         title={item.title}
                         description={item.description}
                         time={item.time}
+                        key={item._id}
                       />
                     );
                   })}
