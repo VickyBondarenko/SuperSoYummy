@@ -126,6 +126,7 @@ const AuthForm: React.FC<IFormProps> = ({ page, title }) => {
               <SuccessSvg className={styles.form_svg_success} />
             )}
           </label>
+
           <label htmlFor="password" className="relative  mb-7 md:mb-[50px]">
             <PassSvg
               className={`${styles.form_svg} ${

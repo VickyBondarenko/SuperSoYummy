@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { logoutUser } from "../../redux/authSlice/authThunk";
 import { selectUserInfo } from "../../redux/authSlice/authSelectors";
 import styles from "./SessionEndModal.module.css";
+import { Navigate } from "react-router-dom";
 
 const SessionEndModal: React.FC = () => {
   const { _id: userId } = useAppSelector(selectUserInfo);
@@ -9,6 +10,7 @@ const SessionEndModal: React.FC = () => {
 
   const handleLogOut = () => {
     dispatch(logoutUser(userId));
+    <Navigate to="/login" />;
     document.body.classList.remove("overflow-hidden");
   };
 
