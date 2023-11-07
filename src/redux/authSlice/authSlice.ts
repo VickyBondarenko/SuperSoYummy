@@ -53,6 +53,9 @@ const authSlice = createSlice({
       .addCase(getCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
       })
+      .addCase(getCurrentUser.rejected, (state, _) => {
+        state.accessToken = null;
+      })
       .addCase(editUser.fulfilled, (state, action) => {
         state.user.name = action.payload.data.name;
         state.user.avatarURL = action.payload.data.avatarURL;
