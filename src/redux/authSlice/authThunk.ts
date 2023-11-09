@@ -74,7 +74,7 @@ export const getCurrentUser = createAsyncThunk<
     });
     return data;
   } catch (error: any) {
-    if (error.response && error.response.status === 401) {
+    if (error.response && error.response.status === 403) {
       clearAuthHeader();
       Notify.warning("Unauthorized");
     }
