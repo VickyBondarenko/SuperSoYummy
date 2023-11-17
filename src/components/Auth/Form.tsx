@@ -86,7 +86,9 @@ const AuthForm: React.FC<IFormProps> = ({ page, title }) => {
                   }`}
                 />
                 {touched.name && errors.name && (
-                  <p className={styles.form_errorMsg}>{errors.name}</p>
+                  <p className={`${styles.form_errorMsg} text-red-600`}>
+                    {errors.name}
+                  </p>
                 )}
                 {touched.name && !errors.name && (
                   <SuccessSvg className={styles.form_svg_success} />
@@ -120,7 +122,9 @@ const AuthForm: React.FC<IFormProps> = ({ page, title }) => {
               }`}
             />
             {touched.email && errors.email && (
-              <p className={styles.form_errorMsg}>{errors.email}</p>
+              <p className={`${styles.form_errorMsg} text-red-600`}>
+                {errors.email}
+              </p>
             )}
             {touched.email && !errors.email && (
               <SuccessSvg className={styles.form_svg_success} />
@@ -159,11 +163,13 @@ const AuthForm: React.FC<IFormProps> = ({ page, title }) => {
               )}
             </div>
             {touched.password && errors.password && (
-              <p className={styles.form_errorMsg}>{errors.password}</p>
+              <p className={`${styles.form_errorMsg} text-red-600`}>
+                {errors.password}
+              </p>
             )}
             {touched.password && !errors.password && (
               <>
-                <p className={`${styles.form_errorMsg} ${"text-[#3CBC81]"}`}>
+                <p className={`${styles.form_errorMsg} text-green-500  `}>
                   Password is secure
                 </p>
                 <SuccessSvg className={styles.form_svg_success} />
