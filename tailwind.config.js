@@ -25,6 +25,9 @@ export default {
       screens: {
         xl: "1440px",
       },
+      spacing: {
+        loaderMardgin: "40%",
+      },
       backgroundImage: {
         authPage_mob: "url('/src/assets/AuthPage/auth_back_mob.png')",
         authPage_tab: "url('/src/assets/AuthPage/auth_back_tablet.png')",
