@@ -11,3 +11,6 @@
 .loader_img:nth-child(2) {
   @apply animate-crossing2 animation-delay-[1500ms];
 }
+.loader_pageWrapper {
+  @apply my-[300px];
+}
