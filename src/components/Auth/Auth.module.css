@@ -26,7 +26,7 @@
 }
 
 .form_errorMsg {
-  @apply text-customRecipesTime md:text-customXxs pt-1 pl-1;
+  @apply absolute text-customRecipesTime md:text-customXxs pt-1 pl-1;
 }
 
 .form_btn {
