@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
       <div
         className={`${styles.copywrite_wrapper} ${styles.copywrite_after} dark:bg-accentDarker dark:text-whiteText`}
       >
-        <span className="mr-4 opacity-50">© 2023 All Rights Reserved. </span>
+        <span className="mr-4 opacity-50">© 2024 All Rights Reserved. </span>
         <span className="opacity-50">Terms of Service</span>
       </div>
     </footer>
