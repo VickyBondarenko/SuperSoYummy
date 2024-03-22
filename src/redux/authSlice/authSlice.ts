@@ -19,7 +19,7 @@ const authInitialState: IAuthState = {
   },
   refreshToken: "",
   accessToken: null,
-  isLoading: true,
+  isLoading: false,
   isRefreshing: false,
   isEditModalOpen: false,
   error: null,
