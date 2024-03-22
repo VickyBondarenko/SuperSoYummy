@@ -2,6 +2,8 @@
   @apply fixed top-0 right-0 bottom-0 left-0 bg-inherit z-[9999] pointer-events-auto;
 }
 .modalContent {
-  @apply fixed top-0 right-0 bottom-0 left-0  z-[9999]  bg-accentLighter dark:bg-accentDarker px-4 py-[18px]  outline-none before:bg-mob_menu_leaf before:md:bg-tablet_mob_menu_leaf  before:content-[''] before:bg-no-repeat before:block  before:h-full before:md:h-full before:w-full  before:md:w-full before:absolute before:-z-[1]
-  before:-right-[55px] before:md:-right-[175px] before:-bottom-[280px]  before:md:-bottom-[320px]  before:overflow-hidden;
+  @apply fixed top-0 right-0 bottom-0 left-0  z-[9999]  bg-accentLighter dark:bg-accentDarker px-4 py-[18px]  outline-none bg-mob_menu_leaf md:bg-tablet_mob_menu_leaf bg-no-repeat bg-right-bottom 
+  /* before:bg-mob_menu_leaf before:md:bg-tablet_mob_menu_leaf  before:content-['']  */
+   /* before:bg-no-repeat   before:h-full before:md:h-full before:w-full  before:md:w-full before:absolute before:-z-[1] */
+  before:-right-[55px] before:md:-left-[0px] before:-bottom-[280px]  before:md:-bottom-[320px]  before:overflow-hidden;
 }
