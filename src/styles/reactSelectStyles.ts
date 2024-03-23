@@ -12,7 +12,7 @@ export const timeCatSelectStyles = (isDarkMode: boolean) => {
       backgroundColor: "transparent",
       transition: "all 0.3s",
       "&:hover": {
-        border: "2px solid black",
+        border: `2px solid ${isDarkMode ? "#393A42" : "#ccc"}`,
       },
     }),
     dropdownIndicator: (provided: any) => ({
